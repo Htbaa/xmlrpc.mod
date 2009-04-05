@@ -1,0 +1,206 @@
+<html><head><title>htbaapub.xmlrpc reference</title>
+<link rel=stylesheet Type=text/css href='../../../../doc/bmxstyle.css'>
+</head><body>
+<table width=100% cellspacing=0><tr align=center><td class=small>&nbsp;</td>
+<td class=small width=1%><b>htbaapub.xmlrpc:</b></td>
+<td class=small width=1%><a href=#types class=small>Types</a></td>
+<td class=small width=1%><a href=#modinfo class=small>Modinfo</a></td>
+<td class=small width=1%><a href='../../../../mod/htbaapub.mod/xmlrpc.mod/xmlrpc.bmx' class=small>Source</a></td>
+<td class=small>&nbsp;</td></tr></table>
+<h1>htbaapub.xmlrpc</h1>
+<h2><a name=types></a>Types Summary</h2><table class=doc width=100%>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Call_Parameters>TXMLRPC_Call_Parameters</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Client>TXMLRPC_Client</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Exception>TXMLRPC_Exception</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Response_Data>TXMLRPC_Response_Data</a></td><td class=docright>
+Data returned from XML-RPC server.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Server>TXMLRPC_Server</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Transport_Dummy>TXMLRPC_Transport_Dummy</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Transport_Http>TXMLRPC_Transport_Http</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Transport_Http_Exception>TXMLRPC_Transport_Http_Exception</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Transport_Interface>TXMLRPC_Transport_Interface</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<h2
+ id=typesdet>Types
+</h2>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Call_Parameters>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Call_Parameters</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Call_Parameters_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#AppendBase64>AppendBase64</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#AppendBoolean>AppendBoolean</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#AppendDateTime_ISO8601>AppendDateTime_ISO8601</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#AppendDouble>AppendDouble</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#AppendInt>AppendInt</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#AppendString>AppendString</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Call_Parameters_functions></a>Functions Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AppendBase64>
+<tr><td class=doctop colspan=2>Method AppendBase64:Int(id:String, s:String)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AppendBoolean>
+<tr><td class=doctop colspan=2>Method AppendBoolean:Int(id:String, i:Byte)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AppendDateTime_ISO8601>
+<tr><td class=doctop colspan=2>Method AppendDateTime_ISO8601:Int(id:String, s:String)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AppendDouble>
+<tr><td class=doctop colspan=2>Method AppendDouble:Int(id:String, f:Double)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AppendInt>
+<tr><td class=doctop colspan=2>Method AppendInt:Int(id:String, i:Int)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AppendString>
+<tr><td class=doctop colspan=2>Method AppendString:Int(id:String, s:String)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Create>
+<tr><td class=doctop colspan=2>Function Create:TXMLRPC_Call_Parameters(vectorType:Int = xmlrpc_vector_mixed)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Client>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Client</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Client_fields></a>Fields Summary</th></tr><tr><td colspan=2>
+<a href=#transport>transport</a>
+</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Client_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#Call>Call</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#SetTransport>SetTransport</a></td><td class=docright>
+Set a transport interface.
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=transport>
+<tr><td class=doctop colspan=2>Field transport:TXMLRPC_Transport_Interface</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>URL of webservice.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Call>
+<tr><td class=doctop colspan=2>Method Call(command:String, data:TXMLRPC_Call_Parameters = Null)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Create>
+<tr><td class=doctop colspan=2>Method Create:TXMLRPC_Client()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=SetTransport>
+<tr><td class=doctop colspan=2>Method SetTransport(transport:TXMLRPC_Transport_Interface)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Set a transport interface.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Exception>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Exception</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Exception_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ToString>ToString</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Create>
+<tr><td class=doctop colspan=2>Method Create:TXMLRPC_Exception(message:String)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ToString>
+<tr><td class=doctop colspan=2>Method ToString:String()</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Response_Data>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Response_Data</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Data returned from XML-RPC server.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Server>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Server</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Transport_Dummy>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Transport_Dummy Extends TXMLRPC_Transport_Interface</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Transport_Dummy_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#Send>Send</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Send>
+<tr><td class=doctop colspan=2>Method Send:String(message:String)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Transport_Http>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Transport_Http_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
+Create TXMLRPC_Transport_Http object.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Send>Send</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Create>
+<tr><td class=doctop colspan=2>Method Create:TXMLRPC_Transport_Http(host:String, path:String, port:Int = 80)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Create TXMLRPC_Transport_Http object.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Send>
+<tr><td class=doctop colspan=2>Method Send:String(message:String)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Transport_Http_Exception>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Transport_Http_Exception Extends TXMLRPC_Exception</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Transport_Interface>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Transport_Interface Abstract</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Transport_Interface_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#Send>Send</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Send>
+<tr><td class=doctop colspan=2>Method Send:String(message:String) Abstract</td></tr>
+</table>
+<br>
+<h2 id=modinfo>Module Information</h2>
+<table width=100%>
+<tr><th width=1%>Name</th><td>htbaapub.xmlrpc</td></tr>
+<tr><th width=1%>Version</th><td>0.1</td></tr>
+<tr><th width=1%>Author</th><td>Christiaan Kras</td></tr>
+<tr><th width=1%>LD_OPTS</th><td>-L%PWD%/iconv-1.9.2.win32/lib</td></tr>
+</body></html>
