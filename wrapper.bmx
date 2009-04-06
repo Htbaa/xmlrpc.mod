@@ -18,6 +18,56 @@ Const xmlrpc_vector_array:Int = 1
 Const xmlrpc_vector_mixed:Int = 2
 Const xmlrpc_vector_struct:Int = 3
 
+'XMLRPC_VALUE_TYPE
+Const xmlrpc_none:Int = 0
+Const xmlrpc_empty:Int = 1
+Const xmlrpc_base64:Int = 2
+Const xmlrpc_boolean:Int = 3
+Const xmlrpc_datetime:Int = 4
+Const xmlrpc_double:Int = 5
+Const xmlrpc_int:Int = 6
+Const xmlrpc_string:Int = 7
+Const xmlrpc_vector:Int = 8
+
+'XMLRPC_VALUE_TYPE_EASY
+Const xmlrpc_type_none:Int = 0
+Const xmlrpc_type_empty:Int = 1
+Const xmlrpc_type_base64:Int = 2
+Const xmlrpc_type_boolean:Int = 3
+Const xmlrpc_type_datetime:Int = 4
+Const xmlrpc_type_double:Int = 5
+Const xmlrpc_type_int:Int = 6
+Const xmlrpc_type_string:Int = 7
+Const xmlrpc_type_array:Int = 8
+Const xmlrpc_type_mixed:Int = 9
+Const xmlrpc_type_struct:Int = 10
+
+'XMLRPC_ERROR_CODE
+Const xmlrpc_error_none:Int = 0
+Const xmlrpc_error_parse_xml_syntax:Int = -32700
+Const xmlrpc_error_parse_unknown_encoding:Int = -32701
+Const xmlrpc_error_parse_bad_encoding:Int = -32702
+Const xmlrpc_error_invalid_xmlrpc:Int = -32600
+Const xmlrpc_error_unknown_method:Int = -32601
+Const xmlrpc_error_invalid_params:Int = -32602
+Const xmlrpc_error_internal_server:Int = -32603
+Const xmlrpc_error_application:Int = -32500
+Const xmlrpc_error_system:Int = -32400
+Const xmlrpc_error_transport:Int = -32300
+
+'XMLRPC_SERVER_VALIDATION
+Const validation_none:Int = 0
+Const validation_all:Int = 1
+Const validation_if_defined:Int = 2
+
+'XMLRPC_CASE_COMPARISON
+Const xmlrpc_case_insensitive:Int = 0
+Const xmlrpc_case_sensitive:Int = 1
+
+'XMLRPC_CASE
+Const xmlrpc_case_exact:Int = 0
+Const xmlrpc_case_lower:Int = 1
+Const xmlrpc_case_upper:Int = 2
 
 Extern
 	Function XMLRPC_Create_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS:Byte Ptr(version:Int)
