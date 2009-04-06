@@ -13,6 +13,5 @@ client.SetTransport(New TXMLRPC_Transport_Http.Create("php.htbaa.com", "/xmlrpc"
 'parameters.AppendDouble("modifier", 2.3845)
 'parameters.AppendInt(Null, 4)
 
-client.Call("funcs.somefunc")
+Local response:TXMLRPC_Response_Data = client.Call("funcs.somefunc")
 
-DebugLog "Done"

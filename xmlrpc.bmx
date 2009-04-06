@@ -128,9 +128,22 @@ Type TXMLRPC_Call_Parameters
 End Type
 
 Rem
+	bbdoc:
+End Rem
+Type TXMLRPC_Response_Data_Exception Extends TXMLRPC_Exception
+End Type
+
+Rem
 	bbdoc: Data returned from XML-RPC server
 End Rem
 Type TXMLRPC_Response_Data
+	Rem
+		bbdoc:
+	End Rem
+	Method Create:TXMLRPC_Response_Data(message:String)
+		DebugLog "Now do something with the xml data"
+		Return Self
+	End Method
 End Type
 
 Rem
@@ -160,7 +173,7 @@ Type TXMLRPC_Client
 	Rem
 		bbdoc:
 	End Rem
-	Method Call(command:String, data:TXMLRPC_Call_Parameters = Null)
+	Method Call:TXMLRPC_Response_Data(command:String, data:TXMLRPC_Call_Parameters = Null)
 		If Not Self.transport
 			Throw New TXMLRPC_Exception.Create("No transport object has been assigned yet!")
 		End If
@@ -174,9 +187,9 @@ Type TXMLRPC_Client
 		'tell it to write out in the specified format, defaults to xmlrpc_version_1_0
 		Local output:Byte Ptr = XMLRPC_Create_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS(Self.outputVersion)
 		XMLRPC_RequestSetOutputOptions(request, output)
-		
+
 		'If data has been given, then add it to the request
-		If data
+		If data <> Null
 			XMLRPC_RequestSetData(request, data.vector)
 		End If
 		
@@ -187,7 +200,11 @@ Type TXMLRPC_Client
 		XMLRPC_RequestFree(request, 1)
 
 		'And pass our XML message to the transport layer
-		Local xmlResponse:String = Self.transport.Send(convertUTF8toISO8859(xmlMessage))
+		Local xmlResponse:String = Self.transport.Send(xmlMessage)
+		
+		Local responseData:TXMLRPC_Response_Data = New TXMLRPC_Response_Data.Create(xmlResponse)
+'		responseData.Parse(xmlResponse)
+		Return responseData
 	End Method
 End Type
 
@@ -198,8 +215,7 @@ Type TXMLRPC_Transport_Interface Abstract
 	Rem
 		bbdoc:
 	End Rem
-	Method Send:String(message:String) Abstract
-'	Method Retrieve:String() Abstract
+	Method Send:String(message:Byte Ptr) Abstract
 End Type
 
 Rem
@@ -209,8 +225,8 @@ Type TXMLRPC_Transport_Dummy Extends TXMLRPC_Transport_Interface
 	Rem
 		bbdoc:
 	End Rem
-	Method Send:String(message:String)
-		Print message
+	Method Send:String(message:Byte Ptr)
+		Return convertUTF8toISO8859(message)
 	End Method
 
 End Type
@@ -243,8 +259,8 @@ Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 	Rem
 		bbdoc:
 	End Rem
-	Method Send:String(message:String)
-		DebugLog message
+	Method Send:String(message:Byte Ptr)
+		Local xmlMessage:String = convertUTF8toISO8859(message)
 		Local socket:TSocket = CreateTCPSocket()
 
 		ConnectSocket(socket, HostIp(Self.host), Self.port)
@@ -261,9 +277,9 @@ Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 		WriteLine(stream, "User-agent: " + Self.userAgent)
 		WriteLine(stream, "Pragma: no-cache")
 		WriteLine(stream, "Connection: keep-alive")
-		WriteLine(stream, "Content-length: " + message.Length + "~n")
+		WriteLine(stream, "Content-length: " + xmlMessage.Length + "~n")
 
-		WriteLine(stream, message + "~n~n")
+		WriteLine(stream, xmlMessage + "~n~n")
 
 		FlushStream(stream)
 

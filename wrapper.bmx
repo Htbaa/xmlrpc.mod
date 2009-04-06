@@ -1,5 +1,3 @@
-
-
 'XMLRPC_REQUEST_TYPE
 Const xmlrpc_request_none:Int = 0
 Const xmlrpc_request_call:Int = 1
@@ -82,31 +80,34 @@ Extern "C"
 	Function XMLRPC_RequestGetMethodName:Byte Ptr(request:Byte Ptr)
 	Function XMLRPC_RequestSetRequestType:Int(request:Byte Ptr, iType:Int)
 	Function XMLRPC_RequestGetRequestType:Int(request:Byte Ptr)
-	Function XMLRPC_RequestSetData:Int(request:Byte Ptr, data:Byte Ptr)
-	Function XMLRPC_RequestGetData:Int(request:Byte Ptr)
+	Function XMLRPC_RequestSetData:Byte Ptr(request:Byte Ptr, data:Byte Ptr)
+	Function XMLRPC_RequestGetData:Byte Ptr(request:Byte Ptr)
 
 	Function XMLRPC_REQUEST_ToXML:Byte Ptr(request:Byte Ptr, buf_len:Byte Ptr)
-	
+	Function XMLRPC_REQUEST_FromXML:Byte Ptr(in_buf:Byte Ptr, length:Int, in_options:Byte Ptr)
+	Function XMLRPC_VALUE_ToXML:Byte Ptr(val:Int, buf_len:Byte Ptr)
+	Function XMLRPC_VALUE_FromXML:Byte Ptr(in_buf:Byte Ptr, length:Int, in_options:Byte Ptr)
+
 	Function XMLRPC_RequestSetOutputOptions:Byte Ptr(request:Byte Ptr, output:Byte Ptr)
 	Function XMLRPC_RequestGetOutputOptions:Byte Ptr(request:Byte Ptr)
-	
-	
+
 	Function XMLRPC_CreateVector:Byte Ptr(id:String, iType:Int)
-	Function XMLRPC_CreateValueBoolean:Int(id:Byte Ptr, truth:Int)
-	Function XMLRPC_CreateValueBase64:Int(id:Byte Ptr, s:Byte Ptr, length:Int)
-	Function XMLRPC_CreateValueDateTime:Int(id:Byte Ptr, time:Long)
-	Function XMLRPC_CreateValueDateTime_ISO8601:Int(id:Byte Ptr, s:Byte Ptr)
-	Function XMLRPC_CreateValueDouble:Int(id:Byte Ptr, f:Double)
-	Function XMLRPC_CreateValueInt:Int(id:Byte Ptr, i:Int)
-	Function XMLRPC_CreateValueEmpty:Int()
-	Function XMLRPC_CreateValueString:Int(id:Byte Ptr, s:Byte Ptr, length:Int)
+	Function XMLRPC_CreateValueBoolean:Byte Ptr(id:Byte Ptr, truth:Int)
+	Function XMLRPC_CreateValueBase64:Byte Ptr(id:Byte Ptr, s:Byte Ptr, length:Int)
+	Function XMLRPC_CreateValueDateTime:Byte Ptr(id:Byte Ptr, time:Long)
+	Function XMLRPC_CreateValueDateTime_ISO8601:Byte Ptr(id:Byte Ptr, s:Byte Ptr)
+	Function XMLRPC_CreateValueDouble:Byte Ptr(id:Byte Ptr, f:Double)
+	Function XMLRPC_CreateValueInt:Byte Ptr(id:Byte Ptr, i:Int)
+	Function XMLRPC_CreateValueEmpty:Byte Ptr()
+	Function XMLRPC_CreateValueString:Byte Ptr(id:Byte Ptr, s:Byte Ptr, length:Int)
+
+	Function XMLRPC_AddValueToVector:Int(target:Byte Ptr, source:Byte Ptr)
+
+	Function XMLRPC_RequestSetError:Int(request:Byte Ptr, error:Int)
+	Function XMLRPC_RequestGetError:Int(request:Byte Ptr)
 	
-	Function XMLRPC_AddValueToVector:Int(target:Byte Ptr, source:Int)
+	
 Rem
-
-
-
-
 
 #define XMLRPC_VectorGetValueWithID(vector, id) XMLRPC_VectorGetValueWithID_Case(vector, id, XMLRPC_DEFAULT_ID_CASE_SENSITIVITY)
 #define XMLRPC_VectorGetStringWithID(vector, id) XMLRPC_GetValueString(XMLRPC_VectorGetValueWithID(vector, id))
