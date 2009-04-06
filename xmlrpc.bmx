@@ -18,10 +18,12 @@ Import bah.expat
 Import "../../bah.mod/expat.mod/src/*.h"
 Import "xmlrpc-epi-0.54/src/*.h"
 
-?Win32
 Import "glue.cpp"
-ModuleInfo "LD_OPTS: -L%PWD%/iconv-1.9.2.win32/lib"
-Import "iconv-1.9.2.win32/include/*.h"	'http://www.zlatkovic.com/pub/libxml
+
+?Win32
+	Import "win32.cpp"
+	ModuleInfo "LD_OPTS: -L%PWD%/iconv-1.9.2.win32/lib"
+	Import "iconv-1.9.2.win32/include/*.h"	'http://www.zlatkovic.com/pub/libxml
 ?
 
 Import "-liconv"
