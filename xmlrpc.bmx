@@ -140,8 +140,34 @@ Type TXMLRPC_Response_Data
 	Rem
 		bbdoc:
 	End Rem
-	Method Create:TXMLRPC_Response_Data(message:String)
-		DebugLog "Now do something with the xml data"
+	Method Create:TXMLRPC_Response_Data(message:String, options:Byte Ptr)
+		message = "<?xml version=~q1.0~q encoding=~qUTF-8~q?><methodResponse><params><param><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></param></params></methodResponse>"
+		Local request:Byte Ptr = XMLRPC_REQUEST_FromXML(message, Null, options)
+		DebugLog message
+		DebugLog "I did something with the response data"
+		
+		Local xParams:Byte Ptr = XMLRPC_RequestGetData(request)
+		Local xArg1Struct:Byte Ptr = XMLRPC_VectorRewind(xParams)
+		Local xVal:Byte Ptr = XMLRPC_VectorGetValueWithID(xArg1Struct, "int")
+		
+		If xVal And XMLRPC_GetValueType(xVal) = xmlrpc_int
+			Local iVal:Int = XMLRPC_GetValueInt(xVal)
+			Print iVal
+		End If
+		
+		rem
+		   XMLRPC_VALUE xParams = XMLRPC_RequestGetData(request);
+		   XMLRPC_VALUE xArg1Struct = XMLRPC_VectorRewind(xParams);
+		   XMLRPC_VALUE xVal = XMLRPC_VectorGetValueWithID(xArg1Struct, "int");
+		
+		   if(xVal && XMLRPC_GetValueType(xVal) == xmlrpc_int) {
+		      iVal = XMLRPC_GetValueInt(xVal);
+		   }
+		
+		   return XMLRPC_CreateValueInt(NULL, iVal);
+		endrem
+		
+		XMLRPC_RequestFree(request, 1)
 		Return Self
 	End Method
 End Type
@@ -195,15 +221,14 @@ Type TXMLRPC_Client
 		
 		'Generate XML Message
 		Local xmlMessage:Byte Ptr = XMLRPC_REQUEST_ToXML(request, Null)
-		
+
 		'Free Request object
 		XMLRPC_RequestFree(request, 1)
 
 		'And pass our XML message to the transport layer
 		Local xmlResponse:String = Self.transport.Send(xmlMessage)
 		
-		Local responseData:TXMLRPC_Response_Data = New TXMLRPC_Response_Data.Create(xmlResponse)
-'		responseData.Parse(xmlResponse)
+		Local responseData:TXMLRPC_Response_Data = New TXMLRPC_Response_Data.Create(xmlResponse, output)
 		Return responseData
 	End Method
 End Type

@@ -92,6 +92,11 @@ Extern "C"
 	Function XMLRPC_RequestGetOutputOptions:Byte Ptr(request:Byte Ptr)
 
 	Function XMLRPC_CreateVector:Byte Ptr(id:String, iType:Int)
+	Function XMLRPC_AddValueToVector:Int(target:Byte Ptr, source:Byte Ptr)
+	Function XMLRPC_VectorSize:Int(value:Byte Ptr)
+	Function XMLRPC_VectorRewind:Byte Ptr(value:Byte Ptr)
+	Function XMLRPC_VectorNext:Byte Ptr(value:Byte Ptr)
+	
 	Function XMLRPC_CreateValueBoolean:Byte Ptr(id:Byte Ptr, truth:Int)
 	Function XMLRPC_CreateValueBase64:Byte Ptr(id:Byte Ptr, s:Byte Ptr, length:Int)
 	Function XMLRPC_CreateValueDateTime:Byte Ptr(id:Byte Ptr, time:Long)
@@ -101,15 +106,31 @@ Extern "C"
 	Function XMLRPC_CreateValueEmpty:Byte Ptr()
 	Function XMLRPC_CreateValueString:Byte Ptr(id:Byte Ptr, s:Byte Ptr, length:Int)
 
-	Function XMLRPC_AddValueToVector:Int(target:Byte Ptr, source:Byte Ptr)
-
 	Function XMLRPC_RequestSetError:Int(request:Byte Ptr, error:Int)
 	Function XMLRPC_RequestGetError:Int(request:Byte Ptr)
+
+	Function XMLRPC_VectorGetValueWithID_Case:Byte Ptr(vector:Byte Ptr, id:Byte Ptr, id_case:Int)
 	
+	Function XMLRPC_GetValueType:Int(v:Byte Ptr)
+	'XMLRPC_VALUE_TYPE_EASY XMLRPC_GetValueTypeEasy(XMLRPC_VALUE v);
+	'XMLRPC_VECTOR_TYPE XMLRPC_GetVectorType(XMLRPC_VALUE v);
+	
+	Function XMLRPC_GetValueString:Byte Ptr(value:Byte Ptr)
+	Function XMLRPC_GetValueInt:Int(value:Byte Ptr) 
 	
 Rem
+/* Get Values */
+const char* XMLRPC_GetValueString(XMLRPC_VALUE value);
+int XMLRPC_GetValueStringLen(XMLRPC_VALUE value);
+int XMLRPC_GetValueInt(XMLRPC_VALUE value);
+int XMLRPC_GetValueBoolean(XMLRPC_VALUE value);
+double XMLRPC_GetValueDouble(XMLRPC_VALUE value);
+const char* XMLRPC_GetValueBase64(XMLRPC_VALUE value);
+time_t XMLRPC_GetValueDateTime(XMLRPC_VALUE value);
+const char* XMLRPC_GetValueDateTime_ISO8601(XMLRPC_VALUE value);
+const char* XMLRPC_GetValueID(XMLRPC_VALUE value);
 
-#define XMLRPC_VectorGetValueWithID(vector, id) XMLRPC_VectorGetValueWithID_Case(vector, id, XMLRPC_DEFAULT_ID_CASE_SENSITIVITY)
+
 #define XMLRPC_VectorGetStringWithID(vector, id) XMLRPC_GetValueString(XMLRPC_VectorGetValueWithID(vector, id))
 #define XMLRPC_VectorGetBase64WithID(vector, id) XMLRPC_GetValueBase64(XMLRPC_VectorGetValueWithID(vector, id))
 #define XMLRPC_VectorGetDateTimeWithID(vector, id) XMLRPC_GetValueDateTime(XMLRPC_VectorGetValueWithID(vector, id))
@@ -119,6 +140,9 @@ Rem
 Endrem
 End Extern
 
+Function XMLRPC_VectorGetValueWithID:Byte Ptr(vector:Byte Ptr, id:String)
+	Return XMLRPC_VectorGetValueWithID_Case(vector, id.ToCString(), xmlrpc_case_sensitive)
+End Function
 
 Function XMLRPC_VectorAppendString:Int(vector:Byte Ptr, id:String, s:String, length:Int = 0)
 	Return XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueString(id.ToCString(), s.ToCString(), length))
