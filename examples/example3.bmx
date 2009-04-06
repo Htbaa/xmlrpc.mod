@@ -1,7 +1,7 @@
 SuperStrict
-Import htbaa.xmlrpc
+Import htbaapub.xmlrpc
 
-Local client:TXMLRPC_Client = New TXMLRPC_Client.Create("php.htbaa.com")
+Local client:TXMLRPC_Client = New TXMLRPC_Client.Create()
 client.SetTransport(New TXMLRPC_Transport_Http.Create("php.htbaa.com", "/xmlrpc"))
 
 'Local parameters:TXMLRPC_Call_Parameters = TXMLRPC_Call_Parameters.Create(xmlrpc_vector_mixed)

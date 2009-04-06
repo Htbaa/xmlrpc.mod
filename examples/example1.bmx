@@ -1,5 +1,5 @@
 SuperStrict
-Import htbaa.xmlrpc
+Import htbaapub.xmlrpc
 
 For Local a:Int = 0 To 10
 	GCSuspend()

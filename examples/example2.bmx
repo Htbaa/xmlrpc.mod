@@ -1,5 +1,5 @@
 SuperStrict
-Import htbaa.xmlrpc
+Import htbaapub.xmlrpc
 
 Local client:TXMLRPC_Client = New TXMLRPC_Client.Create("http://php.htbaa.com/xmlrpc/")
 client.SetTransport(New TXMLRPC_Transport_Dummy)
