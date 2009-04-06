@@ -91,11 +91,12 @@ Type TXMLRPC_Call_Parameters
 		Return XMLRPC_VectorAppendBase64(Self.vector, id, s)
 	End Method
 	
-'	Rem
-'		bbdoc:
-'	End Rem
-'	Method AppendDateTime:Int(s:String)
-'	End Method
+	Rem
+		bbdoc:
+	End Rem
+	Method AppendDateTime:Int(id:String, time:Long)
+		Return XMLRPC_VectorAppendDateTime(Self.vector, id, time)
+	End Method
 
 	Rem
 		bbdoc:

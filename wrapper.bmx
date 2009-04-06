@@ -71,7 +71,7 @@ Const xmlrpc_case_upper:Int = 2
 
 Extern
 	Function XMLRPC_Create_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS:Byte Ptr(version:Int)
-	Function XMLRPC_Delete_Request_Output_Options(options:Byte Ptr)
+'	Function XMLRPC_Delete_Request_Output_Options(options:Byte Ptr)
 End Extern
 
 Extern "C"
@@ -94,7 +94,7 @@ Extern "C"
 	Function XMLRPC_CreateVector:Byte Ptr(id:String, iType:Int)
 	Function XMLRPC_CreateValueBoolean:Int(id:Byte Ptr, truth:Int)
 	Function XMLRPC_CreateValueBase64:Int(id:Byte Ptr, s:Byte Ptr, length:Int)
-	Function XMLRPC_CreateValueDateTime:Int(id:Byte Ptr, time:Byte Ptr)
+	Function XMLRPC_CreateValueDateTime:Int(id:Byte Ptr, time:Long)
 	Function XMLRPC_CreateValueDateTime_ISO8601:Int(id:Byte Ptr, s:Byte Ptr)
 	Function XMLRPC_CreateValueDouble:Int(id:Byte Ptr, f:Double)
 	Function XMLRPC_CreateValueInt:Int(id:Byte Ptr, i:Int)
@@ -127,10 +127,9 @@ Function XMLRPC_VectorAppendBase64:Int(vector:Byte Ptr, id:String, s:String, len
 	Return XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueBase64(id.ToCString(), s.ToCString(), length))
 End Function
 
-'#define XMLRPC_VectorAppendDateTime(vector, id, time) XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueDateTime(id, time))
-'Function XMLRPC_VectorAppendDateTime:Int(vector:Byte Ptr, id:Byte Ptr, time:Byte Ptr)
-'	Return XMLRPC_CreateValueDateTime()
-'End Function
+Function XMLRPC_VectorAppendDateTime:Int(vector:Byte Ptr, id:Byte Ptr, time:Long)
+	Return XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueDateTime(id, time))
+End Function
 
 Function XMLRPC_VectorAppendDateTime_ISO8601:Int(vector:Byte Ptr, id:String, s:String)
 	Return XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueDateTime_ISO8601(id.ToCString(), s.ToCString()))

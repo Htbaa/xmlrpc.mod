@@ -23,15 +23,20 @@ For Local a:Int = 0 To 10
 	XMLRPC_VectorAppendBase64(xParamList, Null, "Some Base64 text")
 	XMLRPC_VectorAppendBoolean(xParamList, Null, False)
 	XMLRPC_VectorAppendBoolean(xParamList, Null, True)
+	XMLRPC_VectorAppendDateTime(xParamList, Null, 1238998067)
 	XMLRPC_VectorAppendDateTime_ISO8601(xParamList, Null, "2009-04-05T16:27:03")
 	XMLRPC_VectorAppendDouble(xParamList, Null, 20.43)
 	XMLRPC_VectorAppendInt(xParamList, Null, 19)
 	
 	XMLRPC_RequestSetData(request, xParamList)
 	
-	Local xmlMessage:Byte Ptr = XMLRPC_REQUEST_ToXML(request, Null)
-'	Print convertUTF8toISO8859(xmlMessage)
-
+	Try
+		Local xmlMessage:Byte Ptr = XMLRPC_REQUEST_ToXML(request, Null)
+		Print convertUTF8toISO8859(xmlMessage)
+	Catch ex:Object
+		DebugLog "error!"
+	End Try
+	
 	'DebugLog output
 	XMLRPC_RequestFree(request, 1)
 
