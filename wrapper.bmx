@@ -116,19 +116,18 @@ Extern "C"
 	'XMLRPC_VECTOR_TYPE XMLRPC_GetVectorType(XMLRPC_VALUE v);
 	
 	Function XMLRPC_GetValueString:Byte Ptr(value:Byte Ptr)
-	Function XMLRPC_GetValueInt:Int(value:Byte Ptr) 
-	
+	Function XMLRPC_GetValueStringLen:Int(value:Byte Ptr)
+	Function XMLRPC_GetValueInt:Int(value:Byte Ptr)
+	Function XMLRPC_GetValueBoolean:Int(value:Byte Ptr)
+	Function XMLRPC_GetValueDouble:Double(value:Byte Ptr)
+	Function XMLRPC_GetValueBase64:Byte Ptr(value:Byte Ptr)
+	Function XMLRPC_GetValueDateTime:Long(value:Byte Ptr)
+	Function XMLRPC_GetValueDateTime_ISO8601:Byte Ptr(value:Byte Ptr)
+	Function XMLRPC_GetValueID:Byte Ptr(value:Byte Ptr)
 Rem
 /* Get Values */
-const char* XMLRPC_GetValueString(XMLRPC_VALUE value);
-int XMLRPC_GetValueStringLen(XMLRPC_VALUE value);
-int XMLRPC_GetValueInt(XMLRPC_VALUE value);
-int XMLRPC_GetValueBoolean(XMLRPC_VALUE value);
-double XMLRPC_GetValueDouble(XMLRPC_VALUE value);
-const char* XMLRPC_GetValueBase64(XMLRPC_VALUE value);
-time_t XMLRPC_GetValueDateTime(XMLRPC_VALUE value);
-const char* XMLRPC_GetValueDateTime_ISO8601(XMLRPC_VALUE value);
-const char* XMLRPC_GetValueID(XMLRPC_VALUE value);
+
+
 
 
 #define XMLRPC_VectorGetStringWithID(vector, id) XMLRPC_GetValueString(XMLRPC_VectorGetValueWithID(vector, id))
