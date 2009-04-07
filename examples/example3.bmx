@@ -15,3 +15,6 @@ Local parameters:TXMLRPC_Call_Parameters = TXMLRPC_Call_Parameters.Create(xmlrpc
 
 Local response:TXMLRPC_Response_Data = client.Call("funcs.somefunc")
 
+For Local val:TXMLRPC_Data_Type_Abstract = EachIn response.data
+	Print val.key + ": " + val.ToString()
+Next

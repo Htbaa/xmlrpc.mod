@@ -138,7 +138,7 @@ Rem
 	bbdoc:
 End Rem
 Type TXMLRPC_Data_Type_Abstract Abstract
-	Field id:String
+	Field key:String
 
 	Rem
 		bbdoc:
@@ -186,6 +186,8 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 				Case xmlrpc_string
 					TXMLRPC_Data_Type_String(data).value = String.FromCString(XMLRPC_GetValueString(val))
 			End Select
+			
+			data.key = String.FromCString(XMLRPC_GetValueID(val))
 			Return data
 		End If
 		Return Null
@@ -199,6 +201,8 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 		Local r:TTypeId = TTypeId.ForObject(Self)
 		
 		For Local fld:TField = EachIn r.EnumFields()
+			'Check if object has a Field called value
+			'If so, check it's type, convert it to a string and return it
 			If fld.Name() = "value"
 				Select fld.TypeId().Name()
 					Case "String"
@@ -214,39 +218,119 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 				End Select
 			End If
 		Next
+		Return ""
 '		Throw New TXMLRPC_Data_Type_Exception.Create("Can't convert datatype to string")
+	End Method
+	
+	Rem
+		bbdoc:
+	End Rem
+	Method GetKey:String()
+		Return Self.key
+	End Method
+	
+	Rem
+		bbdoc:
+	End Rem
+	Method GetByte:Byte()
+		Throw New TXMLRPC_Data_Type_Exception.Create("Method GetByte not implemented for this type")
+	End Method	
+	Rem
+		bbdoc:
+	End Rem
+	
+	Method GetInt:Int()
+		Throw New TXMLRPC_Data_Type_Exception.Create("Method GetInt not implemented for this type")
+	End Method
+	
+	Rem
+		bbdoc:
+	End Rem
+	Method GetDouble:Double()
+		Throw New TXMLRPC_Data_Type_Exception.Create("Method GetDouble not implemented for this type")
+	End Method
+
+	Rem
+		bbdoc:
+	End Rem
+	Method GetString:String()
+		Throw New TXMLRPC_Data_Type_Exception.Create("Method GetString not implemented for this type")
+'		Perhaps we should use ToString() ?
+'		Return Self.ToString()
 	End Method
 End Type
 
+Rem
+	bbdoc:
+End Rem
 Type TXMLRPC_Data_Type_None Extends TXMLRPC_Data_Type_Abstract
 End Type
 
+Rem
+	bbdoc:
+End Rem
 Type TXMLRPC_Data_Type_Empty Extends TXMLRPC_Data_Type_Abstract
 	Field value:Object = Null
 End Type
 
+Rem
+	bbdoc:
+End Rem
 Type TXMLRPC_Data_Type_Base64 Extends TXMLRPC_Data_Type_Abstract
 	Field value:String
+	Method GetString:String()
+		Return Self.value
+	End Method
 End Type
 
+Rem
+	bbdoc:
+End Rem
 Type TXMLRPC_Data_Type_Boolean Extends TXMLRPC_Data_Type_Abstract
 	Field value:Byte
+	Method GetByte:Byte()
+		Return Self.value
+	End Method
 End Type
 
+Rem
+	bbdoc:
+End Rem
 Type TXMLRPC_Data_Type_Datetime Extends TXMLRPC_Data_Type_Abstract
 	Field value:String
+	Method GetString:String()
+		Return Self.value
+	End Method
 End Type
 
+Rem
+	bbdoc:
+End Rem
 Type TXMLRPC_Data_Type_Double Extends TXMLRPC_Data_Type_Abstract
 	Field value:Double
+	Method GetDouble:Double()
+		Return Self.value
+	End Method
 End Type
 
+Rem
+	bbdoc:
+End Rem
 Type TXMLRPC_Data_Type_Int Extends TXMLRPC_Data_Type_Abstract
 	Field value:Int
+	Method GetInt:Int()
+		Return Self.value
+	End Method
 End Type
 
+Rem
+	bbdoc:
+End Rem
 Type TXMLRPC_Data_Type_String Extends TXMLRPC_Data_Type_Abstract
 	Field value:String
+	Method GetString:String()
+		Return Self.value
+	End Method
 End Type
 
 Rem
@@ -281,7 +365,6 @@ Type TXMLRPC_Response_Data
 		Local dataCounter:Int = 0
 		While itr
 			Local val:TXMLRPC_Data_Type_Abstract = TXMLRPC_Data_Type_Abstract.XMLRPC_To_BlitzMax(itr)
-			Print val.ToString()
 			Self.data[dataCounter] = val
 			dataCounter:+1
 			'Next element
