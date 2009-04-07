@@ -9,16 +9,24 @@ ModuleInfo "Name: htbaapub.xmlrpc"
 ModuleInfo "Version: 0.1"
 ModuleInfo "Author: Christiaan Kras"
 
-
 Import brl.blitz
 Import brl.basic
 Import brl.reflection
 Import brl.socket
 
-Import bah.expat
-Import "../../bah.mod/expat.mod/src/*.h"
-Import "xmlrpc-epi-0.54/src/*.h"
+Import "expat-2.0.1/src/*.h"
+ModuleInfo "CC_OPTS: -DHAVE_EXPAT_CONFIG_H"
+?ppc
+	ModuleInfo "CC_OPTS: -DWORDS_BIGENDIAN"
+?
 
+Import "expat-2.0.1/src/xmlparse.c"
+Import "expat-2.0.1/src/xmlrole.c"
+Import "expat-2.0.1/src/xmltok.c"
+Import "expat-2.0.1/src/xmltok_impl.c"
+Import "expat-2.0.1/src/xmltok_ns.c"
+
+Import "xmlrpc-epi-0.54/src/*.h"
 Import "glue.cpp"
 
 ?Win32
