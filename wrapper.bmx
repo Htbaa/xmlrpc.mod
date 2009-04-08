@@ -124,12 +124,21 @@ Extern "C"
 	Function XMLRPC_GetValueDateTime:Long(value:Byte Ptr)
 	Function XMLRPC_GetValueDateTime_ISO8601:Byte Ptr(value:Byte Ptr)
 	Function XMLRPC_GetValueID:Byte Ptr(value:Byte Ptr)
+	
+	Function XMLRPC_ValueIsFault:Int(value:Byte Ptr)
+	Function XMLRPC_ResponseIsFault(response:Byte Ptr)
+	Function XMLRPC_GetValueFaultCode:Int(value:Byte Ptr)
+	Function XMLRPC_GetResponseFaultCode:Int(response:Byte Ptr)
+	Function XMLRPC_GetValueFaultString:Byte Ptr(value:Byte Ptr)
+	Function XMLRPC_GetResponseFaultString:Byte Ptr(response:Byte Ptr)
+	Function XMLRPC_Free(mem:Byte Ptr)
+	Function XMLRPC_GetVersionString:Byte Ptr()
 Rem
+
+
+XMLRPC_VALUE XMLRPC_UtilityCreateFault(int fault_code, const char* fault_string);
+
 /* Get Values */
-
-
-
-
 #define XMLRPC_VectorGetStringWithID(vector, id) XMLRPC_GetValueString(XMLRPC_VectorGetValueWithID(vector, id))
 #define XMLRPC_VectorGetBase64WithID(vector, id) XMLRPC_GetValueBase64(XMLRPC_VectorGetValueWithID(vector, id))
 #define XMLRPC_VectorGetDateTimeWithID(vector, id) XMLRPC_GetValueDateTime(XMLRPC_VectorGetValueWithID(vector, id))
