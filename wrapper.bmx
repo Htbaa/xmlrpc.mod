@@ -113,7 +113,7 @@ Extern "C"
 	
 	Function XMLRPC_GetValueType:Int(v:Byte Ptr)
 	'XMLRPC_VALUE_TYPE_EASY XMLRPC_GetValueTypeEasy(XMLRPC_VALUE v);
-	'XMLRPC_VECTOR_TYPE XMLRPC_GetVectorType(XMLRPC_VALUE v);
+	Function XMLRPC_GetVectorType:Int(v:Byte Ptr)
 	
 	Function XMLRPC_GetValueString:Byte Ptr(value:Byte Ptr)
 	Function XMLRPC_GetValueStringLen:Int(value:Byte Ptr)
