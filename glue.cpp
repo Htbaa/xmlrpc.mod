@@ -8,9 +8,9 @@ extern "C" {
 		options->version = version;
 		return options;
 	}
-	/*
+	
 	void XMLRPC_Delete_Request_Output_Options(STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS *options) {
 		delete options;
 	}
-	*/
+	
 }

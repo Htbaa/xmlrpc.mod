@@ -34,26 +34,30 @@ Type TXMLRPC_Client
 		
 		Local request:Byte Ptr = XMLRPC_RequestNew()
 		
-		'Set the method name and tell it we are making a request
-		XMLRPC_RequestSetMethodName(request, command.ToCString())
-		XMLRPC_RequestSetRequestType(request, xmlrpc_request_call)
-			
 		'tell it to write out in the specified format, defaults to xmlrpc_version_1_0
 		Local output:Byte Ptr = XMLRPC_Create_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS(Self.outputVersion)
 		XMLRPC_RequestSetOutputOptions(request, output)
 
+		Local methodName:Byte Ptr = command.ToCString()
+		'Set the method name and tell it we are making a request
+		XMLRPC_RequestSetMethodName(request, methodName)
+		XMLRPC_RequestSetRequestType(request, xmlrpc_request_call)
+		
+		MemFree(methodName)
+		
 		'If data has been given, then add it to the request
 		If data <> Null And XMLRPC_VectorSize(data.vector) > 0
 			XMLRPC_RequestSetData(request, data.vector)
 		End If
 
 		'Generate XML Message
-		Local xmlMessage:Byte Ptr = XMLRPC_REQUEST_ToXML(request, Null)
-		
+		Local xmlMessage:Byte Ptr = XMLRPC_REQUEST_ToXML(request, Byte Ptr 0)
+
 		Self.xmlRequest = convertUTF8toISO8859(xmlMessage)
 		
 		'And pass our XML message to the transport layer
 		Self.xmlResponse = Self.transport.DoRequest(xmlMessage)
+		
 		
 		'Find first occurance of the xml start tag
 		Local startPos:Int = Self.xmlResponse.Find("<?xml")
@@ -61,9 +65,11 @@ Type TXMLRPC_Client
 		Self.xmlResponse = Self.xmlResponse[startPos..]
 		
 		Local responseData:TXMLRPC_Response_Data = New TXMLRPC_Response_Data.Create(Self.xmlResponse, output)
-
+		
+		XMLRPC_Delete_Request_Output_Options(output)
 		'Free Request object
 		XMLRPC_RequestFree(request, 1)
-		Return responseData
+'		Return responseData
+		Return Null
 	End Method
 End Type

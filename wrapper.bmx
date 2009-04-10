@@ -69,7 +69,7 @@ Const xmlrpc_case_upper:Int = 2
 
 Extern
 	Function XMLRPC_Create_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS:Byte Ptr(version:Int)
-'	Function XMLRPC_Delete_Request_Output_Options(options:Byte Ptr)
+	Function XMLRPC_Delete_Request_Output_Options(options:Byte Ptr)
 End Extern
 
 Extern "C"
@@ -78,18 +78,17 @@ Extern "C"
 	Function XMLRPC_RequestFree(request:Byte Ptr, bFreeIO:Int)
 	Function XMLRPC_RequestSetMethodName:Byte Ptr(request:Byte Ptr, methodName:Byte Ptr)
 	Function XMLRPC_RequestGetMethodName:Byte Ptr(request:Byte Ptr)
-	Function XMLRPC_RequestSetRequestType:Int(request:Byte Ptr, iType:Int)
-	Function XMLRPC_RequestGetRequestType:Int(request:Byte Ptr)
+	Function XMLRPC_RequestSetOutputOptions:Byte Ptr(request:Byte Ptr, output:Byte Ptr)
+	Function XMLRPC_RequestGetOutputOptions:Byte Ptr(request:Byte Ptr)
 	Function XMLRPC_RequestSetData:Byte Ptr(request:Byte Ptr, data:Byte Ptr)
 	Function XMLRPC_RequestGetData:Byte Ptr(request:Byte Ptr)
+	Function XMLRPC_RequestSetRequestType:Int(request:Byte Ptr, iType:Int)
+	Function XMLRPC_RequestGetRequestType:Int(request:Byte Ptr)
 
 	Function XMLRPC_REQUEST_ToXML:Byte Ptr(request:Byte Ptr, buf_len:Byte Ptr)
 	Function XMLRPC_REQUEST_FromXML:Byte Ptr(in_buf:Byte Ptr, length:Int, in_options:Byte Ptr)
 	Function XMLRPC_VALUE_ToXML:Byte Ptr(val:Int, buf_len:Byte Ptr)
 	Function XMLRPC_VALUE_FromXML:Byte Ptr(in_buf:Byte Ptr, length:Int, in_options:Byte Ptr)
-
-	Function XMLRPC_RequestSetOutputOptions:Byte Ptr(request:Byte Ptr, output:Byte Ptr)
-	Function XMLRPC_RequestGetOutputOptions:Byte Ptr(request:Byte Ptr)
 
 	Function XMLRPC_CreateVector:Byte Ptr(id:String, iType:Int)
 	Function XMLRPC_AddValueToVector:Int(target:Byte Ptr, source:Byte Ptr)
@@ -105,9 +104,10 @@ Extern "C"
 	Function XMLRPC_CreateValueInt:Byte Ptr(id:Byte Ptr, i:Int)
 	Function XMLRPC_CreateValueEmpty:Byte Ptr()
 	Function XMLRPC_CreateValueString:Byte Ptr(id:Byte Ptr, s:Byte Ptr, length:Int)
+	Function XMLRPC_CleanupValue(value:Byte Ptr)
 
-	Function XMLRPC_RequestSetError:Int(request:Byte Ptr, error:Int)
-	Function XMLRPC_RequestGetError:Int(request:Byte Ptr)
+	Function XMLRPC_RequestSetError:Byte Ptr(request:Byte Ptr, error:Int)
+	Function XMLRPC_RequestGetError:Byte Ptr(request:Byte Ptr)
 
 	Function XMLRPC_VectorGetValueWithID_Case:Byte Ptr(vector:Byte Ptr, id:Byte Ptr, id_case:Int)
 	
@@ -149,35 +149,65 @@ Endrem
 End Extern
 
 Function XMLRPC_VectorGetValueWithID:Byte Ptr(vector:Byte Ptr, id:String)
-	Return XMLRPC_VectorGetValueWithID_Case(vector, id.ToCString(), xmlrpc_case_sensitive)
+	Local strId:Byte Ptr = id.ToCString()
+	Local val:Byte Ptr = XMLRPC_VectorGetValueWithID_Case(vector, strId, xmlrpc_case_sensitive)
+	MemFree(strId)
+	Return val
 End Function
 
 Function XMLRPC_VectorAppendString:Int(vector:Byte Ptr, id:String, s:String, length:Int = 0)
-	Return XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueString(id.ToCString(), s.ToCString(), length))
+	Local strId:Byte Ptr = id.ToCString()
+	Local strS:Byte Ptr = s.ToCString()
+	Local val:Int = XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueString(strId, strS, length))
+	MemFree(strId)
+	MemFree(strS)
+	Return val
 End Function
 
 Function XMLRPC_VectorAppendBase64:Int(vector:Byte Ptr, id:String, s:String, length:Int = 0)
-	Return XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueBase64(id.ToCString(), s.ToCString(), length))
+	Local strId:Byte Ptr = id.ToCString()
+	Local strS:Byte Ptr = s.ToCString()
+	Local val:Int = XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueBase64(strId, strS, length))
+	MemFree(strId)
+	MemFree(strS)
+	Return val
 End Function
 
-Function XMLRPC_VectorAppendDateTime:Int(vector:Byte Ptr, id:Byte Ptr, time:Long)
-	Return XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueDateTime(id, time))
+Function XMLRPC_VectorAppendDateTime:Int(vector:Byte Ptr, id:String, time:Long)
+	Local strId:Byte Ptr = id.ToCString()
+	Local val:Int = XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueDateTime(strId, time))
+	MemFree(strId)
+	Return val
 End Function
 
 Function XMLRPC_VectorAppendDateTime_ISO8601:Int(vector:Byte Ptr, id:String, s:String)
-	Return XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueDateTime_ISO8601(id.ToCString(), s.ToCString()))
+	Local strId:Byte Ptr = id.ToCString()
+	Local strS:Byte Ptr = s.ToCString()
+	Local val:Int = XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueDateTime_ISO8601(strId, strS))
+	MemFree(strId)
+	MemFree(strS)
+	Return val
 End Function
 
 Function XMLRPC_VectorAppendDouble:Int(vector:Byte Ptr, id:String, f:Double)
-	Return XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueDouble(id.ToCString(), f))
+	Local strId:Byte Ptr = id.ToCString()
+	Local val:Int = XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueDouble(strId, f))
+	MemFree(strId)
+	Return val
 End Function
 
 Function XMLRPC_VectorAppendInt:Int(vector:Byte Ptr, id:String, i:Int)
-	Return XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueInt(id.ToCString(), i))
+	Local strId:Byte Ptr = id.ToCString()
+	Local val:Int = XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueInt(strId, i))
+	MemFree(strId)
+	Return val
 End Function
 
 Function XMLRPC_VectorAppendBoolean:Int(vector:Byte Ptr, id:String, i:Int)
-	Return XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueBoolean(id.ToCString(), i))
+	Local strId:Byte Ptr = id.ToCString()
+	Local val:Int = XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueBoolean(strId, i))
+	MemFree(strId)
+	Return val
 End Function
 rem
 /****s* VALUE/XMLRPC_REQUEST_INPUT_OPTIONS

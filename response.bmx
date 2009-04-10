@@ -19,7 +19,7 @@ Type TXMLRPC_Response_Data
 		Local el:Byte Ptr = XMLRPC_RequestGetData(request)
 
 		Self.data = TXMLRPC_Response_Data.IterateVector(el)
-
+		
 		XMLRPC_RequestFree(request, 1)
 		Return Self
 	End Method
