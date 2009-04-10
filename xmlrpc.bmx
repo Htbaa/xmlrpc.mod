@@ -6,7 +6,7 @@ Rem
 EndRem
 Module htbaapub.xmlrpc
 ModuleInfo "Name: htbaapub.xmlrpc"
-ModuleInfo "Version: 0.1"
+ModuleInfo "Version: 0.5"
 ModuleInfo "Author: Christiaan Kras"
 
 Import brl.blitz
