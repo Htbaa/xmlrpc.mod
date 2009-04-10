@@ -1,4 +1,4 @@
-'Source Code created on 10 Apr 2009 15:55:19 with Logic Gui Version 4.1 Build 366
+'Source Code created on 11 Apr 2009 00:51:53 with Logic Gui Version 4.1 Build 366
 'Christiaan Kras
 'Start of external Header File
 SuperStrict
@@ -163,50 +163,49 @@ End Function
 
 Function Button1_GA( Button:TGadget , GadgetList:TList=Null )
 	DebugLog "Button Button1 was pressed"
-	Local Gadget6:TGadget, GadgetArray6$[] =["Window1"] 
-If GadgetList Gadget6:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray6,GadgetList:TList)
+		Local Gadget6:TGadget, GadgetArray6$[] =["Window1"] 
+	If GadgetList Gadget6:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray6,GadgetList:TList)
 
-Try
-	Local Gadget2:TGadget, GadgetArray2$[] =["TxtPath"] 
-	If GadgetList Gadget2:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray2,GadgetList:TList)
+	Try
+		Local Gadget2:TGadget, GadgetArray2$[] =["TxtPath"] 
+		If GadgetList Gadget2:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray2,GadgetList:TList)
 
-	Local Gadget3:TGadget, GadgetArray3$[] =["TxtHost"] 
-	If GadgetList Gadget3:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray3,GadgetList:TList)
+		Local Gadget3:TGadget, GadgetArray3$[] =["TxtHost"] 
+		If GadgetList Gadget3:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray3,GadgetList:TList)
 
-	Local Gadget4:TGadget, GadgetArray4$[] =["TxtFunction"] 
-	If GadgetList Gadget4:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray4,GadgetList:TList)
+		Local Gadget4:TGadget, GadgetArray4$[] =["TxtFunction"] 
+		If GadgetList Gadget4:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray4,GadgetList:TList)
 
-	Local client:TXMLRPC_Client =New TXMLRPC_Client.Create()	client.SetTransport(New TXMLRPC_Transport_Http.Create(GadgetText(Gadget3), GadgetText(Gadget2)))
+		Local client:TXMLRPC_Client =New TXMLRPC_Client.Create()		client.SetTransport(New TXMLRPC_Transport_Http.Create(GadgetText(Gadget3), GadgetText(Gadget2)))
 
-	Local Gadget9:TGadget, GadgetArray9$[] = ["TxtParameters"] 
-	If GadgetList Gadget9:TGadget = GadgetCommander(GetGadgetHandle,GadgetArray9,GadgetList:TList)
+		Local Gadget9:TGadget, GadgetArray9$[] =["TxtParameters"] 
+		If GadgetList Gadget9:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray9,GadgetList:TList)
 
-	Local parameters:TXMLRPC_Call_Parameters = TXMLRPC_Call_Parameters.Create(xmlrpc_vector_mixed)
-	ParseParameters(GadgetText(Gadget9), parameters)
-
-
-	SetStatusText(Gadget6, "Executing XML-RPC request... Please wait")
-
-	Local response:TXMLRPC_Response_Data = client.Call(GadgetText(Gadget4), parameters)
-	SetStatusText(Gadget6, "XML-RPC request executed")
-
-	Local pad:Int =0	Local str:String =TXMLRPC_Response_Data.DebugData(response.data, pad)
-
-	Local Gadget5:TGadget, GadgetArray5$[] =["TextAreaBlitzMax"] 
-	If GadgetList Gadget5:TGadget =GadgetCommander(SetText,GadgetArray5,GadgetList:TList,str )
-
-	Local Gadget7:TGadget, GadgetArray7$[] = ["TextAreaResponse"] 
-	If GadgetList Gadget7:TGadget = GadgetCommander(SetText,GadgetArray7,GadgetList:TList, client.xmlResponse )
-
-	Local Gadget8:TGadget, GadgetArray8$[] = ["TextAreaRequest"] 
-	If GadgetList Gadget8:TGadget = GadgetCommander(SetText,GadgetArray8,GadgetList:TList, client.xmlRequest )
+		Local parameters:TXMLRPC_Call_Parameters =TXMLRPC_Call_Parameters.Create(xmlrpc_vector_mixed)
+		ParseParameters(GadgetText(Gadget9), parameters)
 
 
+		SetStatusText(Gadget6, "Executing XML-RPC request... Please wait")
 
-Catch e:Object
-	Notify(e.ToString(), True)
-	SetStatusText(Gadget6, "Failed to execute XML-RPC request: " + e.ToString())
-End Try
+		Local response:TXMLRPC_Response_Data =client.Call(GadgetText(Gadget4), parameters)
+		SetStatusText(Gadget6, "XML-RPC request executed")
+
+		Local pad:Int = 0
+		Local str:String =TXMLRPC_Response_Data.DebugData(response.data, pad)
+
+		Local Gadget5:TGadget, GadgetArray5$[] =["TextAreaBlitzMax"] 
+		If GadgetList Gadget5:TGadget =GadgetCommander(SetText,GadgetArray5,GadgetList:TList,str )
+
+		Local Gadget7:TGadget, GadgetArray7$[] =["TextAreaResponse"] 
+		If GadgetList Gadget7:TGadget =GadgetCommander(SetText,GadgetArray7,GadgetList:TList, client.xmlResponse )
+
+		Local Gadget8:TGadget, GadgetArray8$[] =["TextAreaRequest"] 
+		If GadgetList Gadget8:TGadget =GadgetCommander(SetText,GadgetArray8,GadgetList:TList, client.xmlRequest )
+
+	Catch e:Object
+		Notify(e.ToString(), True)
+		SetStatusText(Gadget6, "Failed to execute XML-RPC request: " + e.ToString())
+	End Try
 End Function
 
 Function TxtParameters_GA( TextArea:TGadget , GadgetList:TList=Null )
