@@ -1,5 +1,5 @@
 // #import <blitz.h>
-#include "xmlrpc-epi-0.54/src/xmlrpc.h"
+#include "src/xmlrpc-epi-0.54/src/xmlrpc.h"
 #include <stdio.h>
 
 extern "C" {
