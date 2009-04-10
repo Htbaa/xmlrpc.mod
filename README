@@ -3,3 +3,8 @@ This module isn't ready yet. There's a lot of stuff that needs to be wrapped.
 Eventually this module should allow you to implement a XML-RPC client and/or XML-RPC server.
 
 Collaborators are more then wanted to help with the Mac OSX and Linux version of the module.
+
+
+----- Done
+Currently a XML-RPC call can be executed and translated to native BlitzMax data. A TMap will be returned with all the data.
+All types, including arrays and struct are handled properly.

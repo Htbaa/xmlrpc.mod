@@ -15,7 +15,16 @@ Local parameters:TXMLRPC_Call_Parameters = TXMLRPC_Call_Parameters.Create(xmlrpc
 'parameters.AppendDouble("modifier", 2.3845)
 'parameters.AppendInt(Null, 4)
 
-Local response:TXMLRPC_Response_Data = client.Call("funcs.somefunc2")
+Local response:TXMLRPC_Response_Data = client.Call("funcs.somefunc4")
+
+'Local test:TXMLRPC_Data_Type_Abstract = TXMLRPC_Data_Type_Abstract(response.data.ValueForKey("myId"))
+'DebugLog test.ToString()
+
+Local pad:Int = 0
+TXMLRPC_Response_Data.DebugData(response.data, pad)
+
+
+DebugLog "Done"
 
 'For Local val:TXMLRPC_Data_Type_Abstract = EachIn response.data
 '	Print val.key + ": " + val.ToString()

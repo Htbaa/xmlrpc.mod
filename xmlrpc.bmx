@@ -194,7 +194,7 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 			Case xmlrpc_base64
 				data = New TXMLRPC_Data_Type_Base64
 				data._type = xmlrpc_base64
-				TXMLRPC_Data_Type_Base64(data).value = String.FromCString(XMLRPC_GetValueString(val))
+				TXMLRPC_Data_Type_Base64(data).value = String.FromCString(XMLRPC_GetValueBase64(val))
 			Case xmlrpc_boolean
 				data = New TXMLRPC_Data_Type_Boolean
 				data._type = xmlrpc_boolean
@@ -419,16 +419,13 @@ Type TXMLRPC_Response_Data
 	Method Create:TXMLRPC_Response_Data(message:String, options:Byte Ptr)
 '		message = "<?xml version=~q1.0~q encoding=~qUTF-8~q?><methodResponse><params><param><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></param></params></methodResponse>"
 '		message = "<?xml version=~q1.0~q encoding=~qUTF-8~q?><methodResponse><params><param><value><struct><member><name>test1</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member><member><name>test2</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member></struct></value></param></params></methodResponse>"
-		message = "<?xml version=~q1.0~q encoding=~qUTF-8~q?><methodResponse><params><param><value><struct><member><name>test1</name><value><struct><member><name>a1</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member><member><name>a2</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member></struct></value></member><member><name>test2</name><value><struct><member><name>a1</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member><member><name>a2</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member></struct></value></member><member><name>0</name><value><double>1.01</double></value></member><member><name>1</name><value><string>test de la test</string></value></member><member><name>2</name><value><nil/></value></member><member><name>3</name><value><string>20090410T22:34:12</string></value></member><member><name>myId</name><value><string>test de la test</string></value></member><member><name>test</name><value><array><data><value><array><data><value><int>1</int></value><value><int>2</int></value><value><int>3</int></value><value><int>4</int></value><value><string>test</string></value></data></array></value><value><array><data><value><int>5</int></value><value><int>2</int></value><value><int>1</int></value><value><double>3.3</double></value><value><string>another test</string></value></data></array></value></data></array></value></member><member><name>4</name><value><struct><member><name>a</name><value><int>2</int></value></member><member><name>b</name><value><int>3</int></value></member><member><name>c</name><value><int>6</int></value></member></struct></value></member></struct></value></param></params></methodResponse>"
+'		message = "<?xml version=~q1.0~q encoding=~qUTF-8~q?><methodResponse><params><param><value><struct><member><name>test1</name><value><struct><member><name>a1</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member><member><name>a2</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member></struct></value></member><member><name>test2</name><value><struct><member><name>a1</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member><member><name>a2</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member></struct></value></member><member><name>0</name><value><double>1.01</double></value></member><member><name>1</name><value><string>test de la test</string></value></member><member><name>2</name><value><nil/></value></member><member><name>3</name><value><string>20090410T22:34:12</string></value></member><member><name>myId</name><value><string>test de la test</string></value></member><member><name>test</name><value><array><data><value><array><data><value><int>1</int></value><value><int>2</int></value><value><int>3</int></value><value><int>4</int></value><value><string>test</string></value></data></array></value><value><array><data><value><int>5</int></value><value><int>2</int></value><value><int>1</int></value><value><double>3.3</double></value><value><string>another test</string></value></data></array></value></data></array></value></member><member><name>4</name><value><struct><member><name>a</name><value><int>2</int></value></member><member><name>b</name><value><int>3</int></value></member><member><name>c</name><value><int>6</int></value></member></struct></value></member></struct></value></param></params></methodResponse>"
 		Local request:Byte Ptr = XMLRPC_REQUEST_FromXML(message, Null, options)
 		DebugLog message
 		
 		Local el:Byte Ptr = XMLRPC_RequestGetData(request)
 
 		Self.data = TXMLRPC_Response_Data.IterateVector(el)
-
-		Local pad:Int = 0
-		TXMLRPC_Response_Data.DebugData(Self.data, pad)
 		
 		XMLRPC_RequestFree(request, 1)
 		Return Self
@@ -443,20 +440,25 @@ Type TXMLRPC_Response_Data
 		If el
 			'Rewind vector
 			Local itr:Byte Ptr = XMLRPC_VectorRewind(el)
-			Local dataCounter:Int = 0
-			While itr
-				Local dataType:Int = XMLRPC_GetValueType(itr)
-				Local id:String = String.FromCString(XMLRPC_GetValueID(itr))
-				
-				If id.Length = 0
-					id = String.FromInt(dataCounter)
-				End If
-				
-				data.Insert(id, TXMLRPC_Data_Type_Abstract.XMLRPC_To_BlizMax(itr))
-				
-				'Next element
-				itr = XMLRPC_VectorNext(el)
-			WEnd
+			If Not itr
+				data.Insert("0", TXMLRPC_Data_Type_Abstract.XMLRPC_To_BlizMax(el))
+			Else
+				Local dataCounter:Int = 0
+				While itr
+					Local dataType:Int = XMLRPC_GetValueType(itr)
+					Local id:String = String.FromCString(XMLRPC_GetValueID(itr))
+					
+					If id.Length = 0
+						id = String.FromInt(dataCounter)
+						dataCounter:+1
+					End If
+					
+					data.Insert(id, TXMLRPC_Data_Type_Abstract.XMLRPC_To_BlizMax(itr))
+	
+					'Next element
+					itr = XMLRPC_VectorNext(el)
+				Wend
+			End If
 		End If
 		
 		Return data
@@ -534,7 +536,7 @@ Type TXMLRPC_Client
 		Local xmlMessage:Byte Ptr = XMLRPC_REQUEST_ToXML(request, Null)
 		
 		'And pass our XML message to the transport layer
-		Local xmlResponse:String = Self.transport.Send(xmlMessage)
+		Local xmlResponse:String = Self.transport.DoRequest(xmlMessage)
 		
 		'Find first occurance of the xml start tag
 		Local startPos:Int = xmlResponse.Find("<?xml")
@@ -556,7 +558,7 @@ Type TXMLRPC_Transport_Interface Abstract
 	Rem
 		bbdoc:
 	End Rem
-	Method Send:String(message:Byte Ptr) Abstract
+	Method DoRequest:String(message:Byte Ptr) Abstract
 End Type
 
 Rem
@@ -566,7 +568,7 @@ Type TXMLRPC_Transport_Dummy Extends TXMLRPC_Transport_Interface
 	Rem
 		bbdoc:
 	End Rem
-	Method Send:String(message:Byte Ptr)
+	Method DoRequest:String(message:Byte Ptr)
 		Return convertUTF8toISO8859(message)
 	End Method
 
@@ -600,7 +602,7 @@ Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 	Rem
 		bbdoc:
 	End Rem
-	Method Send:String(message:Byte Ptr)
+	Method DoRequest:String(message:Byte Ptr)
 		Local xmlMessage:String = convertUTF8toISO8859(message)
 		Local socket:TSocket = CreateTCPSocket()
 
