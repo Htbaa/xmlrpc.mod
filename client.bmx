@@ -7,6 +7,8 @@ Type TXMLRPC_Client
 	End Rem
 	Field transport:TXMLRPC_Transport_Interface
 	Field outputVersion:Int = xmlrpc_version_1_0
+	Field xmlRequest:String
+	Field xmlResponse:String
 	
 	Rem
 		bbdoc:
@@ -41,22 +43,24 @@ Type TXMLRPC_Client
 		XMLRPC_RequestSetOutputOptions(request, output)
 
 		'If data has been given, then add it to the request
-		If data <> Null
+		If data <> Null Or XMLRPC_VectorSize(data.vector) > 0 
 			XMLRPC_RequestSetData(request, data.vector)
 		End If
 
 		'Generate XML Message
 		Local xmlMessage:Byte Ptr = XMLRPC_REQUEST_ToXML(request, Null)
 		
+		Self.xmlRequest = convertUTF8toISO8859(xmlMessage)
+		
 		'And pass our XML message to the transport layer
-		Local xmlResponse:String = Self.transport.DoRequest(xmlMessage)
+		Self.xmlResponse = Self.transport.DoRequest(xmlMessage)
 		
 		'Find first occurance of the xml start tag
-		Local startPos:Int = xmlResponse.Find("<?xml")
+		Local startPos:Int = Self.xmlResponse.Find("<?xml")
 		'Strip out HTTP headers
-		xmlResponse = xmlResponse[startPos..]
+		Self.xmlResponse = Self.xmlResponse[startPos..]
 		
-		Local responseData:TXMLRPC_Response_Data = New TXMLRPC_Response_Data.Create(xmlResponse, output)
+		Local responseData:TXMLRPC_Response_Data = New TXMLRPC_Response_Data.Create(Self.xmlResponse, output)
 
 		'Free Request object
 		XMLRPC_RequestFree(request, 1)
