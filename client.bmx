@@ -58,6 +58,7 @@ Type TXMLRPC_Client
 		'And pass our XML message to the transport layer
 		Self.xmlResponse = Self.transport.DoRequest(xmlMessage)
 		
+		XMLRPC_Free(xmlMessage)  
 		
 		'Find first occurance of the xml start tag
 		Local startPos:Int = Self.xmlResponse.Find("<?xml")
