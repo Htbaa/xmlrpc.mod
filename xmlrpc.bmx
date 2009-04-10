@@ -15,40 +15,40 @@ Import brl.map
 Import brl.reflection
 Import brl.socket
 
-Import "expat-2.0.1/src/*.h"
+Import "src/expat-2.0.1/src/*.h"
 ModuleInfo "CC_OPTS: -DHAVE_EXPAT_CONFIG_H"
 ?ppc
 	ModuleInfo "CC_OPTS: -DWORDS_BIGENDIAN"
 ?
 
-Import "expat-2.0.1/src/xmlparse.c"
-Import "expat-2.0.1/src/xmlrole.c"
-Import "expat-2.0.1/src/xmltok.c"
-Import "expat-2.0.1/src/xmltok_impl.c"
-Import "expat-2.0.1/src/xmltok_ns.c"
+Import "src/expat-2.0.1/src/xmlparse.c"
+Import "src/expat-2.0.1/src/xmlrole.c"
+Import "src/expat-2.0.1/src/xmltok.c"
+Import "src/expat-2.0.1/src/xmltok_impl.c"
+Import "src/expat-2.0.1/src/xmltok_ns.c"
 
-Import "xmlrpc-epi-0.54/src/*.h"
+Import "src/xmlrpc-epi-0.54/src/*.h"
 Import "glue.cpp"
 
 ?Win32
 	Import "win32.cpp"
-	ModuleInfo "LD_OPTS: -L%PWD%/iconv-1.9.2.win32/lib"
+	ModuleInfo "LD_OPTS: -L%PWD%/src/iconv-1.9.2.win32/lib"
 	Import "iconv-1.9.2.win32/include/*.h"	'http://www.zlatkovic.com/pub/libxml
 ?
 
 Import "-liconv"
 
-Import "xmlrpc-epi-0.54/src/xmlrpc.c"
-Import "xmlrpc-epi-0.54/src/base64.c"
-Import "xmlrpc-epi-0.54/src/encodings.c"
-Import "xmlrpc-epi-0.54/src/queue.c"
-Import "xmlrpc-epi-0.54/src/simplestring.c"
-Import "xmlrpc-epi-0.54/src/system_methods.c"
-Import "xmlrpc-epi-0.54/src/xml_element.c"
-Import "xmlrpc-epi-0.54/src/xml_to_dandarpc.c"
-Import "xmlrpc-epi-0.54/src/xml_to_soap.c"
-Import "xmlrpc-epi-0.54/src/xml_to_xmlrpc.c"
-Import "xmlrpc-epi-0.54/src/xmlrpc_introspection.c"
+Import "src/xmlrpc-epi-0.54/src/xmlrpc.c"
+Import "src/xmlrpc-epi-0.54/src/base64.c"
+Import "src/xmlrpc-epi-0.54/src/encodings.c"
+Import "src/xmlrpc-epi-0.54/src/queue.c"
+Import "src/xmlrpc-epi-0.54/src/simplestring.c"
+Import "src/xmlrpc-epi-0.54/src/system_methods.c"
+Import "src/xmlrpc-epi-0.54/src/xml_element.c"
+Import "src/xmlrpc-epi-0.54/src/xml_to_dandarpc.c"
+Import "src/xmlrpc-epi-0.54/src/xml_to_soap.c"
+Import "src/xmlrpc-epi-0.54/src/xml_to_xmlrpc.c"
+Import "src/xmlrpc-epi-0.54/src/xmlrpc_introspection.c"
 
 Include "wrapper.bmx"
 
