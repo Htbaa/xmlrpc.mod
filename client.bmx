@@ -43,7 +43,7 @@ Type TXMLRPC_Client
 		XMLRPC_RequestSetOutputOptions(request, output)
 
 		'If data has been given, then add it to the request
-		If data <> Null Or XMLRPC_VectorSize(data.vector) > 0 
+		If data <> Null And XMLRPC_VectorSize(data.vector) > 0
 			XMLRPC_RequestSetData(request, data.vector)
 		End If
 
