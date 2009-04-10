@@ -1,0 +1,9 @@
+'Start of external Header File
+SuperStrict
+
+Import MaxGui.Drivers			'Comment this line if you don't want to use the new MaxGuiEx
+'Import LogicZone.SmartButtons	'Uncomment this line when you want to use SmartButtons	
+'Import MaxGUI.ProxyGadgets 		'Uncomment when using a proxy gadget
+Import htbaapub.xmlrpc
+
+'End Of external Header File

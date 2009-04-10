@@ -1,0 +1,42 @@
+'Start of external Append File
+'Your additional code should be here!
+
+Function ParseParameters(text:String, parameters:TXMLRPC_Call_Parameters)
+
+	Local lines:String[] = text.Split("~n")
+
+	For Local line:String = EachIn lines
+		If line.Length = 0
+			Continue
+		End If
+
+		Local pos:Int = line.Find(":")
+		Local pos2:Int = line.Find(":", pos + 1)
+		Local dataTypeStr:String = line[..pos]
+		Local key:String = line[pos+1..pos2]
+		Local value:String = line[pos2+1..]
+
+		Select dataTypeStr.ToLower()
+			Case "string"
+				parameters.AppendString(Null, value)
+			Case "base64"
+				parameters.AppendBase64(Null, value)
+			Case "int"
+				parameters.AppendInt(Null, value.ToInt())
+			Case "double"
+				parameters.AppendDouble(Null, value.ToDouble())
+			Case "boolean"
+				Local bool:Byte
+				If value = "true"
+					bool = True
+				Else
+					bool = False
+				End If
+				parameters.AppendBoolean(Null, bool)
+			Case "datetime"
+				parameters.AppendDateTime(Null, value.ToLong())
+		End Select
+	Next
+End Function
+
+'End Of external Append File

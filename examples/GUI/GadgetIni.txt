@@ -1,0 +1,3 @@
+Local Gadget7:TGadget, GadgetArray7$[] = ["Window1"] 
+If GadgetList Gadget7:TGadget = GadgetCommander(GetGadgetHandle,GadgetArray7,GadgetList:TList)
+SetGadgetText(Gadget7, GadgetText(Gadget7) + String.FromCString(XMLRPC_GetVersionString()))
