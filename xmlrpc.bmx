@@ -11,6 +11,7 @@ ModuleInfo "Author: Christiaan Kras"
 
 Import brl.blitz
 Import brl.basic
+Import brl.map
 Import brl.reflection
 Import brl.socket
 
@@ -146,61 +147,97 @@ Rem
 	bbdoc:
 End Rem
 Type TXMLRPC_Data_Type_Abstract Abstract
-	Field key:String
-
-	Rem
-		bbdoc:
-	End Rem	
-	Function Factory:TXMLRPC_Data_Type_Abstract(dataType:Int) Final
-		Select dataType
-			Case xmlrpc_none
-				Return New TXMLRPC_Data_Type_None
-			Case xmlrpc_empty
-				Return New TXMLRPC_Data_Type_Empty
-			Case xmlrpc_base64
-				Return New TXMLRPC_Data_Type_Base64
-			Case xmlrpc_boolean
-				Return New TXMLRPC_Data_Type_Boolean
-			Case xmlrpc_datetime
-				Return New TXMLRPC_Data_Type_Datetime
-			Case xmlrpc_double
-				Return New TXMLRPC_Data_Type_Double
-			Case xmlrpc_int
-				Return New TXMLRPC_Data_Type_Int
-			Case xmlrpc_string
-				Return New TXMLRPC_Data_Type_String
-		End Select
-	End Function
+	Field _type:Int
+	Field name:String
+	
+'	Rem
+'		bbdoc:
+'	End Rem	
+'	Function Factory:TXMLRPC_Data_Type_Abstract(dataType:Int) Final
+'		Select dataType
+'			Case xmlrpc_none
+'				Return New TXMLRPC_Data_Type_None
+'			Case xmlrpc_empty
+'				Return New TXMLRPC_Data_Type_Empty
+'			Case xmlrpc_base64
+'				Return New TXMLRPC_Data_Type_Base64
+'			Case xmlrpc_boolean
+'				Return New TXMLRPC_Data_Type_Boolean
+'			Case xmlrpc_datetime
+'				Return New TXMLRPC_Data_Type_Datetime
+'			Case xmlrpc_double
+'				Return New TXMLRPC_Data_Type_Double
+'			Case xmlrpc_int
+'				Return New TXMLRPC_Data_Type_Int
+'			Case xmlrpc_string
+'				Return New TXMLRPC_Data_Type_String
+'			Case xmlrpc_vector
+'				Return New TXMLRPC_Data_Type_Collection
+'		End Select
+'	End Function
 	
 	Rem
 		bbdoc:
 	End Rem
-	Function XMLRPC_To_BlitzMax:TXMLRPC_Data_Type_Abstract(val:Byte Ptr) Final
-		If val
-			Local dataType:Int = XMLRPC_GetValueType(val)
-			Local data:TXMLRPC_Data_Type_Abstract = TXMLRPC_Data_Type_Abstract.Factory(dataType)
-			
-			Select dataType
-				Case xmlrpc_base64
-					TXMLRPC_Data_Type_Base64(data).value = String.FromCString(XMLRPC_GetValueString(val))
-				Case xmlrpc_boolean
-					TXMLRPC_Data_Type_Boolean(data).value = XMLRPC_GetValueBoolean(val)
-				Case xmlrpc_datetime
-					TXMLRPC_Data_Type_Datetime(data).value = String.FromCString(XMLRPC_GetValueDateTime_ISO8601(val))
-				Case xmlrpc_double
-					TXMLRPC_Data_Type_Double(data).value = XMLRPC_GetValueDouble(val)
-				Case xmlrpc_int
-					TXMLRPC_Data_Type_Int(data).value = XMLRPC_GetValueInt(val)
-				Case xmlrpc_string
-					TXMLRPC_Data_Type_String(data).value = String.FromCString(XMLRPC_GetValueString(val))
-			End Select
-			
-			data.key = String.FromCString(XMLRPC_GetValueID(val))
-			Return data
+	Method SetType:TXMLRPC_Data_Type_Abstract(i:Int)
+		Self._type = i
+		Return Self
+	End Method
+	
+	Rem
+		bbdoc:
+	End Rem
+	Function XMLRPC_To_BlizMax:TXMLRPC_Data_Type_Abstract(val:Byte Ptr) Final
+		Local dataType:Int = XMLRPC_GetValueType(val)
+		Local data:TXMLRPC_Data_Type_Abstract
+		Select dataType
+			Case xmlrpc_base64
+				data = New TXMLRPC_Data_Type_Base64
+				data._type = xmlrpc_base64
+				TXMLRPC_Data_Type_Base64(data).value = String.FromCString(XMLRPC_GetValueString(val))
+			Case xmlrpc_boolean
+				data = New TXMLRPC_Data_Type_Boolean
+				data._type = xmlrpc_boolean
+				TXMLRPC_Data_Type_Boolean(data).value = XMLRPC_GetValueBoolean(val)
+			Case xmlrpc_datetime
+				data = New TXMLRPC_Data_Type_Datetime
+				data._type = xmlrpc_datetime
+				TXMLRPC_Data_Type_Datetime(data).value = String.FromCString(XMLRPC_GetValueDateTime_ISO8601(val))
+			Case xmlrpc_double
+				data = New TXMLRPC_Data_Type_Double
+				data._type = xmlrpc_double
+				TXMLRPC_Data_Type_Double(data).value = XMLRPC_GetValueDouble(val)
+			Case xmlrpc_int
+				data = New TXMLRPC_Data_Type_Int
+				data._type = xmlrpc_int
+				TXMLRPC_Data_Type_Int(data).value = XMLRPC_GetValueInt(val)
+			Case xmlrpc_string
+				data = New TXMLRPC_Data_Type_String
+				data._type = xmlrpc_string
+				TXMLRPC_Data_Type_String(data).value = String.FromCString(XMLRPC_GetValueString(val))
+			Case xmlrpc_vector
+				Local vectorType:Int = XMLRPC_GetVectorType(val)
+				Select vectorType
+					Case xmlrpc_vector_array
+						data = New TXMLRPC_Data_Type_Array
+					Case xmlrpc_vector_struct
+						data = New TXMLRPC_Data_Type_Struct
+					Case xmlrpc_vector_mixed
+						Throw "Not sure yet how to handle a xmlrpc_vector_mixed"
+				End Select
+				
+				If TXMLRPC_Data_Type_Collection(data)
+					data._type = xmlrpc_vector
+					TXMLRPC_Data_Type_Collection(data).SetData(val)
+				End If
+		End Select
+		
+		If data
+			data.name = String.FromCString(XMLRPC_GetValueID(val))
 		End If
-		Return Null
+		
+		Return data
 	End Function
-
 	
 	Rem
 		bbdoc: Convert data type to string
@@ -233,13 +270,6 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 	Rem
 		bbdoc:
 	End Rem
-	Method GetKey:String()
-		Return Self.key
-	End Method
-	
-	Rem
-		bbdoc:
-	End Rem
 	Method GetByte:Byte()
 		Throw New TXMLRPC_Data_Type_Exception.Create("Method GetByte not implemented for this type")
 	End Method	
@@ -263,8 +293,6 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 	End Rem
 	Method GetString:String()
 		Throw New TXMLRPC_Data_Type_Exception.Create("Method GetString not implemented for this type")
-'		Perhaps we should use ToString() ?
-'		Return Self.ToString()
 	End Method
 End Type
 
@@ -344,6 +372,38 @@ End Type
 Rem
 	bbdoc:
 End Rem
+Type TXMLRPC_Data_Type_Collection Extends TXMLRPC_Data_Type_Abstract Abstract
+	Field data:TMap
+	Method SetData(el:Byte Ptr) Abstract
+End Type
+
+Rem
+	bbdoc:
+End Rem
+Type TXMLRPC_Data_Type_Array Extends TXMLRPC_Data_Type_Collection
+	Method SetData(el:Byte Ptr)
+		Self.data = New TMap
+		Local map:TMap = TXMLRPC_Response_Data.IterateVector(el)
+		Local counter:Int = 0
+		For Local val:TXMLRPC_Data_Type_Abstract = EachIn map.Values()
+			Self.data.Insert(String.FromInt(counter), val)
+			counter:+1
+		Next
+	End Method
+End Type
+
+Rem
+	bbdoc:
+End Rem
+Type TXMLRPC_Data_Type_Struct Extends TXMLRPC_Data_Type_Collection
+	Method SetData(el:Byte Ptr)
+		Self.data = TXMLRPC_Response_Data.IterateVector(el)
+	End Method
+End Type
+
+Rem
+	bbdoc:
+End Rem
 Type TXMLRPC_Response_Data_Exception Extends TXMLRPC_Exception
 End Type
 
@@ -351,37 +411,76 @@ Rem
 	bbdoc: Data returned from XML-RPC server
 End Rem
 Type TXMLRPC_Response_Data
-	Field data:Object[]
+	Field data:TMap
 	
 	Rem
 		bbdoc:
 	End Rem
 	Method Create:TXMLRPC_Response_Data(message:String, options:Byte Ptr)
-		message = "<?xml version=~q1.0~q encoding=~qUTF-8~q?><methodResponse><params><param><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></param></params></methodResponse>"
+'		message = "<?xml version=~q1.0~q encoding=~qUTF-8~q?><methodResponse><params><param><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></param></params></methodResponse>"
+'		message = "<?xml version=~q1.0~q encoding=~qUTF-8~q?><methodResponse><params><param><value><struct><member><name>test1</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member><member><name>test2</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member></struct></value></param></params></methodResponse>"
+		message = "<?xml version=~q1.0~q encoding=~qUTF-8~q?><methodResponse><params><param><value><struct><member><name>test1</name><value><struct><member><name>a1</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member><member><name>a2</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member></struct></value></member><member><name>test2</name><value><struct><member><name>a1</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member><member><name>a2</name><value><array><data><value><int>1</int></value><value><int>2</int></value><value><string>a</string></value><value><string>c</string></value></data></array></value></member></struct></value></member><member><name>0</name><value><double>1.01</double></value></member><member><name>1</name><value><string>test de la test</string></value></member><member><name>2</name><value><nil/></value></member><member><name>3</name><value><string>20090410T22:34:12</string></value></member><member><name>myId</name><value><string>test de la test</string></value></member><member><name>test</name><value><array><data><value><array><data><value><int>1</int></value><value><int>2</int></value><value><int>3</int></value><value><int>4</int></value><value><string>test</string></value></data></array></value><value><array><data><value><int>5</int></value><value><int>2</int></value><value><int>1</int></value><value><double>3.3</double></value><value><string>another test</string></value></data></array></value></data></array></value></member><member><name>4</name><value><struct><member><name>a</name><value><int>2</int></value></member><member><name>b</name><value><int>3</int></value></member><member><name>c</name><value><int>6</int></value></member></struct></value></member></struct></value></param></params></methodResponse>"
 		Local request:Byte Ptr = XMLRPC_REQUEST_FromXML(message, Null, options)
 		DebugLog message
 		
 		Local el:Byte Ptr = XMLRPC_RequestGetData(request)
 
-		Local paramCount:Int = XMLRPC_VectorSize(el)
-		'Create array that'll contain the response data
-		Self.data = New Object[paramCount]
+		Self.data = TXMLRPC_Response_Data.IterateVector(el)
 
-		'Rewind vector
-		Local itr:Byte Ptr = XMLRPC_VectorRewind(el)
-		'And iterate over it
-		Local dataCounter:Int = 0
-		While itr
-			Local val:TXMLRPC_Data_Type_Abstract = TXMLRPC_Data_Type_Abstract.XMLRPC_To_BlitzMax(itr)
-			Self.data[dataCounter] = val
-			dataCounter:+1
-			'Next element
-			itr = XMLRPC_VectorNext(el)
-		Wend
-
+		Local pad:Int = 0
+		TXMLRPC_Response_Data.DebugData(Self.data, pad)
+		
 		XMLRPC_RequestFree(request, 1)
 		Return Self
 	End Method
+
+	Rem
+		bbdoc: Iterate over an XMLRPC vector and add it to a TMap
+	End Rem	
+	Function IterateVector:TMap(el:Byte Ptr)
+		Local data:TMap = New TMap
+
+		If el
+			'Rewind vector
+			Local itr:Byte Ptr = XMLRPC_VectorRewind(el)
+			Local dataCounter:Int = 0
+			While itr
+				Local dataType:Int = XMLRPC_GetValueType(itr)
+				Local id:String = String.FromCString(XMLRPC_GetValueID(itr))
+				
+				If id.Length = 0
+					id = String.FromInt(dataCounter)
+				End If
+				
+				data.Insert(id, TXMLRPC_Data_Type_Abstract.XMLRPC_To_BlizMax(itr))
+				
+				'Next element
+				itr = XMLRPC_VectorNext(el)
+			WEnd
+		End If
+		
+		Return data
+	End Function
+	
+	Rem
+		bbdoc: Helper function to show what's inside the map
+	End Rem
+	Function DebugData(map:TMap, pad:Int Var)
+		Local prefix:String
+		For Local i:Int = 0 To pad
+			prefix:+"-"
+		Next
+		
+		For Local val:TXMLRPC_Data_Type_Abstract = EachIn map.Values()
+			DebugLog prefix + " " + TTypeId.ForObject(val).Name() + " (" + val.name + ") = " + val.ToString()
+			If TXMLRPC_Data_Type_Collection(val)
+				pad:+1
+				TXMLRPC_Response_Data.DebugData(TXMLRPC_Data_Type_Collection(val).data, pad)
+				pad:-1
+			End If
+		Next
+		
+	End Function
 End Type
 
 Rem
@@ -417,11 +516,11 @@ Type TXMLRPC_Client
 		End If
 		
 		Local request:Byte Ptr = XMLRPC_RequestNew()
-	
+		
 		'Set the method name and tell it we are making a request
 		XMLRPC_RequestSetMethodName(request, command.ToCString())
 		XMLRPC_RequestSetRequestType(request, xmlrpc_request_call)
-	
+			
 		'tell it to write out in the specified format, defaults to xmlrpc_version_1_0
 		Local output:Byte Ptr = XMLRPC_Create_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS(Self.outputVersion)
 		XMLRPC_RequestSetOutputOptions(request, output)
@@ -430,17 +529,22 @@ Type TXMLRPC_Client
 		If data <> Null
 			XMLRPC_RequestSetData(request, data.vector)
 		End If
-		
+
 		'Generate XML Message
 		Local xmlMessage:Byte Ptr = XMLRPC_REQUEST_ToXML(request, Null)
-
-		'Free Request object
-		XMLRPC_RequestFree(request, 1)
-
+		
 		'And pass our XML message to the transport layer
 		Local xmlResponse:String = Self.transport.Send(xmlMessage)
 		
+		'Find first occurance of the xml start tag
+		Local startPos:Int = xmlResponse.Find("<?xml")
+		'Strip out HTTP headers
+		xmlResponse = xmlResponse[startPos..]
+		
 		Local responseData:TXMLRPC_Response_Data = New TXMLRPC_Response_Data.Create(xmlResponse, output)
+
+		'Free Request object
+		XMLRPC_RequestFree(request, 1)
 		Return responseData
 	End Method
 End Type
@@ -526,7 +630,7 @@ Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 			buffer:+line + "~n"
 		Wend
 
-		DebugLog buffer
+'		DebugLog buffer
 
 		CloseSocket(socket)
 		Return buffer

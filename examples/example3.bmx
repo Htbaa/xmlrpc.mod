@@ -1,6 +1,8 @@
 SuperStrict
 Import htbaapub.xmlrpc
 
+Print "Version: " + String.FromCString(XMLRPC_GetVersionString())
+
 Local client:TXMLRPC_Client = New TXMLRPC_Client.Create()
 client.SetTransport(New TXMLRPC_Transport_Http.Create("php.htbaa.com", "/xmlrpc"))
 
@@ -13,8 +15,8 @@ Local parameters:TXMLRPC_Call_Parameters = TXMLRPC_Call_Parameters.Create(xmlrpc
 'parameters.AppendDouble("modifier", 2.3845)
 'parameters.AppendInt(Null, 4)
 
-Local response:TXMLRPC_Response_Data = client.Call("funcs.somefunc")
+Local response:TXMLRPC_Response_Data = client.Call("funcs.somefunc2")
 
-For Local val:TXMLRPC_Data_Type_Abstract = EachIn response.data
-	Print val.key + ": " + val.ToString()
-Next
+'For Local val:TXMLRPC_Data_Type_Abstract = EachIn response.data
+'	Print val.key + ": " + val.ToString()
+'Next
