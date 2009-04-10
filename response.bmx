@@ -38,7 +38,6 @@ Type TXMLRPC_Response_Data
 			Else
 				Local dataCounter:Int = 0
 				While itr
-					Local dataType:Int = XMLRPC_GetValueType(itr)
 					Local id:String = String.FromCString(XMLRPC_GetValueID(itr))
 					
 					If id.Length = 0
