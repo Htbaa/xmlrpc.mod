@@ -7,4 +7,5 @@ TODO list
 - Handle XML-RPC errors
 - Memory leak testing
 - Make sure character encoding is done right
+- Documentation!
 - A lot more!
