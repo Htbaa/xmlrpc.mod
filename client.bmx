@@ -67,6 +67,10 @@ Type TXMLRPC_Client
 		
 		Local responseData:TXMLRPC_Response_Data = New TXMLRPC_Response_Data.Create(Self.xmlResponse, output)
 		
+		If data <> Null
+			data.Free()
+		End If
+		
 		XMLRPC_Delete_Request_Output_Options(output)
 		'Free Request object
 		XMLRPC_RequestFree(request, 1)

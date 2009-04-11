@@ -149,15 +149,21 @@ Endrem
 End Extern
 
 Function XMLRPC_VectorGetValueWithID:Byte Ptr(vector:Byte Ptr, id:String)
-	Local strId:Byte Ptr = id.ToCString()
+	Local strId:Byte Ptr
+	If id.Length > 0
+		strId = id.ToCString()
+	End If
 	Local val:Byte Ptr = XMLRPC_VectorGetValueWithID_Case(vector, strId, xmlrpc_case_sensitive)
 	MemFree(strId)
 	Return val
 End Function
 
 Function XMLRPC_VectorAppendString:Int(vector:Byte Ptr, id:String, s:String, length:Int = 0)
-	Local strId:Byte Ptr = id.ToCString()
+	Local strId:Byte Ptr
 	Local strS:Byte Ptr = s.ToCString()
+	If id.Length > 0
+		strId = id.ToCString()
+	End If
 	Local val:Int = XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueString(strId, strS, length))
 	MemFree(strId)
 	MemFree(strS)
@@ -165,8 +171,11 @@ Function XMLRPC_VectorAppendString:Int(vector:Byte Ptr, id:String, s:String, len
 End Function
 
 Function XMLRPC_VectorAppendBase64:Int(vector:Byte Ptr, id:String, s:String, length:Int = 0)
-	Local strId:Byte Ptr = id.ToCString()
+	Local strId:Byte Ptr
 	Local strS:Byte Ptr = s.ToCString()
+	If id.Length > 0
+		strId = id.ToCString()
+	End If
 	Local val:Int = XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueBase64(strId, strS, length))
 	MemFree(strId)
 	MemFree(strS)
@@ -174,15 +183,21 @@ Function XMLRPC_VectorAppendBase64:Int(vector:Byte Ptr, id:String, s:String, len
 End Function
 
 Function XMLRPC_VectorAppendDateTime:Int(vector:Byte Ptr, id:String, time:Long)
-	Local strId:Byte Ptr = id.ToCString()
+	Local strId:Byte Ptr
+	If id.Length > 0
+		strId = id.ToCString()
+	End If
 	Local val:Int = XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueDateTime(strId, time))
 	MemFree(strId)
 	Return val
 End Function
 
 Function XMLRPC_VectorAppendDateTime_ISO8601:Int(vector:Byte Ptr, id:String, s:String)
-	Local strId:Byte Ptr = id.ToCString()
+	Local strId:Byte Ptr
 	Local strS:Byte Ptr = s.ToCString()
+	If id.Length > 0
+		strId = id.ToCString()
+	End If
 	Local val:Int = XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueDateTime_ISO8601(strId, strS))
 	MemFree(strId)
 	MemFree(strS)
@@ -190,21 +205,30 @@ Function XMLRPC_VectorAppendDateTime_ISO8601:Int(vector:Byte Ptr, id:String, s:S
 End Function
 
 Function XMLRPC_VectorAppendDouble:Int(vector:Byte Ptr, id:String, f:Double)
-	Local strId:Byte Ptr = id.ToCString()
+	Local strId:Byte Ptr
+	If id.Length > 0
+		strId = id.ToCString()
+	End If
 	Local val:Int = XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueDouble(strId, f))
 	MemFree(strId)
 	Return val
 End Function
 
 Function XMLRPC_VectorAppendInt:Int(vector:Byte Ptr, id:String, i:Int)
-	Local strId:Byte Ptr = id.ToCString()
+	Local strId:Byte Ptr
+	If id.Length > 0
+		strId = id.ToCString()
+	End If
 	Local val:Int = XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueInt(strId, i))
 	MemFree(strId)
 	Return val
 End Function
 
 Function XMLRPC_VectorAppendBoolean:Int(vector:Byte Ptr, id:String, i:Int)
-	Local strId:Byte Ptr = id.ToCString()
+	Local strId:Byte Ptr
+	If id.Length > 0
+		strId = id.ToCString()
+	End If
 	Local val:Int = XMLRPC_AddValueToVector(vector, XMLRPC_CreateValueBoolean(strId, i))
 	MemFree(strId)
 	Return val

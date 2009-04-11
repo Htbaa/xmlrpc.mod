@@ -1,4 +1,4 @@
-'Source Code created on 11 Apr 2009 00:51:53 with Logic Gui Version 4.1 Build 366
+'Source Code created on 11 Apr 2009 02:26:04 with Logic Gui Version 4.1 Build 366
 'Christiaan Kras
 'Start of external Header File
 SuperStrict
@@ -190,7 +190,7 @@ Function Button1_GA( Button:TGadget , GadgetList:TList=Null )
 		Local response:TXMLRPC_Response_Data =client.Call(GadgetText(Gadget4), parameters)
 		SetStatusText(Gadget6, "XML-RPC request executed")
 
-		Local pad:Int = 0
+		Local pad:Int =0
 		Local str:String =TXMLRPC_Response_Data.DebugData(response.data, pad)
 
 		Local Gadget5:TGadget, GadgetArray5$[] =["TextAreaBlitzMax"] 
@@ -297,13 +297,13 @@ Function ParseParameters(text:String, parameters:TXMLRPC_Call_Parameters)
 
 		Select dataTypeStr.ToLower()
 			Case "string"
-				parameters.AppendString(Null, value)
+				parameters.AppendString(key, value)
 			Case "base64"
-				parameters.AppendBase64(Null, value)
+				parameters.AppendBase64(key, value)
 			Case "int"
-				parameters.AppendInt(Null, value.ToInt())
+				parameters.AppendInt(key, value.ToInt())
 			Case "double"
-				parameters.AppendDouble(Null, value.ToDouble())
+				parameters.AppendDouble(key, value.ToDouble())
 			Case "boolean"
 				Local bool:Byte
 				If value = "true"
@@ -311,9 +311,9 @@ Function ParseParameters(text:String, parameters:TXMLRPC_Call_Parameters)
 				Else
 					bool = False
 				End If
-				parameters.AppendBoolean(Null, bool)
+				parameters.AppendBoolean(key, bool)
 			Case "datetime"
-				parameters.AppendDateTime(Null, value.ToLong())
+				parameters.AppendDateTime(key, value.ToLong())
 		End Select
 	Next
 End Function

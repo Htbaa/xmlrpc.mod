@@ -95,6 +95,16 @@ Type TXMLRPC_Call_Parameters
 	Rem
 		bbdoc:
 	End Rem
+	Method Free()
+		If Self.vector
+			XMLRPC_Free(Self.vector)
+			Self.vector = Null
+		End If
+	End Method
+	
+	Rem
+		bbdoc:
+	End Rem
 	Method AppendString:Int(id:String, s:String)
 		Return XMLRPC_VectorAppendString(Self.vector, id, s)
 	End Method

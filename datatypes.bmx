@@ -55,7 +55,11 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 			Case xmlrpc_base64
 				data = New TXMLRPC_Data_Type_Base64
 				data._type = xmlrpc_base64
-				TXMLRPC_Data_Type_Base64(data).value = String.FromCString(XMLRPC_GetValueBase64(val))
+				Local cStr:Byte Ptr = XMLRPC_GetValueBase64(val)
+				If cStr
+					TXMLRPC_Data_Type_Base64(data).value = String.FromCString(cStr)
+					XMLRPC_Free(cStr)
+				End If
 			Case xmlrpc_boolean
 				data = New TXMLRPC_Data_Type_Boolean
 				data._type = xmlrpc_boolean
@@ -63,7 +67,11 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 			Case xmlrpc_datetime
 				data = New TXMLRPC_Data_Type_Datetime
 				data._type = xmlrpc_datetime
-				TXMLRPC_Data_Type_Datetime(data).value = String.FromCString(XMLRPC_GetValueDateTime_ISO8601(val))
+				Local cStr:Byte Ptr = XMLRPC_GetValueDateTime_ISO8601(val)
+				If cStr
+					TXMLRPC_Data_Type_Datetime(data).value = String.FromCString(cStr)
+					XMLRPC_Free(cStr)
+				End If
 			Case xmlrpc_double
 				data = New TXMLRPC_Data_Type_Double
 				data._type = xmlrpc_double
@@ -75,7 +83,11 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 			Case xmlrpc_string
 				data = New TXMLRPC_Data_Type_String
 				data._type = xmlrpc_string
-				TXMLRPC_Data_Type_String(data).value = String.FromCString(XMLRPC_GetValueString(val))
+				Local cStr:Byte Ptr = XMLRPC_GetValueString(val)
+				If cStr
+					TXMLRPC_Data_Type_String(data).value = String.FromCString(cStr)
+					XMLRPC_Free(cStr)
+				End If
 			Case xmlrpc_vector
 				Local vectorType:Int = XMLRPC_GetVectorType(val)
 				Select vectorType
@@ -94,7 +106,11 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 		End Select
 		
 		If data
-			data.name = String.FromCString(XMLRPC_GetValueID(val))
+			Local cStr:Byte Ptr = XMLRPC_GetValueID(val)
+			If cStr
+				data.name = String.FromCString(cStr)
+				XMLRPC_Free(cStr)
+			End If
 		End If
 		
 		Return data
