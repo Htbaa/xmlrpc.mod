@@ -33,7 +33,7 @@ Type TXMLRPC_Client
 		End If
 		
 		Local request:Byte Ptr = XMLRPC_RequestNew()
-		
+
 		'tell it to write out in the specified format, defaults to xmlrpc_version_1_0
 		bmxXMLRPC_RequestSetOutputOptions(request, Self.outputVersion)
 
@@ -62,7 +62,9 @@ Type TXMLRPC_Client
 		'Strip out HTTP headers
 		Self.xmlResponse = Self.xmlResponse[startPos..]
 		
-		Local responseData:TXMLRPC_Response_Data = New TXMLRPC_Response_Data.Create(Self.xmlResponse, XMLRPC_RequestGetOutputOptions(request))
+		Local responseData:TXMLRPC_Response_Data
+		Local output:Byte Ptr = XMLRPC_RequestGetOutputOptions(request)
+		responseData = New TXMLRPC_Response_Data.Create(Self.xmlResponse, output)
 		
 		'Free Request Object
 		XMLRPC_RequestFree(request, 1)

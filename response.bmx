@@ -15,7 +15,8 @@ Type TXMLRPC_Response_Data
 	End Rem
 	Method Create:TXMLRPC_Response_Data(xmlMessage:String, options:Byte Ptr)
 		Local message:Byte Ptr = xmlMessage.ToCString()
-		Local request:Byte Ptr = XMLRPC_REQUEST_FromXML(message, Null, options)
+		Local request:Byte Ptr = XMLRPC_REQUEST_FromXML(message, 0, options)
+
 		Local el:Byte Ptr = XMLRPC_RequestGetData(request)
 
 		Self.data = TXMLRPC_Response_Data.IterateVector(el)
@@ -39,14 +40,16 @@ Type TXMLRPC_Response_Data
 			Else
 				Local dataCounter:Int = 0
 				While itr
-					Local id:String = String.FromCString(XMLRPC_GetValueID(itr))
+					Local cStr:Byte Ptr = XMLRPC_GetValueID(itr)
+					Local id:String = String.FromCString(cStr)
 					
 					If id.Length = 0
 						id = String.FromInt(dataCounter)
 						dataCounter:+1
 					End If
-					
+
 					data.Insert(id, TXMLRPC_Data_Type_Abstract.XMLRPC_To_BlizMax(itr))
+					XMLRPC_Free(cStr)
 	
 					'Next element
 					itr = XMLRPC_VectorNext(el)

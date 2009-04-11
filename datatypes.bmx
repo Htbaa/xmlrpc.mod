@@ -40,21 +40,16 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 	Rem
 		bbdoc:
 	End Rem
-	Method SetType:TXMLRPC_Data_Type_Abstract(i:Int)
-		Self._type = i
-		Return Self
-	End Method
-	
-	Rem
-		bbdoc:
-	End Rem
 	Function XMLRPC_To_BlizMax:TXMLRPC_Data_Type_Abstract(val:Byte Ptr) Final
 		Local dataType:Int = XMLRPC_GetValueType(val)
 		Local data:TXMLRPC_Data_Type_Abstract
 		Select dataType
+			Case xmlrpc_none
+				data = New TXMLRPC_Data_Type_None
+			Case xmlrpc_empty
+				data = New TXMLRPC_Data_Type_Empty
 			Case xmlrpc_base64
 				data = New TXMLRPC_Data_Type_Base64
-				data._type = xmlrpc_base64
 				Local cStr:Byte Ptr = XMLRPC_GetValueBase64(val)
 				If cStr
 					TXMLRPC_Data_Type_Base64(data).value = String.FromCString(cStr)
@@ -62,11 +57,9 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 				End If
 			Case xmlrpc_boolean
 				data = New TXMLRPC_Data_Type_Boolean
-				data._type = xmlrpc_boolean
 				TXMLRPC_Data_Type_Boolean(data).value = XMLRPC_GetValueBoolean(val)
 			Case xmlrpc_datetime
 				data = New TXMLRPC_Data_Type_Datetime
-				data._type = xmlrpc_datetime
 				Local cStr:Byte Ptr = XMLRPC_GetValueDateTime_ISO8601(val)
 				If cStr
 					TXMLRPC_Data_Type_Datetime(data).value = String.FromCString(cStr)
@@ -74,15 +67,12 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 				End If
 			Case xmlrpc_double
 				data = New TXMLRPC_Data_Type_Double
-				data._type = xmlrpc_double
 				TXMLRPC_Data_Type_Double(data).value = XMLRPC_GetValueDouble(val)
 			Case xmlrpc_int
 				data = New TXMLRPC_Data_Type_Int
-				data._type = xmlrpc_int
 				TXMLRPC_Data_Type_Int(data).value = XMLRPC_GetValueInt(val)
 			Case xmlrpc_string
 				data = New TXMLRPC_Data_Type_String
-				data._type = xmlrpc_string
 				Local cStr:Byte Ptr = XMLRPC_GetValueString(val)
 				If cStr
 					TXMLRPC_Data_Type_String(data).value = String.FromCString(cStr)
@@ -100,12 +90,14 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 				End Select
 				
 				If TXMLRPC_Data_Type_Collection(data)
-					data._type = xmlrpc_vector
 					TXMLRPC_Data_Type_Collection(data).SetData(val)
 				End If
+			Default
+				Throw "I don't know a datatype with number " + dataType
 		End Select
 		
 		If data
+			data._type = dataType
 			Local cStr:Byte Ptr = XMLRPC_GetValueID(val)
 			If cStr
 				data.name = String.FromCString(cStr)

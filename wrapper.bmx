@@ -67,13 +67,7 @@ Const xmlrpc_case_exact:Int = 0
 Const xmlrpc_case_lower:Int = 1
 Const xmlrpc_case_upper:Int = 2
 
-'Extern
-'	Function XMLRPC_Create_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS:Byte Ptr(version:Int)
-'End Extern
-
 Extern "C"
-	'Function XMLRPC_Create_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS:Byte Ptr(version:Int)
-	'Function XMLRPC_Free_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS(output:Byte Ptr)
 	Function bmxXMLRPC_RequestSetOutputOptions(request:Byte Ptr, version:Int)
 
 	Function XMLRPC_RequestNew:Byte Ptr()
