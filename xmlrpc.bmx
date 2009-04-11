@@ -28,7 +28,7 @@ Import "src/expat-2.0.1/src/xmltok_impl.c"
 Import "src/expat-2.0.1/src/xmltok_ns.c"
 
 Import "src/xmlrpc-epi-0.54/src/*.h"
-Import "glue.cpp"
+Import "glue.c"
 
 ?Win32
 	Import "win32.cpp"
@@ -91,17 +91,7 @@ Type TXMLRPC_Call_Parameters
 		parameters.vector = XMLRPC_CreateVector(Null, vectorType)
 		Return parameters
 	End Function
-	
-	Rem
-		bbdoc:
-	End Rem
-	Method Free()
-		If Self.vector
-			XMLRPC_Free(Self.vector)
-			Self.vector = Null
-		End If
-	End Method
-	
+
 	Rem
 		bbdoc:
 	End Rem

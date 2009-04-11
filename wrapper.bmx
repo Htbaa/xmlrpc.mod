@@ -67,12 +67,14 @@ Const xmlrpc_case_exact:Int = 0
 Const xmlrpc_case_lower:Int = 1
 Const xmlrpc_case_upper:Int = 2
 
-Extern
-	Function XMLRPC_Create_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS:Byte Ptr(version:Int)
-	Function XMLRPC_Delete_Request_Output_Options(options:Byte Ptr)
-End Extern
+'Extern
+'	Function XMLRPC_Create_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS:Byte Ptr(version:Int)
+'End Extern
 
 Extern "C"
+	'Function XMLRPC_Create_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS:Byte Ptr(version:Int)
+	'Function XMLRPC_Free_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS(output:Byte Ptr)
+	Function bmxXMLRPC_RequestSetOutputOptions(request:Byte Ptr, version:Int)
 
 	Function XMLRPC_RequestNew:Byte Ptr()
 	Function XMLRPC_RequestFree(request:Byte Ptr, bFreeIO:Int)
@@ -106,8 +108,9 @@ Extern "C"
 	Function XMLRPC_CreateValueString:Byte Ptr(id:Byte Ptr, s:Byte Ptr, length:Int)
 	Function XMLRPC_CleanupValue(value:Byte Ptr)
 
-	Function XMLRPC_RequestSetError:Byte Ptr(request:Byte Ptr, error:Int)
-	Function XMLRPC_RequestGetError:Byte Ptr(request:Byte Ptr)
+'	According to the XMLRPC-EPI documentation these 2 are private and shouldn't be used
+'	Function XMLRPC_RequestSetError:Byte Ptr(request:Byte Ptr, error:Int)
+'	Function XMLRPC_RequestGetError:Byte Ptr(request:Byte Ptr)
 
 	Function XMLRPC_VectorGetValueWithID_Case:Byte Ptr(vector:Byte Ptr, id:Byte Ptr, id_case:Int)
 	
