@@ -13,14 +13,15 @@ Type TXMLRPC_Response_Data
 	Rem
 		bbdoc:
 	End Rem
-	Method Create:TXMLRPC_Response_Data(message:String, options:Byte Ptr)
+	Method Create:TXMLRPC_Response_Data(xmlMessage:String, options:Byte Ptr)
+		Local message:Byte Ptr = xmlMessage.ToCString()
 		Local request:Byte Ptr = XMLRPC_REQUEST_FromXML(message, Null, options)
-		
 		Local el:Byte Ptr = XMLRPC_RequestGetData(request)
 
 		Self.data = TXMLRPC_Response_Data.IterateVector(el)
 
 		XMLRPC_RequestFree(request, 1)
+		MemFree(message)
 		Return Self
 	End Method
 

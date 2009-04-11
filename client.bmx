@@ -35,8 +35,7 @@ Type TXMLRPC_Client
 		Local request:Byte Ptr = XMLRPC_RequestNew()
 		
 		'tell it to write out in the specified format, defaults to xmlrpc_version_1_0
-		Local output:Byte Ptr = XMLRPC_Create_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS(Self.outputVersion)
-		XMLRPC_RequestSetOutputOptions(request, output)
+		bmxXMLRPC_RequestSetOutputOptions(request, Self.outputVersion)
 
 		Local methodName:Byte Ptr = command.ToCString()
 		'Set the method name and tell it we are making a request
@@ -51,29 +50,23 @@ Type TXMLRPC_Client
 		End If
 
 		'Generate XML Message
-		Local xmlMessage:Byte Ptr = XMLRPC_REQUEST_ToXML(request, Byte Ptr 0)
+		Local xmlMessage:Byte Ptr = XMLRPC_REQUEST_ToXML(request, Null)
 
 		Self.xmlRequest = convertUTF8toISO8859(xmlMessage)
-		
-		'And pass our XML message to the transport layer
-		Self.xmlResponse = Self.transport.DoRequest(xmlMessage)
-		
 		XMLRPC_Free(xmlMessage)
-		
+		'And pass our XML message to the transport layer
+		Self.xmlResponse = Self.transport.DoRequest(Self.xmlRequest)
+
 		'Find first occurance of the xml start tag
 		Local startPos:Int = Self.xmlResponse.Find("<?xml")
 		'Strip out HTTP headers
 		Self.xmlResponse = Self.xmlResponse[startPos..]
 		
-		Local responseData:TXMLRPC_Response_Data = New TXMLRPC_Response_Data.Create(Self.xmlResponse, output)
+		Local responseData:TXMLRPC_Response_Data = New TXMLRPC_Response_Data.Create(Self.xmlResponse, XMLRPC_RequestGetOutputOptions(request))
 		
-		If data <> Null
-			data.Free()
-		End If
-		
-		XMLRPC_Delete_Request_Output_Options(output)
-		'Free Request object
+		'Free Request Object
 		XMLRPC_RequestFree(request, 1)
+		
 		Return responseData
 	End Method
 End Type
