@@ -5,7 +5,7 @@ Type TXMLRPC_Transport_Interface Abstract
 	Rem
 		bbdoc:
 	End Rem
-	Method DoRequest:String(message:Byte Ptr) Abstract
+	Method DoRequest:String(message:String) Abstract
 End Type
 
 Rem
@@ -15,8 +15,8 @@ Type TXMLRPC_Transport_Dummy Extends TXMLRPC_Transport_Interface
 	Rem
 		bbdoc:
 	End Rem
-	Method DoRequest:String(message:Byte Ptr)
-		Return convertUTF8toISO8859(message)
+	Method DoRequest:String(message:String)
+		Return message
 	End Method
 
 End Type
@@ -49,8 +49,8 @@ Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 	Rem
 		bbdoc:
 	End Rem
-	Method DoRequest:String(message:Byte Ptr)
-		Local xmlMessage:String = convertUTF8toISO8859(message)
+	Method DoRequest:String(message:String)
+'		Local xmlMessage:String = convertUTF8toISO8859(message)
 		Local socket:TSocket = CreateTCPSocket()
 
 		ConnectSocket(socket, HostIp(Self.host), Self.port)
@@ -67,9 +67,9 @@ Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 		WriteLine(stream, "User-agent: " + Self.userAgent)
 		WriteLine(stream, "Pragma: no-cache")
 		WriteLine(stream, "Connection: keep-alive")
-		WriteLine(stream, "Content-length: " + xmlMessage.Length + "~n")
+		WriteLine(stream, "Content-length: " + message.Length + "~n")
 
-		WriteLine(stream, xmlMessage + "~n~n")
+		WriteLine(stream, message + "~n~n")
 
 		FlushStream(stream)
 
