@@ -1,73 +1,73 @@
 Rem
 	bbdoc: XML-RPC Data Type exception
 End Rem
-Type TXMLRPC_Data_Type_Exception Extends TXMLRPC_Exception   
+Type TXMLRPC_Value_Exception Extends TXMLRPC_Exception   
 End Type
 
 Rem
 	bbdoc: Base type for all XML-RPC data types
 End Rem
-Type TXMLRPC_Data_Type_Abstract Abstract
+Type TXMLRPC_Value_Abstract Abstract
 	Field _type:Int
 	Field name:String
 	
 	Rem
 		bbdoc: Convert a XMLRPC_VALUE from XMLRPC-EPI to a BlitzMax type
 	End Rem
-	Function XMLRPC_To_BlizMax:TXMLRPC_Data_Type_Abstract(val:Byte Ptr) Final
+	Function XMLRPC_To_BlizMax:TXMLRPC_Value_Abstract(val:Byte Ptr) Final
 		Local dataType:Int = XMLRPC_GetValueType(val)
-		Local data:TXMLRPC_Data_Type_Abstract
+		Local data:TXMLRPC_Value_Abstract
 		Select dataType
 			Case xmlrpc_none
-				data = New TXMLRPC_Data_Type_None
+				data = New TXMLRPC_Value_None
 			Case xmlrpc_empty
-				data = New TXMLRPC_Data_Type_Empty
+				data = New TXMLRPC_Value_Empty
 			Case xmlrpc_base64
-				data = New TXMLRPC_Data_Type_Base64
+				data = New TXMLRPC_Value_Base64
 				Local cStr:Byte Ptr = XMLRPC_GetValueBase64(val)
 				If cStr
-					TXMLRPC_Data_Type_Base64(data).value = String.FromCString(cStr)
+					TXMLRPC_Value_Base64(data).value = String.FromCString(cStr)
 					XMLRPC_Free(cStr)
 				End If
 			Case xmlrpc_boolean
-				data = New TXMLRPC_Data_Type_Boolean
-				TXMLRPC_Data_Type_Boolean(data).value = XMLRPC_GetValueBoolean(val)
+				data = New TXMLRPC_Value_Boolean
+				TXMLRPC_Value_Boolean(data).value = XMLRPC_GetValueBoolean(val)
 			Case xmlrpc_datetime
-				data = New TXMLRPC_Data_Type_Datetime
+				data = New TXMLRPC_Value_Datetime
 				Local cStr:Byte Ptr = XMLRPC_GetValueDateTime_ISO8601(val)
 				If cStr
-					TXMLRPC_Data_Type_Datetime(data).value = String.FromCString(cStr)
+					TXMLRPC_Value_Datetime(data).value = String.FromCString(cStr)
 					XMLRPC_Free(cStr)
 				End If
 			Case xmlrpc_double
-				data = New TXMLRPC_Data_Type_Double
-				TXMLRPC_Data_Type_Double(data).value = XMLRPC_GetValueDouble(val)
+				data = New TXMLRPC_Value_Double
+				TXMLRPC_Value_Double(data).value = XMLRPC_GetValueDouble(val)
 			Case xmlrpc_int
-				data = New TXMLRPC_Data_Type_Int
-				TXMLRPC_Data_Type_Int(data).value = XMLRPC_GetValueInt(val)
+				data = New TXMLRPC_Value_Int
+				TXMLRPC_Value_Int(data).value = XMLRPC_GetValueInt(val)
 			Case xmlrpc_string
-				data = New TXMLRPC_Data_Type_String
+				data = New TXMLRPC_Value_String
 				Local cStr:Byte Ptr = XMLRPC_GetValueString(val)
 				If cStr
-					TXMLRPC_Data_Type_String(data).value = String.FromCString(cStr)
+					TXMLRPC_Value_String(data).value = String.FromCString(cStr)
 					XMLRPC_Free(cStr)
 				End If
 			Case xmlrpc_vector
 				Local vectorType:Int = XMLRPC_GetVectorType(val)
 				Select vectorType
 					Case xmlrpc_vector_array
-						data = New TXMLRPC_Data_Type_Array
+						data = New TXMLRPC_Value_Array
 					Case xmlrpc_vector_struct
-						data = New TXMLRPC_Data_Type_Struct
+						data = New TXMLRPC_Value_Struct
 					Case xmlrpc_vector_mixed
-						Throw New TXMLRPC_Data_Type_Exception.Create("Not sure yet how to handle a xmlrpc_vector_mixed")
+						Throw New TXMLRPC_Value_Exception.Create("Not sure yet how to handle a xmlrpc_vector_mixed")
 				End Select
 				
-				If TXMLRPC_Data_Type_Collection(data)
-					TXMLRPC_Data_Type_Collection(data).SetData(val)
+				If TXMLRPC_Value_Collection(data)
+					TXMLRPC_Value_Collection(data).SetData(val)
 				End If
 			Default
-				Throw New TXMLRPC_Data_Type_Exception.Create("I don't know a datatype with number " + dataType)
+				Throw New TXMLRPC_Value_Exception.Create("I don't know a datatype with number " + dataType)
 		End Select
 		
 		If data
@@ -107,55 +107,55 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 			End If
 		Next
 		Return ""
-'		Throw New TXMLRPC_Data_Type_Exception.Create("Can't convert datatype to string")
+'		Throw New TXMLRPC_Value_Exception.Create("Can't convert datatype to string")
 	End Method
 	
 	Rem
 		bbdoc: Return byte value
 	End Rem
 	Method GetByte:Byte()
-		Throw New TXMLRPC_Data_Type_Exception.Create("Method GetByte not implemented for this type")
+		Throw New TXMLRPC_Value_Exception.Create("Method GetByte not implemented for this type")
 	End Method
 	
 	Rem
 		bbdoc: Return integer value
 	End Rem
 	Method GetInt:Int()
-		Throw New TXMLRPC_Data_Type_Exception.Create("Method GetInt not implemented for this type")
+		Throw New TXMLRPC_Value_Exception.Create("Method GetInt not implemented for this type")
 	End Method
 	
 	Rem
 		bbdoc: Return double value
 	End Rem
 	Method GetDouble:Double()
-		Throw New TXMLRPC_Data_Type_Exception.Create("Method GetDouble not implemented for this type")
+		Throw New TXMLRPC_Value_Exception.Create("Method GetDouble not implemented for this type")
 	End Method
 
 	Rem
 		bbdoc: Return string value
 	End Rem
 	Method GetString:String()
-		Throw New TXMLRPC_Data_Type_Exception.Create("Method GetString not implemented for this type")
+		Throw New TXMLRPC_Value_Exception.Create("Method GetString not implemented for this type")
 	End Method
 End Type
 
 Rem
 	bbdoc: Represents none value
 End Rem
-Type TXMLRPC_Data_Type_None Extends TXMLRPC_Data_Type_Abstract
+Type TXMLRPC_Value_None Extends TXMLRPC_Value_Abstract
 End Type
 
 Rem
 	bbdoc: Represents an empty value
 End Rem
-Type TXMLRPC_Data_Type_Empty Extends TXMLRPC_Data_Type_Abstract
+Type TXMLRPC_Value_Empty Extends TXMLRPC_Value_Abstract
 	Field value:Object = Null
 End Type
 
 Rem
 	bbdoc: Represents a Base64 encoded string
 End Rem
-Type TXMLRPC_Data_Type_Base64 Extends TXMLRPC_Data_Type_Abstract
+Type TXMLRPC_Value_Base64 Extends TXMLRPC_Value_Abstract
 	Field value:String
 	Method GetString:String()
 		Return Self.value
@@ -165,7 +165,7 @@ End Type
 Rem
 	bbdoc: Represents a boolean value
 End Rem
-Type TXMLRPC_Data_Type_Boolean Extends TXMLRPC_Data_Type_Abstract
+Type TXMLRPC_Value_Boolean Extends TXMLRPC_Value_Abstract
 	Field value:Byte
 	Method GetByte:Byte()
 		Return Self.value
@@ -175,7 +175,7 @@ End Type
 Rem
 	bbdoc: Represents a datetime string
 End Rem
-Type TXMLRPC_Data_Type_Datetime Extends TXMLRPC_Data_Type_Abstract
+Type TXMLRPC_Value_Datetime Extends TXMLRPC_Value_Abstract
 	Field value:String
 	Method GetString:String()
 		Return Self.value
@@ -185,7 +185,7 @@ End Type
 Rem
 	bbdoc: Represents a double value
 End Rem
-Type TXMLRPC_Data_Type_Double Extends TXMLRPC_Data_Type_Abstract
+Type TXMLRPC_Value_Double Extends TXMLRPC_Value_Abstract
 	Field value:Double
 	Method GetDouble:Double()
 		Return Self.value
@@ -195,7 +195,7 @@ End Type
 Rem
 	bbdoc: Represents a integer value
 End Rem
-Type TXMLRPC_Data_Type_Int Extends TXMLRPC_Data_Type_Abstract
+Type TXMLRPC_Value_Int Extends TXMLRPC_Value_Abstract
 	Field value:Int
 	Method GetInt:Int()
 		Return Self.value
@@ -205,7 +205,7 @@ End Type
 Rem
 	bbdoc: Represents a string value
 End Rem
-Type TXMLRPC_Data_Type_String Extends TXMLRPC_Data_Type_Abstract
+Type TXMLRPC_Value_String Extends TXMLRPC_Value_Abstract
 	Field value:String
 	Method GetString:String()
 		Return Self.value
@@ -215,7 +215,7 @@ End Type
 Rem
 	bbdoc: Represents a collection. This is a base type
 End Rem
-Type TXMLRPC_Data_Type_Collection Extends TXMLRPC_Data_Type_Abstract Abstract
+Type TXMLRPC_Value_Collection Extends TXMLRPC_Value_Abstract Abstract
 	Field data:TMap
 	Method SetData(el:Byte Ptr) Abstract
 End Type
@@ -223,12 +223,12 @@ End Type
 Rem
 	bbdoc: Represents an array
 End Rem
-Type TXMLRPC_Data_Type_Array Extends TXMLRPC_Data_Type_Collection
+Type TXMLRPC_Value_Array Extends TXMLRPC_Value_Collection
 	Method SetData(el:Byte Ptr)
 		Self.data = New TMap
 		Local map:TMap = TXMLRPC_Response_Data.IterateVector(el)
 		Local counter:Int = 0
-		For Local val:TXMLRPC_Data_Type_Abstract = EachIn map.Values()
+		For Local val:TXMLRPC_Value_Abstract = EachIn map.Values()
 			Self.data.Insert(String.FromInt(counter), val)
 			counter:+1
 		Next
@@ -238,7 +238,7 @@ End Type
 Rem
 	bbdoc: Represents an associative array
 End Rem
-Type TXMLRPC_Data_Type_Struct Extends TXMLRPC_Data_Type_Collection
+Type TXMLRPC_Value_Struct Extends TXMLRPC_Value_Collection
 	Method SetData(el:Byte Ptr)
 		Self.data = TXMLRPC_Response_Data.IterateVector(el)
 	End Method
