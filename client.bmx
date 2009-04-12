@@ -1,5 +1,5 @@
 Rem
-	bbdoc: XML-RPC Clien
+	bbdoc: XML-RPC Client
 End Rem
 Type TXMLRPC_Client
 	Field transport:TXMLRPC_Transport_Interface
