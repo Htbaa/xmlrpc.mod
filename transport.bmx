@@ -1,15 +1,15 @@
 Rem
-	bbdoc:
+	bbdoc: Transport interface. Use this as a blueprint for any other transport layers
 End Rem
 Type TXMLRPC_Transport_Interface Abstract
 	Rem
-		bbdoc:
+		bbdoc: Send request to XML-RPC server
 	End Rem
 	Method DoRequest:String(message:String) Abstract
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: A Dummy transport type. Do not use, deprecated
 End Rem
 Type TXMLRPC_Transport_Dummy Extends TXMLRPC_Transport_Interface
 	Rem
@@ -22,18 +22,22 @@ Type TXMLRPC_Transport_Dummy Extends TXMLRPC_Transport_Interface
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Exception for TXMLRPC_Transport_Http
 End Rem
 Type TXMLRPC_Transport_Http_Exception Extends TXMLRPC_Exception
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Simple HTTP transport
+	about: Needs HTTP error handling, as well as a time out
 End Rem
 Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 	Field host:String
 	Field path:String
 	Field port:Int
+	Rem
+		bbdoc: Set useragent for HTTP request. Defaults to htbaa.mod/xmlrpc.mod
+	End rem
 	Field userAgent:String = "htbaa.mod/xmlrpc.mod"
 	
 	Rem
@@ -47,7 +51,7 @@ Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Send request over HTTP
 	End Rem
 	Method DoRequest:String(message:String)
 '		Local xmlMessage:String = convertUTF8toISO8859(message)

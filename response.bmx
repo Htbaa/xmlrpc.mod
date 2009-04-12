@@ -1,5 +1,5 @@
 Rem
-	bbdoc:
+	bbdoc: Exception for TXMLRPC_Response_Data
 End Rem
 Type TXMLRPC_Response_Data_Exception Extends TXMLRPC_Exception
 End Type
@@ -8,10 +8,13 @@ Rem
 	bbdoc: Data returned from XML-RPC server
 End Rem
 Type TXMLRPC_Response_Data
+	Rem
+		bbdoc: This field contains all data returned from a response. If a response value was given an ID it can be accessed by its ID. If not it can be accessed with an ID of 0..inf
+	End Rem
 	Field data:TMap
 	
 	Rem
-		bbdoc:
+		bbdoc: Create a TXMLRPC_Response_Data object by passing the response XML message and the output options.
 	End Rem
 	Method Create:TXMLRPC_Response_Data(xmlMessage:String, options:Byte Ptr)
 		Local message:Byte Ptr = xmlMessage.ToCString()
@@ -27,7 +30,7 @@ Type TXMLRPC_Response_Data
 	End Method
 
 	Rem
-		bbdoc: Iterate over an XMLRPC vector and add it to a TMap
+		bbdoc: Iterate over an XMLRPC vector and add it to a TMap. Private function
 	End Rem	
 	Function IterateVector:TMap(el:Byte Ptr)
 		Local data:TMap = New TMap

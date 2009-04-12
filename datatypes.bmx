@@ -1,44 +1,18 @@
 Rem
-	bbdoc:
+	bbdoc: XML-RPC Data Type exception
 End Rem
 Type TXMLRPC_Data_Type_Exception Extends TXMLRPC_Exception   
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Base type for all XML-RPC data types
 End Rem
 Type TXMLRPC_Data_Type_Abstract Abstract
 	Field _type:Int
 	Field name:String
 	
-'	Rem
-'		bbdoc:
-'	End Rem	
-'	Function Factory:TXMLRPC_Data_Type_Abstract(dataType:Int) Final
-'		Select dataType
-'			Case xmlrpc_none
-'				Return New TXMLRPC_Data_Type_None
-'			Case xmlrpc_empty
-'				Return New TXMLRPC_Data_Type_Empty
-'			Case xmlrpc_base64
-'				Return New TXMLRPC_Data_Type_Base64
-'			Case xmlrpc_boolean
-'				Return New TXMLRPC_Data_Type_Boolean
-'			Case xmlrpc_datetime
-'				Return New TXMLRPC_Data_Type_Datetime
-'			Case xmlrpc_double
-'				Return New TXMLRPC_Data_Type_Double
-'			Case xmlrpc_int
-'				Return New TXMLRPC_Data_Type_Int
-'			Case xmlrpc_string
-'				Return New TXMLRPC_Data_Type_String
-'			Case xmlrpc_vector
-'				Return New TXMLRPC_Data_Type_Collection
-'		End Select
-'	End Function
-	
 	Rem
-		bbdoc:
+		bbdoc: Convert a XMLRPC_VALUE from XMLRPC-EPI to a BlitzMax type
 	End Rem
 	Function XMLRPC_To_BlizMax:TXMLRPC_Data_Type_Abstract(val:Byte Ptr) Final
 		Local dataType:Int = XMLRPC_GetValueType(val)
@@ -86,14 +60,14 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 					Case xmlrpc_vector_struct
 						data = New TXMLRPC_Data_Type_Struct
 					Case xmlrpc_vector_mixed
-						Throw "Not sure yet how to handle a xmlrpc_vector_mixed"
+						Throw New TXMLRPC_Data_Type_Exception.Create("Not sure yet how to handle a xmlrpc_vector_mixed")
 				End Select
 				
 				If TXMLRPC_Data_Type_Collection(data)
 					TXMLRPC_Data_Type_Collection(data).SetData(val)
 				End If
 			Default
-				Throw "I don't know a datatype with number " + dataType
+				Throw New TXMLRPC_Data_Type_Exception.Create("I don't know a datatype with number " + dataType)
 		End Select
 		
 		If data
@@ -137,28 +111,28 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Return byte value
 	End Rem
 	Method GetByte:Byte()
 		Throw New TXMLRPC_Data_Type_Exception.Create("Method GetByte not implemented for this type")
-	End Method	
-	Rem
-		bbdoc:
-	End Rem
+	End Method
 	
+	Rem
+		bbdoc: Return integer value
+	End Rem
 	Method GetInt:Int()
 		Throw New TXMLRPC_Data_Type_Exception.Create("Method GetInt not implemented for this type")
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Return double value
 	End Rem
 	Method GetDouble:Double()
 		Throw New TXMLRPC_Data_Type_Exception.Create("Method GetDouble not implemented for this type")
 	End Method
 
 	Rem
-		bbdoc:
+		bbdoc: Return string value
 	End Rem
 	Method GetString:String()
 		Throw New TXMLRPC_Data_Type_Exception.Create("Method GetString not implemented for this type")
@@ -166,20 +140,20 @@ Type TXMLRPC_Data_Type_Abstract Abstract
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Represents none value
 End Rem
 Type TXMLRPC_Data_Type_None Extends TXMLRPC_Data_Type_Abstract
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Represents an empty value
 End Rem
 Type TXMLRPC_Data_Type_Empty Extends TXMLRPC_Data_Type_Abstract
 	Field value:Object = Null
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Represents a Base64 encoded string
 End Rem
 Type TXMLRPC_Data_Type_Base64 Extends TXMLRPC_Data_Type_Abstract
 	Field value:String
@@ -189,7 +163,7 @@ Type TXMLRPC_Data_Type_Base64 Extends TXMLRPC_Data_Type_Abstract
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Represents a boolean value
 End Rem
 Type TXMLRPC_Data_Type_Boolean Extends TXMLRPC_Data_Type_Abstract
 	Field value:Byte
@@ -199,7 +173,7 @@ Type TXMLRPC_Data_Type_Boolean Extends TXMLRPC_Data_Type_Abstract
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Represents a datetime string
 End Rem
 Type TXMLRPC_Data_Type_Datetime Extends TXMLRPC_Data_Type_Abstract
 	Field value:String
@@ -209,7 +183,7 @@ Type TXMLRPC_Data_Type_Datetime Extends TXMLRPC_Data_Type_Abstract
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Represents a double value
 End Rem
 Type TXMLRPC_Data_Type_Double Extends TXMLRPC_Data_Type_Abstract
 	Field value:Double
@@ -219,7 +193,7 @@ Type TXMLRPC_Data_Type_Double Extends TXMLRPC_Data_Type_Abstract
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Represents a integer value
 End Rem
 Type TXMLRPC_Data_Type_Int Extends TXMLRPC_Data_Type_Abstract
 	Field value:Int
@@ -229,7 +203,7 @@ Type TXMLRPC_Data_Type_Int Extends TXMLRPC_Data_Type_Abstract
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Represents a string value
 End Rem
 Type TXMLRPC_Data_Type_String Extends TXMLRPC_Data_Type_Abstract
 	Field value:String
@@ -239,7 +213,7 @@ Type TXMLRPC_Data_Type_String Extends TXMLRPC_Data_Type_Abstract
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Represents a collection. This is a base type
 End Rem
 Type TXMLRPC_Data_Type_Collection Extends TXMLRPC_Data_Type_Abstract Abstract
 	Field data:TMap
@@ -247,7 +221,7 @@ Type TXMLRPC_Data_Type_Collection Extends TXMLRPC_Data_Type_Abstract Abstract
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Represents an array
 End Rem
 Type TXMLRPC_Data_Type_Array Extends TXMLRPC_Data_Type_Collection
 	Method SetData(el:Byte Ptr)
@@ -262,7 +236,7 @@ Type TXMLRPC_Data_Type_Array Extends TXMLRPC_Data_Type_Collection
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Represents an associative array
 End Rem
 Type TXMLRPC_Data_Type_Struct Extends TXMLRPC_Data_Type_Collection
 	Method SetData(el:Byte Ptr)

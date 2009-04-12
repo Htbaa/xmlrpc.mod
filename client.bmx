@@ -1,19 +1,29 @@
 Rem
-	bbdoc:
+	bbdoc: XML-RPC Clien
 End Rem
 Type TXMLRPC_Client
-	Rem
-		bbdoc: URL of webservice
-	End Rem
 	Field transport:TXMLRPC_Transport_Interface
+
+	Rem
+		bbdoc: Change this to alter the output format. Accepted values are: xmlrpc_version_none, xmlrpc_version_1_0, xmlrpc_version_simple, xmlrpc_version_danda and xmlrpc_version_soap_1_1. Defaults to xmlrpc_version_1_0
+	End Rem
 	Field outputVersion:Int = xmlrpc_version_1_0
+
+	Rem
+		bbdoc: This field will hold the XML message used to send the request
+	End Rem
 	Field xmlRequest:String
+	
+	Rem
+		bbdoc: This field will hold the XML message returned from the XML-RPC server
+	End Rem
 	Field xmlResponse:String
 	
 	Rem
-		bbdoc:
+		bbdoc: Create a TXMLRPC_Client object
 	End Rem
-	Method Create:TXMLRPC_Client()
+	Method Create:TXMLRPC_Client(outputVersion:Int = xmlrpc_version_1_0)
+		Self.outputVersion = outputVersion
 		Return Self
 	End Method
 	
@@ -23,9 +33,9 @@ Type TXMLRPC_Client
 	Method SetTransport(transport:TXMLRPC_Transport_Interface)
 		Self.transport = transport
 	End Method
-	
+
 	Rem
-		bbdoc:
+		bbdoc: Send a request to the XML-RPC. command will hold the function name you want to call. Additional parameters can be passed by passing an TXMLRPC_Call_Parameters object. This method will return a TXMLRPC_Response_Data object containing the returned values from the XML-RPC Server
 	End Rem
 	Method Call:TXMLRPC_Response_Data(command:String, data:TXMLRPC_Call_Parameters = Null)
 		If Not Self.transport
@@ -34,7 +44,7 @@ Type TXMLRPC_Client
 		
 		Local request:Byte Ptr = XMLRPC_RequestNew()
 
-		'tell it to write out in the specified format, defaults to xmlrpc_version_1_0
+		'tell it to write out in the specified format
 		bmxXMLRPC_RequestSetOutputOptions(request, Self.outputVersion)
 
 		Local methodName:Byte Ptr = command.ToCString()

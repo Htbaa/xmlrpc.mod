@@ -1,5 +1,5 @@
 Rem
-	bbdoc:
+	bbdoc: XML-RPC Server
 End Rem
 Type TXMLRPC_Server
 	Method New()
