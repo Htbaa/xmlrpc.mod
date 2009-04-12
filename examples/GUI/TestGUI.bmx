@@ -1,4 +1,4 @@
-'Source Code created on 11 Apr 2009 02:26:04 with Logic Gui Version 4.1 Build 366
+'Source Code created on 12 Apr 2009 09:48:16 with Logic Gui Version 4.1 Build 366
 'Christiaan Kras
 'Start of external Header File
 SuperStrict
@@ -90,9 +90,11 @@ Local Window1:TGadget = CreateWindow:TGadget("XML-RPC GUI - ",444,154,448,499,Nu
 			Local Group6:TGadget = CreatePanel:TGadget(5,3,419,292,Tabber1_Tab2:TGadget,PANEL_GROUP,"Response")
 				GadgetList.AddLast( Group6:TGadget ) ; Group6.Context="Group6"
 				SetGadgetLayout( Group6:TGadget,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED )
-				Local TextAreaBlitzMax:TGadget = CreateTextArea:TGadget(0,0,411,271,Group6:TGadget,Null)
+				Local TextAreaBlitzMax:TGadget = CreateTextArea:TGadget(0,0,411,271,Group6:TGadget,TEXTAREA_READONLY)
 					GadgetList.AddLast( TextAreaBlitzMax:TGadget ) ; TextAreaBlitzMax.Context="TextAreaBlitzMax"
 					SetGadgetLayout( TextAreaBlitzMax:TGadget,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED )
+					Local Font_TextAreaBlitzMax:TGuiFont = LoadGuiFont:TGuiFont( "Courier New" , 8 , False , False , False )
+					SetGadgetFont( TextAreaBlitzMax:TGadget, Font_TextAreaBlitzMax:TGuiFont )
 					SetTextAreaText( TextAreaBlitzMax:TGadget , "" )
 		Tabber1_GA( Tabber1:TGadget , 0 )
 
@@ -117,13 +119,14 @@ Repeat
 				Case Button1	Button1_GA( Button1:TGadget , GadgetList:TList )
 				Case TxtParameters	TxtParameters_GA( TxtParameters:TGadget , GadgetList:TList )
 				Case Tabber1	Tabber1_GA( Tabber1:TGadget , EventData() , GadgetList:TList )
+				Case TextAreaBlitzMax	TextAreaBlitzMax_GA( TextAreaBlitzMax:TGadget , GadgetList:TList )
 				Case TextAreaResponse	TextAreaResponse_GA( TextAreaResponse:TGadget , GadgetList:TList )
 				Case TextAreaRequest	TextAreaRequest_GA( TextAreaRequest:TGadget , GadgetList:TList )
-				Case TextAreaBlitzMax	TextAreaBlitzMax_GA( TextAreaBlitzMax:TGadget , GadgetList:TList )
 			End Select
 
 		Case EVENT_GADGETMENU
 			Select EventSource()
+				Case TextAreaBlitzMax	TextAreaBlitzMax_GM( TextAreaBlitzMax:TGadget , Window1:TGadget , GadgetList:TList )
 				Case TextAreaResponse	TextAreaResponse_GM( TextAreaResponse:TGadget , Window1:TGadget , GadgetList:TList )
 				Case TextAreaRequest	TextAreaRequest_GM( TextAreaRequest:TGadget , Window1:TGadget , GadgetList:TList )
 			End Select
@@ -222,6 +225,11 @@ Function Tabber1_GA( Tabber:TGadget , Number:Int , GadgetList:TList=Null )
 	
 End Function
 
+Function TextAreaBlitzMax_GA( TextArea:TGadget , GadgetList:TList=Null )
+	DebugLog "TextArea TextAreaBlitzMax was modified"
+	
+End Function
+
 Function TextAreaResponse_GA( TextArea:TGadget , GadgetList:TList=Null )
 	DebugLog "TextArea TextAreaResponse was modified"
 	
@@ -232,8 +240,8 @@ Function TextAreaRequest_GA( TextArea:TGadget , GadgetList:TList=Null )
 	
 End Function
 
-Function TextAreaBlitzMax_GA( TextArea:TGadget , GadgetList:TList=Null )
-	DebugLog "TextArea TextAreaBlitzMax was modified"
+Function TextAreaBlitzMax_GM( TextArea:TGadget , Window:TGadget=Null , GadgetList:TList=Null )
+	DebugLog "TextArea TextAreaBlitzMax was right clicked"
 	
 End Function
 

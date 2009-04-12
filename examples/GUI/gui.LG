@@ -901,16 +901,16 @@
     </GadgetItems>
     <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
     <EVENT_GADGETACTION_TEXT/>
-    <ActiveTab>1</ActiveTab>
+    <ActiveTab>2</ActiveTab>
     <TabberItems>
       <Item1>
-        <Name>Group6</Name>
+        <Name>Group4</Name>
         <X>101</X>
         <Y>246</Y>
         <width>419</width>
-        <height>292</height>
-        <Group>Tabber1_Tab2</Group>
-        <SubGroup>2</SubGroup>
+        <height>146</height>
+        <Group>Tabber1_Tab1</Group>
+        <SubGroup>1</SubGroup>
         <Group_x>96</Group_x>
         <Group_y>243</Group_y>
         <CreateCallBack/>
@@ -918,7 +918,7 @@
         <Background Red="255" Green="255" Blue="255"/>
         <Color_Changed>0</Color_Changed>
         <BColor_Changed>0</BColor_Changed>
-        <Layout Left="1" Right="1" Top="1" Bottom="1"/>
+        <Layout Left="0" Right="0" Top="0" Bottom="0"/>
         <Comment/>
         <is_disabled>0</is_disabled>
         <is_hidden>0</is_hidden>
@@ -939,8 +939,8 @@
         <Use_Font>0</Use_Font>
         <Modifier/>
         <HotKey/>
-        <Layer>17469724</Layer>
-        <Lang_Text en="Response"/>
+        <Layer>17031914</Layer>
+        <Lang_Text en="Request"/>
         <VariableType>0</VariableType>
         <Tooltip en="????"/>
         <Use_Tooltip>0</Use_Tooltip>
@@ -985,13 +985,156 @@
         <ToolbarItems/>
       </Item1>
       <Item2>
-        <Name>TextAreaBlitzMax</Name>
+        <Name>Group4_c5</Name>
+        <X>101</X>
+        <Y>392</Y>
+        <width>419</width>
+        <height>146</height>
+        <Group>Tabber1_Tab1</Group>
+        <SubGroup>1</SubGroup>
+        <Group_x>96</Group_x>
+        <Group_y>243</Group_y>
+        <CreateCallBack/>
+        <Foreground Red="0" Green="0" Blue="0"/>
+        <Background Red="255" Green="255" Blue="255"/>
+        <Color_Changed>0</Color_Changed>
+        <BColor_Changed>0</BColor_Changed>
+        <Layout Left="0" Right="0" Top="0" Bottom="0"/>
+        <Comment/>
+        <is_disabled>0</is_disabled>
+        <is_hidden>0</is_hidden>
+        <Position_is_locked>0</Position_is_locked>
+        <Size_is_locked>0</Size_is_locked>
+        <Marked>1</Marked>
+        <Design_Range>10</Design_Range>
+        <Virtual_Group>0</Virtual_Group>
+        <Vx>0</Vx>
+        <Vy>0</Vy>
+        <Vw>0</Vw>
+        <Vh>0</Vh>
+        <TypToCreate>3</TypToCreate>
+        <StyleToCreate>8</StyleToCreate>
+        <Font_Name/>
+        <Font_Size>0</Font_Size>
+        <Font_Style>0</Font_Style>
+        <Use_Font>0</Use_Font>
+        <Modifier/>
+        <HotKey/>
+        <Layer>17031914</Layer>
+        <Lang_Text en="Response"/>
+        <VariableType>0</VariableType>
+        <Tooltip en="????"/>
+        <Use_Tooltip>0</Use_Tooltip>
+        <Alpha>0.000000000</Alpha>
+        <Use_Alpha>0</Use_Alpha>
+        <Sensitivity>0</Sensitivity>
+        <EVENT_MOUSEDOWN>0</EVENT_MOUSEDOWN>
+        <EVENT_MOUSEDOWN_TEXT/>
+        <EVENT_MOUSEUP>0</EVENT_MOUSEUP>
+        <EVENT_MOUSEUP_TEXT/>
+        <EVENT_MOUSEMOVE>0</EVENT_MOUSEMOVE>
+        <EVENT_MOUSEMOVE_TEXT/>
+        <EVENT_MOUSEENTER>0</EVENT_MOUSEENTER>
+        <EVENT_MOUSEENTER_TEXT/>
+        <EVENT_MOUSELEAVE>0</EVENT_MOUSELEAVE>
+        <EVENT_MOUSELEAVE_TEXT/>
+        <EVENT_MOUSEWHEEL>0</EVENT_MOUSEWHEEL>
+        <EVENT_MOUSEWHEEL_TEXT/>
+        <EVENT_KEYDOWN>0</EVENT_KEYDOWN>
+        <EVENT_KEYDOWN_TEXT/>
+        <EVENT_KEYUP>0</EVENT_KEYUP>
+        <EVENT_KEYUP_TEXT/>
+        <EVENT_KEYCHAR>0</EVENT_KEYCHAR>
+        <EVENT_KEYCHAR_TEXT/>
+        <EVENT_KEYREPEAT>0</EVENT_KEYREPEAT>
+        <EVENT_KEYREPEAT_TEXT/>
+        <Use_PixMap>0</Use_PixMap>
+        <IncBin_Pixmap>0</IncBin_Pixmap>
+        <PixMap_Path/>
+        <PixMapProperties>0</PixMapProperties>
+        <Use_Menu>0</Use_Menu>
+        <MenuName/>
+        <Use_Toolbar>0</Use_Toolbar>
+        <IncBin_Toolbar>0</IncBin_Toolbar>
+        <ToolbarHeight>0</ToolbarHeight>
+        <ToolbarWidth>0</ToolbarWidth>
+        <ToolbarPath/>
+        <Use_Toolbar_Event>0</Use_Toolbar_Event>
+        <Use_Toolbar_Tip>0</Use_Toolbar_Tip>
+        <Use_Toolbar_Extra>0</Use_Toolbar_Extra>
+        <ToolbarType>0</ToolbarType>
+        <ToolbarItems/>
+      </Item2>
+      <Item3>
+        <Name>TextAreaResponse</Name>
+        <X>105</X>
+        <Y>407</Y>
+        <width>411</width>
+        <height>125</height>
+        <Group>Group4_c5</Group>
+        <SubGroup>1</SubGroup>
+        <Group_x>105</Group_x>
+        <Group_y>407</Group_y>
+        <CreateCallBack/>
+        <Foreground Red="0" Green="0" Blue="0"/>
+        <Background Red="255" Green="255" Blue="255"/>
+        <Color_Changed>0</Color_Changed>
+        <BColor_Changed>0</BColor_Changed>
+        <Layout Left="1" Right="1" Top="1" Bottom="1"/>
+        <Comment/>
+        <is_disabled>0</is_disabled>
+        <is_hidden>0</is_hidden>
+        <Position_is_locked>0</Position_is_locked>
+        <Size_is_locked>0</Size_is_locked>
+        <Marked>1</Marked>
+        <Design_Range>10</Design_Range>
+        <Virtual_Group>0</Virtual_Group>
+        <Vx>0</Vx>
+        <Vy>0</Vy>
+        <Vw>0</Vw>
+        <Vh>0</Vh>
+        <TypToCreate>8</TypToCreate>
+        <StyleToCreate>2</StyleToCreate>
+        <Font_Name>Courier New</Font_Name>
+        <Font_Size>8</Font_Size>
+        <Font_Style>0</Font_Style>
+        <Use_Font>1</Use_Font>
+        <Modifier/>
+        <HotKey/>
+        <Layer>17031914</Layer>
+        <Lang_Text en=""/>
+        <VariableType>0</VariableType>
+        <Tooltip en="????"/>
+        <Use_Tooltip>0</Use_Tooltip>
+        <Alpha>0.000000000</Alpha>
+        <Use_Alpha>0</Use_Alpha>
+        <Sensitivity>0</Sensitivity>
+        <Load_File/>
+        <Filter>0</Filter>
+        <FilterRange/>
+        <TabSize>0</TabSize>
+        <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
+        <EVENT_GADGETACTION_TEXT/>
+        <EVENT_GADGETSELECT>0</EVENT_GADGETSELECT>
+        <EVENT_GADGETSELECT_TEXT/>
+        <EVENT_GADGETMENU>1</EVENT_GADGETMENU>
+        <EVENT_GADGETMENU_TEXT/>
+        <EVENT_GADGETLOSTFOCUS>0</EVENT_GADGETLOSTFOCUS>
+        <EVENT_GADGETLOSTFOCUS_TEXT/>
+        <Use_File>0</Use_File>
+        <IncBin_File>0</IncBin_File>
+        <FilePath/>
+        <Use_Menu>0</Use_Menu>
+        <MenuName/>
+      </Item3>
+      <Item4>
+        <Name>TextAreaRequest</Name>
         <X>105</X>
         <Y>261</Y>
         <width>411</width>
-        <height>271</height>
-        <Group>Group6</Group>
-        <SubGroup>2</SubGroup>
+        <height>125</height>
+        <Group>Group4</Group>
+        <SubGroup>1</SubGroup>
         <Group_x>105</Group_x>
         <Group_y>261</Group_y>
         <CreateCallBack/>
@@ -1013,14 +1156,14 @@
         <Vw>0</Vw>
         <Vh>0</Vh>
         <TypToCreate>8</TypToCreate>
-        <StyleToCreate>0</StyleToCreate>
-        <Font_Name/>
-        <Font_Size>0</Font_Size>
+        <StyleToCreate>2</StyleToCreate>
+        <Font_Name>Courier New</Font_Name>
+        <Font_Size>8</Font_Size>
         <Font_Style>0</Font_Style>
-        <Use_Font>0</Use_Font>
+        <Use_Font>1</Use_Font>
         <Modifier/>
         <HotKey/>
-        <Layer>17469724</Layer>
+        <Layer>17031914</Layer>
         <Lang_Text en=""/>
         <VariableType>0</VariableType>
         <Tooltip en="????"/>
@@ -1036,7 +1179,7 @@
         <EVENT_GADGETACTION_TEXT/>
         <EVENT_GADGETSELECT>0</EVENT_GADGETSELECT>
         <EVENT_GADGETSELECT_TEXT/>
-        <EVENT_GADGETMENU>0</EVENT_GADGETMENU>
+        <EVENT_GADGETMENU>1</EVENT_GADGETMENU>
         <EVENT_GADGETMENU_TEXT/>
         <EVENT_GADGETLOSTFOCUS>0</EVENT_GADGETLOSTFOCUS>
         <EVENT_GADGETLOSTFOCUS_TEXT/>
@@ -1045,17 +1188,17 @@
         <FilePath/>
         <Use_Menu>0</Use_Menu>
         <MenuName/>
-      </Item2>
+      </Item4>
     </TabberItems>
   </Item12>
   <Item13>
-    <Name>Group4</Name>
+    <Name>Group6</Name>
     <X>101</X>
     <Y>246</Y>
     <width>419</width>
-    <height>146</height>
-    <Group>Tabber1_Tab1</Group>
-    <SubGroup>1</SubGroup>
+    <height>292</height>
+    <Group>Tabber1_Tab2</Group>
+    <SubGroup>2</SubGroup>
     <Group_x>96</Group_x>
     <Group_y>243</Group_y>
     <CreateCallBack/>
@@ -1063,7 +1206,7 @@
     <Background Red="255" Green="255" Blue="255"/>
     <Color_Changed>0</Color_Changed>
     <BColor_Changed>0</BColor_Changed>
-    <Layout Left="0" Right="0" Top="0" Bottom="0"/>
+    <Layout Left="1" Right="1" Top="1" Bottom="1"/>
     <Comment/>
     <is_disabled>0</is_disabled>
     <is_hidden>0</is_hidden>
@@ -1084,8 +1227,8 @@
     <Use_Font>0</Use_Font>
     <Modifier/>
     <HotKey/>
-    <Layer>17031914</Layer>
-    <Lang_Text en="Request"/>
+    <Layer>17469724</Layer>
+    <Lang_Text en="Response"/>
     <VariableType>0</VariableType>
     <Tooltip en="????"/>
     <Use_Tooltip>0</Use_Tooltip>
@@ -1130,156 +1273,13 @@
     <ToolbarItems/>
   </Item13>
   <Item14>
-    <Name>Group4_c5</Name>
-    <X>101</X>
-    <Y>392</Y>
-    <width>419</width>
-    <height>146</height>
-    <Group>Tabber1_Tab1</Group>
-    <SubGroup>1</SubGroup>
-    <Group_x>96</Group_x>
-    <Group_y>243</Group_y>
-    <CreateCallBack/>
-    <Foreground Red="0" Green="0" Blue="0"/>
-    <Background Red="255" Green="255" Blue="255"/>
-    <Color_Changed>0</Color_Changed>
-    <BColor_Changed>0</BColor_Changed>
-    <Layout Left="0" Right="0" Top="0" Bottom="0"/>
-    <Comment/>
-    <is_disabled>0</is_disabled>
-    <is_hidden>0</is_hidden>
-    <Position_is_locked>0</Position_is_locked>
-    <Size_is_locked>0</Size_is_locked>
-    <Marked>0</Marked>
-    <Design_Range>10</Design_Range>
-    <Virtual_Group>0</Virtual_Group>
-    <Vx>0</Vx>
-    <Vy>0</Vy>
-    <Vw>0</Vw>
-    <Vh>0</Vh>
-    <TypToCreate>3</TypToCreate>
-    <StyleToCreate>8</StyleToCreate>
-    <Font_Name/>
-    <Font_Size>0</Font_Size>
-    <Font_Style>0</Font_Style>
-    <Use_Font>0</Use_Font>
-    <Modifier/>
-    <HotKey/>
-    <Layer>17031914</Layer>
-    <Lang_Text en="Response"/>
-    <VariableType>0</VariableType>
-    <Tooltip en="????"/>
-    <Use_Tooltip>0</Use_Tooltip>
-    <Alpha>0.000000000</Alpha>
-    <Use_Alpha>0</Use_Alpha>
-    <Sensitivity>0</Sensitivity>
-    <EVENT_MOUSEDOWN>0</EVENT_MOUSEDOWN>
-    <EVENT_MOUSEDOWN_TEXT/>
-    <EVENT_MOUSEUP>0</EVENT_MOUSEUP>
-    <EVENT_MOUSEUP_TEXT/>
-    <EVENT_MOUSEMOVE>0</EVENT_MOUSEMOVE>
-    <EVENT_MOUSEMOVE_TEXT/>
-    <EVENT_MOUSEENTER>0</EVENT_MOUSEENTER>
-    <EVENT_MOUSEENTER_TEXT/>
-    <EVENT_MOUSELEAVE>0</EVENT_MOUSELEAVE>
-    <EVENT_MOUSELEAVE_TEXT/>
-    <EVENT_MOUSEWHEEL>0</EVENT_MOUSEWHEEL>
-    <EVENT_MOUSEWHEEL_TEXT/>
-    <EVENT_KEYDOWN>0</EVENT_KEYDOWN>
-    <EVENT_KEYDOWN_TEXT/>
-    <EVENT_KEYUP>0</EVENT_KEYUP>
-    <EVENT_KEYUP_TEXT/>
-    <EVENT_KEYCHAR>0</EVENT_KEYCHAR>
-    <EVENT_KEYCHAR_TEXT/>
-    <EVENT_KEYREPEAT>0</EVENT_KEYREPEAT>
-    <EVENT_KEYREPEAT_TEXT/>
-    <Use_PixMap>0</Use_PixMap>
-    <IncBin_Pixmap>0</IncBin_Pixmap>
-    <PixMap_Path/>
-    <PixMapProperties>0</PixMapProperties>
-    <Use_Menu>0</Use_Menu>
-    <MenuName/>
-    <Use_Toolbar>0</Use_Toolbar>
-    <IncBin_Toolbar>0</IncBin_Toolbar>
-    <ToolbarHeight>0</ToolbarHeight>
-    <ToolbarWidth>0</ToolbarWidth>
-    <ToolbarPath/>
-    <Use_Toolbar_Event>0</Use_Toolbar_Event>
-    <Use_Toolbar_Tip>0</Use_Toolbar_Tip>
-    <Use_Toolbar_Extra>0</Use_Toolbar_Extra>
-    <ToolbarType>0</ToolbarType>
-    <ToolbarItems/>
-  </Item14>
-  <Item15>
-    <Name>TextAreaResponse</Name>
-    <X>105</X>
-    <Y>407</Y>
-    <width>411</width>
-    <height>125</height>
-    <Group>Group4_c5</Group>
-    <SubGroup>1</SubGroup>
-    <Group_x>105</Group_x>
-    <Group_y>407</Group_y>
-    <CreateCallBack/>
-    <Foreground Red="0" Green="0" Blue="0"/>
-    <Background Red="255" Green="255" Blue="255"/>
-    <Color_Changed>0</Color_Changed>
-    <BColor_Changed>0</BColor_Changed>
-    <Layout Left="1" Right="1" Top="1" Bottom="1"/>
-    <Comment/>
-    <is_disabled>0</is_disabled>
-    <is_hidden>0</is_hidden>
-    <Position_is_locked>0</Position_is_locked>
-    <Size_is_locked>0</Size_is_locked>
-    <Marked>0</Marked>
-    <Design_Range>10</Design_Range>
-    <Virtual_Group>0</Virtual_Group>
-    <Vx>0</Vx>
-    <Vy>0</Vy>
-    <Vw>0</Vw>
-    <Vh>0</Vh>
-    <TypToCreate>8</TypToCreate>
-    <StyleToCreate>2</StyleToCreate>
-    <Font_Name>Courier New</Font_Name>
-    <Font_Size>8</Font_Size>
-    <Font_Style>0</Font_Style>
-    <Use_Font>1</Use_Font>
-    <Modifier/>
-    <HotKey/>
-    <Layer>17031914</Layer>
-    <Lang_Text en=""/>
-    <VariableType>0</VariableType>
-    <Tooltip en="????"/>
-    <Use_Tooltip>0</Use_Tooltip>
-    <Alpha>0.000000000</Alpha>
-    <Use_Alpha>0</Use_Alpha>
-    <Sensitivity>0</Sensitivity>
-    <Load_File/>
-    <Filter>0</Filter>
-    <FilterRange/>
-    <TabSize>0</TabSize>
-    <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
-    <EVENT_GADGETACTION_TEXT/>
-    <EVENT_GADGETSELECT>0</EVENT_GADGETSELECT>
-    <EVENT_GADGETSELECT_TEXT/>
-    <EVENT_GADGETMENU>1</EVENT_GADGETMENU>
-    <EVENT_GADGETMENU_TEXT/>
-    <EVENT_GADGETLOSTFOCUS>0</EVENT_GADGETLOSTFOCUS>
-    <EVENT_GADGETLOSTFOCUS_TEXT/>
-    <Use_File>0</Use_File>
-    <IncBin_File>0</IncBin_File>
-    <FilePath/>
-    <Use_Menu>0</Use_Menu>
-    <MenuName/>
-  </Item15>
-  <Item16>
-    <Name>TextAreaRequest</Name>
+    <Name>TextAreaBlitzMax</Name>
     <X>105</X>
     <Y>261</Y>
     <width>411</width>
-    <height>125</height>
-    <Group>Group4</Group>
-    <SubGroup>1</SubGroup>
+    <height>271</height>
+    <Group>Group6</Group>
+    <SubGroup>2</SubGroup>
     <Group_x>105</Group_x>
     <Group_y>261</Group_y>
     <CreateCallBack/>
@@ -1308,7 +1308,7 @@
     <Use_Font>1</Use_Font>
     <Modifier/>
     <HotKey/>
-    <Layer>17031914</Layer>
+    <Layer>17469724</Layer>
     <Lang_Text en=""/>
     <VariableType>0</VariableType>
     <Tooltip en="????"/>
@@ -1333,6 +1333,6 @@
     <FilePath/>
     <Use_Menu>0</Use_Menu>
     <MenuName/>
-  </Item16>
+  </Item14>
   <Menu IncBin_Media="0"/>
 </root>
