@@ -2,14 +2,14 @@
 <root>
   <Preferences>
     <Creator>Logic Gui</Creator>
-    <Version>4.1 Build 366</Version>
+    <Version>4.2 Build 384</Version>
     <Push_Button_Counter>1</Push_Button_Counter>
     <TextField_Counter>3</TextField_Counter>
     <Panels_Counter>6</Panels_Counter>
     <Labels_Counter>4</Labels_Counter>
     <Slider_Counter>0</Slider_Counter>
-    <Combo_Counter>0</Combo_Counter>
-    <ListBox_Counter>0</ListBox_Counter>
+    <Combo_Counter>1</Combo_Counter>
+    <ListBox_Counter>1</ListBox_Counter>
     <TextArea_Counter>4</TextArea_Counter>
     <HTMLView_Counter>0</HTMLView_Counter>
     <ProgBar_Counter>0</ProgBar_Counter>
@@ -52,9 +52,11 @@
       <XMLUsage>0</XMLUsage>
       <ActiveTheme>0</ActiveTheme>
       <Use_WorkSpace>0</Use_WorkSpace>
+      <Use_TListView>1</Use_TListView>
+      <TListView_URL>ExternalTypes/TListView.bmx</TListView_URL>
       <Timer>0</Timer>
       <Layer>
-        1
+        2
         <Layer1>
           <Name>Base Layer</Name>
           <ID>0</ID>
@@ -93,6 +95,14 @@
             </Layer1>
           </Layer>
         </Layer1>
+        <Layer2>
+          <Name>Guides</Name>
+          <ID>36909544</ID>
+          <IsVisible>1</IsVisible>
+          <CreatesOutput>1</CreatesOutput>
+          <TransLevel>1.00000000</TransLevel>
+          <LayerItems/>
+        </Layer2>
       </Layer>
       <Languages>
         1
@@ -106,11 +116,12 @@
     </Application>
   </Preferences>
   <MainWindow>
+    Maximized
     <Name>Logic_Gui</Name>
-    <X>357</X>
-    <Y>106</Y>
-    <width>737</width>
-    <height>664</height>
+    <X>-8</X>
+    <Y>-8</Y>
+    <width>1440</width>
+    <height>827</height>
     <Group>NULL</Group>
     <SubGroup>0</SubGroup>
     <Group_x>0</Group_x>
@@ -191,8 +202,8 @@
   </MainWindow>
   <Item1>
     <Name>Window1</Name>
-    <X>87</X>
-    <Y>20</Y>
+    <X>420</X>
+    <Y>39</Y>
     <width>454</width>
     <height>550</height>
     <Group>Logic_Gui</Group>
@@ -275,14 +286,14 @@
   </Item1>
   <Item2>
     <Name>Group2</Name>
-    <X>94</X>
-    <Y>55</Y>
+    <X>427</X>
+    <Y>74</Y>
     <width>237</width>
     <height>160</height>
     <Group>Window1</Group>
     <SubGroup>0</SubGroup>
-    <Group_x>90</Group_x>
-    <Group_y>48</Group_y>
+    <Group_x>423</Group_x>
+    <Group_y>67</Group_y>
     <CreateCallBack/>
     <Foreground Red="0" Green="0" Blue="0"/>
     <Background Red="255" Green="255" Blue="255"/>
@@ -356,14 +367,14 @@
   </Item2>
   <Item3>
     <Name>Group3</Name>
-    <X>336</X>
-    <Y>55</Y>
+    <X>669</X>
+    <Y>74</Y>
     <width>193</width>
     <height>161</height>
     <Group>Window1</Group>
     <SubGroup>0</SubGroup>
-    <Group_x>90</Group_x>
-    <Group_y>48</Group_y>
+    <Group_x>423</Group_x>
+    <Group_y>67</Group_y>
     <CreateCallBack/>
     <Foreground Red="0" Green="0" Blue="0"/>
     <Background Red="255" Green="255" Blue="255"/>
@@ -437,14 +448,14 @@
   </Item3>
   <Item4>
     <Name>TxtHost</Name>
-    <X>168</X>
-    <Y>89</Y>
+    <X>501</X>
+    <Y>108</Y>
     <width>153</width>
     <height>18</height>
     <Group>Group2</Group>
     <SubGroup>0</SubGroup>
-    <Group_x>98</Group_x>
-    <Group_y>70</Group_y>
+    <Group_x>431</Group_x>
+    <Group_y>89</Group_y>
     <CreateCallBack/>
     <Foreground Red="0" Green="0" Blue="0"/>
     <Background Red="255" Green="255" Blue="255"/>
@@ -488,14 +499,14 @@
   </Item4>
   <Item5>
     <Name>TxtPath</Name>
-    <X>168</X>
-    <Y>123</Y>
+    <X>501</X>
+    <Y>142</Y>
     <width>153</width>
     <height>18</height>
     <Group>Group2</Group>
     <SubGroup>0</SubGroup>
-    <Group_x>98</Group_x>
-    <Group_y>70</Group_y>
+    <Group_x>431</Group_x>
+    <Group_y>89</Group_y>
     <CreateCallBack/>
     <Foreground Red="0" Green="0" Blue="0"/>
     <Background Red="255" Green="255" Blue="255"/>
@@ -539,14 +550,14 @@
   </Item5>
   <Item6>
     <Name>TxtFunction</Name>
-    <X>168</X>
-    <Y>157</Y>
+    <X>501</X>
+    <Y>176</Y>
     <width>153</width>
     <height>18</height>
     <Group>Group2</Group>
     <SubGroup>0</SubGroup>
-    <Group_x>98</Group_x>
-    <Group_y>70</Group_y>
+    <Group_x>431</Group_x>
+    <Group_y>89</Group_y>
     <CreateCallBack/>
     <Foreground Red="0" Green="0" Blue="0"/>
     <Background Red="255" Green="255" Blue="255"/>
@@ -590,14 +601,14 @@
   </Item6>
   <Item7>
     <Name>Button1</Name>
-    <X>210</X>
-    <Y>179</Y>
+    <X>543</X>
+    <Y>198</Y>
     <width>111</width>
     <height>23</height>
     <Group>Group2</Group>
     <SubGroup>0</SubGroup>
-    <Group_x>98</Group_x>
-    <Group_y>70</Group_y>
+    <Group_x>431</Group_x>
+    <Group_y>89</Group_y>
     <CreateCallBack/>
     <Foreground Red="0" Green="0" Blue="0"/>
     <Background Red="255" Green="255" Blue="255"/>
@@ -635,7 +646,7 @@
     <Checked>0</Checked>
     <NoText>0</NoText>
     <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
-    <EVENT_GADGETACTION_TEXT>&#9;Local Gadget6:TGadget, GadgetArray6$[] =[&quot;Window1&quot;] &#10;&#9;If GadgetList Gadget6:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray6,GadgetList:TList)&#10;&#10;&#9;Try&#10;&#9;&#9;Local Gadget2:TGadget, GadgetArray2$[] =[&quot;TxtPath&quot;] &#10;&#9;&#9;If GadgetList Gadget2:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray2,GadgetList:TList)&#10;&#10;&#9;&#9;Local Gadget3:TGadget, GadgetArray3$[] =[&quot;TxtHost&quot;] &#10;&#9;&#9;If GadgetList Gadget3:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray3,GadgetList:TList)&#10;&#10;&#9;&#9;Local Gadget4:TGadget, GadgetArray4$[] =[&quot;TxtFunction&quot;] &#10;&#9;&#9;If GadgetList Gadget4:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray4,GadgetList:TList)&#10;&#10;&#9;&#9;Local client:TXMLRPC_Client =New TXMLRPC_Client.Create()&#11;&#9;&#9;client.SetTransport(New TXMLRPC_Transport_Http.Create(GadgetText(Gadget3), GadgetText(Gadget2)))&#10;&#10;&#9;&#9;Local Gadget9:TGadget, GadgetArray9$[] =[&quot;TxtParameters&quot;] &#10;&#9;&#9;If GadgetList Gadget9:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray9,GadgetList:TList)&#10;&#10;&#9;&#9;Local parameters:TXMLRPC_Call_Parameters =TXMLRPC_Call_Parameters.Create(xmlrpc_vector_mixed)&#10;&#9;&#9;ParseParameters(GadgetText(Gadget9), parameters)&#10;&#10;&#10;&#9;&#9;SetStatusText(Gadget6, &quot;Executing XML-RPC request... Please wait&quot;)&#10;&#10;&#9;&#9;Local response:TXMLRPC_Response_Data =client.Call(GadgetText(Gadget4), parameters)&#10;&#9;&#9;SetStatusText(Gadget6, &quot;XML-RPC request executed&quot;)&#10;&#10;&#9;&#9;Local pad:Int =0&#10;&#9;&#9;Local str:String =TXMLRPC_Response_Data.DebugData(response.data, pad)&#10;&#10;&#9;&#9;Local Gadget5:TGadget, GadgetArray5$[] =[&quot;TextAreaBlitzMax&quot;] &#10;&#9;&#9;If GadgetList Gadget5:TGadget =GadgetCommander(SetText,GadgetArray5,GadgetList:TList,str )&#10;&#10;&#9;&#9;Local Gadget7:TGadget, GadgetArray7$[] =[&quot;TextAreaResponse&quot;] &#10;&#9;&#9;If GadgetList Gadget7:TGadget =GadgetCommander(SetText,GadgetArray7,GadgetList:TList, client.xmlResponse )&#10;&#10;&#9;&#9;Local Gadget8:TGadget, GadgetArray8$[] =[&quot;TextAreaRequest&quot;] &#10;&#9;&#9;If GadgetList Gadget8:TGadget =GadgetCommander(SetText,GadgetArray8,GadgetList:TList, client.xmlRequest )&#10;&#10;&#9;Catch e:Object&#10;&#9;&#9;Notify(e.ToString(), True)&#10;&#9;&#9;SetStatusText(Gadget6, &quot;Failed to execute XML-RPC request: &quot; + e.ToString())&#10;&#9;End Try</EVENT_GADGETACTION_TEXT>
+    <EVENT_GADGETACTION_TEXT>&#9;Local Gadget6:TGadget, GadgetArray6$[] =[&quot;Window1&quot;] &#10;&#9;If GadgetList Gadget6:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray6,GadgetList:TList)&#10;&#10;&#9;Try&#10;&#9;&#9;Local Gadget2:TGadget, GadgetArray2$[] =[&quot;TxtPath&quot;] &#10;&#9;&#9;If GadgetList Gadget2:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray2,GadgetList:TList)&#10;&#10;&#9;&#9;Local Gadget3:TGadget, GadgetArray3$[] =[&quot;TxtHost&quot;] &#10;&#9;&#9;If GadgetList Gadget3:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray3,GadgetList:TList)&#10;&#10;&#9;&#9;Local Gadget4:TGadget, GadgetArray4$[] =[&quot;TxtFunction&quot;] &#10;&#9;&#9;If GadgetList Gadget4:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray4,GadgetList:TList)&#10;&#10;&#9;&#9;Local client:TXMLRPC_Client =New TXMLRPC_Client.Create()&#11;&#9;&#9;client.SetTransport(New TXMLRPC_Transport_Http.Create(GadgetText(Gadget3), GadgetText(Gadget2)))&#10;&#10;&#9;&#9;Local Gadget9:TGadget, GadgetArray9$[] =[&quot;TxtParameters&quot;] &#10;&#9;&#9;If GadgetList Gadget9:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray9,GadgetList:TList)&#10;&#10;&#9;&#9;Local Gadget10:TGadget, GadgetArray10$[] =[&quot;ComboVectorType&quot;]&#10;&#9;&#9;If GadgetList Gadget10:TGadget =GadgetCommander(GetGadgetHandle, GadgetArray10$, GadgetList:TList)&#10;&#10;&#10;&#9;&#9;Local vectorTypeInt:Int =xmlrpc_vector_none&#10;&#9;&#9;Select GadgetItemText(Gadget10, SelectedGadgetItem(Gadget10))&#10;&#9;&#9;&#9;Case &quot;xmlrpc_vector_none&quot;&#10;&#9;&#9;&#9;&#9;vectorTypeInt =xmlrpc_vector_none&#10;&#9;&#9;&#9;Case &quot;xmlrpc_vector_array&quot;&#10;&#9;&#9;&#9;&#9;vectorTypeInt =xmlrpc_vector_array&#10;&#9;&#9;&#9;Case &quot;xmlrpc_vector_mixed&quot;&#10;&#9;&#9;&#9;&#9;vectorTypeInt =xmlrpc_vector_mixed&#10;&#9;&#9;&#9;Case &quot;xmlrpc_vector_struct&quot;&#10;&#9;&#9;&#9;&#9;vectorTypeInt =xmlrpc_vector_struct&#10;&#9;&#9;End Select&#10;&#9;&#9;&#10;&#9;&#9;Local parameters:TXMLRPC_Call_Parameters =TXMLRPC_Call_Parameters.Create(vectorTypeInt)&#10;&#9;&#9;ParseParameters(GadgetText(Gadget9), parameters)&#10;&#10;&#10;&#9;&#9;SetStatusText(Gadget6, &quot;Executing XML-RPC request... Please wait&quot;)&#10;&#10;&#9;&#9;Local response:TXMLRPC_Response_Data =client.Call(GadgetText(Gadget4), parameters)&#10;&#9;&#9;SetStatusText(Gadget6, &quot;XML-RPC request executed&quot;)&#10;&#10;&#9;&#9;Local pad:Int =0&#10;&#9;&#9;Local str:String =TXMLRPC_Response_Data.DebugData(response.data, pad)&#10;&#10;&#9;&#9;Local Gadget5:TGadget, GadgetArray5$[] =[&quot;TextAreaBlitzMax&quot;] &#10;&#9;&#9;If GadgetList Gadget5:TGadget =GadgetCommander(SetText,GadgetArray5,GadgetList:TList,str )&#10;&#10;&#9;&#9;Local Gadget7:TGadget, GadgetArray7$[] =[&quot;TextAreaResponse&quot;] &#10;&#9;&#9;If GadgetList Gadget7:TGadget =GadgetCommander(SetText,GadgetArray7,GadgetList:TList, client.xmlResponse )&#10;&#10;&#9;&#9;Local Gadget8:TGadget, GadgetArray8$[] =[&quot;TextAreaRequest&quot;] &#10;&#9;&#9;If GadgetList Gadget8:TGadget =GadgetCommander(SetText,GadgetArray8,GadgetList:TList, client.xmlRequest )&#10;&#10;&#9;Catch e:Object&#10;&#9;&#9;Notify(e.ToString(), True)&#10;&#9;&#9;SetStatusText(Gadget6, &quot;Failed to execute XML-RPC request: &quot; + e.ToString())&#10;&#9;End Try</EVENT_GADGETACTION_TEXT>
     <Use_PixMap>0</Use_PixMap>
     <IncBin_Pixmap>0</IncBin_Pixmap>
     <PixMap_Path/>
@@ -643,14 +654,14 @@
   </Item7>
   <Item8>
     <Name>Label1_c2_c3</Name>
-    <X>111</X>
-    <Y>161</Y>
+    <X>444</X>
+    <Y>180</Y>
     <width>47</width>
     <height>14</height>
     <Group>Group2</Group>
     <SubGroup>0</SubGroup>
-    <Group_x>98</Group_x>
-    <Group_y>70</Group_y>
+    <Group_x>431</Group_x>
+    <Group_y>89</Group_y>
     <CreateCallBack/>
     <Foreground Red="0" Green="0" Blue="0"/>
     <Background Red="255" Green="255" Blue="255"/>
@@ -688,14 +699,14 @@
   </Item8>
   <Item9>
     <Name>Label1_c2</Name>
-    <X>111</X>
-    <Y>127</Y>
+    <X>444</X>
+    <Y>146</Y>
     <width>24</width>
     <height>14</height>
     <Group>Group2</Group>
     <SubGroup>0</SubGroup>
-    <Group_x>98</Group_x>
-    <Group_y>70</Group_y>
+    <Group_x>431</Group_x>
+    <Group_y>89</Group_y>
     <CreateCallBack/>
     <Foreground Red="0" Green="0" Blue="0"/>
     <Background Red="255" Green="255" Blue="255"/>
@@ -733,14 +744,14 @@
   </Item9>
   <Item10>
     <Name>Label1</Name>
-    <X>111</X>
-    <Y>93</Y>
+    <X>444</X>
+    <Y>112</Y>
     <width>28</width>
     <height>14</height>
     <Group>Group2</Group>
     <SubGroup>0</SubGroup>
-    <Group_x>98</Group_x>
-    <Group_y>70</Group_y>
+    <Group_x>431</Group_x>
+    <Group_y>89</Group_y>
     <CreateCallBack/>
     <Foreground Red="0" Green="0" Blue="0"/>
     <Background Red="255" Green="255" Blue="255"/>
@@ -778,14 +789,14 @@
   </Item10>
   <Item11>
     <Name>TxtParameters</Name>
-    <X>340</X>
-    <Y>70</Y>
+    <X>673</X>
+    <Y>135</Y>
     <width>185</width>
-    <height>140</height>
+    <height>94</height>
     <Group>Group3</Group>
     <SubGroup>0</SubGroup>
-    <Group_x>340</Group_x>
-    <Group_y>70</Group_y>
+    <Group_x>673</Group_x>
+    <Group_y>89</Group_y>
     <CreateCallBack/>
     <Foreground Red="0" Green="0" Blue="0"/>
     <Background Red="255" Green="255" Blue="255"/>
@@ -839,15 +850,99 @@
     <MenuName/>
   </Item11>
   <Item12>
+    <Name>ComboVectorType</Name>
+    <X>673</X>
+    <Y>108</Y>
+    <width>185</width>
+    <height>18</height>
+    <Group>Group3</Group>
+    <SubGroup>0</SubGroup>
+    <Group_x>673</Group_x>
+    <Group_y>89</Group_y>
+    <CreateCallBack/>
+    <Foreground Red="0" Green="0" Blue="0"/>
+    <Background Red="255" Green="255" Blue="255"/>
+    <Color_Changed>0</Color_Changed>
+    <BColor_Changed>0</BColor_Changed>
+    <Layout Left="0" Right="0" Top="0" Bottom="0"/>
+    <Comment/>
+    <is_disabled>0</is_disabled>
+    <is_hidden>0</is_hidden>
+    <Position_is_locked>0</Position_is_locked>
+    <Size_is_locked>0</Size_is_locked>
+    <Marked>0</Marked>
+    <Design_Range>10</Design_Range>
+    <Virtual_Group>0</Virtual_Group>
+    <Vx>0</Vx>
+    <Vy>0</Vy>
+    <Vw>0</Vw>
+    <Vh>0</Vh>
+    <TypToCreate>6</TypToCreate>
+    <StyleToCreate>0</StyleToCreate>
+    <Font_Name>Arial</Font_Name>
+    <Font_Size>0</Font_Size>
+    <Font_Style>0</Font_Style>
+    <Use_Font>0</Use_Font>
+    <Modifier/>
+    <HotKey/>
+    <Layer>0</Layer>
+    <Lang_Text en=""/>
+    <VariableType>0</VariableType>
+    <Tooltip en="????"/>
+    <Use_Tooltip>0</Use_Tooltip>
+    <Alpha>0.000000000</Alpha>
+    <Use_Alpha>0</Use_Alpha>
+    <Sensitivity>0</Sensitivity>
+    <Text/>
+    <Use_Items>1</Use_Items>
+    <Use_Icons>0</Use_Icons>
+    <IncBin_IconStrip>0</IncBin_IconStrip>
+    <Use_Tip>0</Use_Tip>
+    <Use_Extra>0</Use_Extra>
+    <IconStripPath/>
+    <Context/>
+    <GadgetItems>
+      <I1 Icon="-1" Flags="1" Extra="">
+        <Text en="xmlrpc_vector_none"/>
+        <Tip en="????"/>
+      </I1>
+      <I2 Icon="-1" Flags="0" Extra="">
+        <Text en="xmlrpc_vector_array"/>
+        <Tip en="????"/>
+      </I2>
+      <I3 Icon="-1" Flags="1" Extra="">
+        <Text en="xmlrpc_vector_mixed"/>
+        <Tip en="????"/>
+      </I3>
+      <I4 Icon="-1" Flags="0" Extra="">
+        <Text en="xmlrpc_vector_struct"/>
+        <Tip en="????"/>
+      </I4>
+    </GadgetItems>
+    <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
+    <EVENT_GADGETACTION_TEXT/>
+    <EVENT_GADGETSELECT>1</EVENT_GADGETSELECT>
+    <EVENT_GADGETSELECT_TEXT/>
+    <EVENT_GADGETMENU>0</EVENT_GADGETMENU>
+    <EVENT_GADGETMENU_TEXT/>
+    <EVENT_GADGETOPEN>0</EVENT_GADGETOPEN>
+    <EVENT_GADGETOPEN_TEXT/>
+    <EVENT_GADGETCLOSE>0</EVENT_GADGETCLOSE>
+    <EVENT_GADGETCLOSE_TEXT/>
+    <Use_Menu>0</Use_Menu>
+    <MenuName/>
+    <Use_VistaTheme>0</Use_VistaTheme>
+  </Item12>
+  <Item13>
     <Name>Tabber1</Name>
-    <X>94</X>
-    <Y>223</Y>
+    <X>427</X>
+    <Y>242</Y>
     <width>435</width>
     <height>321</height>
     <Group>Window1</Group>
     <SubGroup>0</SubGroup>
-    <Group_x>90</Group_x>
-    <Group_y>48</Group_y>
+    <Group_x>423</Group_x>
+    <Group_y>67</Group_y>
     <CreateCallBack/>
     <Foreground Red="0" Green="0" Blue="0"/>
     <Background Red="255" Green="255" Blue="255"/>
@@ -1190,17 +1285,17 @@
         <MenuName/>
       </Item4>
     </TabberItems>
-  </Item12>
-  <Item13>
+  </Item13>
+  <Item14>
     <Name>Group6</Name>
-    <X>101</X>
-    <Y>246</Y>
+    <X>434</X>
+    <Y>265</Y>
     <width>419</width>
     <height>292</height>
     <Group>Tabber1_Tab2</Group>
     <SubGroup>2</SubGroup>
-    <Group_x>96</Group_x>
-    <Group_y>243</Group_y>
+    <Group_x>429</Group_x>
+    <Group_y>262</Group_y>
     <CreateCallBack/>
     <Foreground Red="0" Green="0" Blue="0"/>
     <Background Red="255" Green="255" Blue="255"/>
@@ -1271,17 +1366,17 @@
     <Use_Toolbar_Extra>0</Use_Toolbar_Extra>
     <ToolbarType>0</ToolbarType>
     <ToolbarItems/>
-  </Item13>
-  <Item14>
+  </Item14>
+  <Item15>
     <Name>TextAreaBlitzMax</Name>
-    <X>105</X>
-    <Y>261</Y>
+    <X>438</X>
+    <Y>280</Y>
     <width>411</width>
     <height>271</height>
     <Group>Group6</Group>
     <SubGroup>2</SubGroup>
-    <Group_x>105</Group_x>
-    <Group_y>261</Group_y>
+    <Group_x>438</Group_x>
+    <Group_y>280</Group_y>
     <CreateCallBack/>
     <Foreground Red="0" Green="0" Blue="0"/>
     <Background Red="255" Green="255" Blue="255"/>
@@ -1333,6 +1428,6 @@
     <FilePath/>
     <Use_Menu>0</Use_Menu>
     <MenuName/>
-  </Item14>
+  </Item15>
   <Menu IncBin_Media="0"/>
 </root>

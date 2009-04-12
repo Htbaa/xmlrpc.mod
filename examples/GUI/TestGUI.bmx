@@ -1,4 +1,4 @@
-'Source Code created on 12 Apr 2009 09:48:16 with Logic Gui Version 4.1 Build 366
+'Source Code created on 12 Apr 2009 20:12:28 with Logic Gui Version 4.2 Build 384
 'Christiaan Kras
 'Start of external Header File
 SuperStrict
@@ -25,7 +25,7 @@ Const	Redraw:Int=10
 Const	RemoveFromList:Int=11
 Const	GetGadgetHandle:Int=12
 
-Local Window1:TGadget = CreateWindow:TGadget("XML-RPC GUI - ",444,154,448,499,Null,WINDOW_TITLEBAR|WINDOW_STATUS |WINDOW_CLIENTCOORDS )
+Local Window1:TGadget = CreateWindow:TGadget("XML-RPC GUI - ",412,59,448,499,Null,WINDOW_TITLEBAR|WINDOW_STATUS |WINDOW_CLIENTCOORDS )
 	GadgetList.AddLast( Window1:TGadget ) ; Window1.Context="Window1"
 	Local Group2:TGadget = CreatePanel:TGadget(4,7,237,160,Window1:TGadget,PANEL_GROUP|PANEL_ACTIVE,"XML-RPC Service")
 		GadgetList.AddLast( Group2:TGadget ) ; Group2.Context="Group2"
@@ -55,12 +55,18 @@ Local Window1:TGadget = CreateWindow:TGadget("XML-RPC GUI - ",444,154,448,499,Nu
 			SetGadgetLayout( Label1:TGadget,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE )
 	Local Group3:TGadget = CreatePanel:TGadget(246,7,193,161,Window1:TGadget,PANEL_GROUP,"Parameters")
 		GadgetList.AddLast( Group3:TGadget ) ; Group3.Context="Group3"
-		Local TxtParameters:TGadget = CreateTextArea:TGadget(0,0,185,140,Group3:TGadget,Null)
+		Local TxtParameters:TGadget = CreateTextArea:TGadget(0,46,185,94,Group3:TGadget,Null)
 			GadgetList.AddLast( TxtParameters:TGadget ) ; TxtParameters.Context="TxtParameters"
 			SetGadgetLayout( TxtParameters:TGadget,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED )
 			Local Font_TxtParameters:TGuiFont = LoadGuiFont:TGuiFont( "Courier New" , 8 , False , False , False )
 			SetGadgetFont( TxtParameters:TGadget, Font_TxtParameters:TGuiFont )
 			SetTextAreaText( TxtParameters:TGadget , "int::10~nstring::some test String~ndouble::1.02~nbase64:myId:some test string..." )
+		Local ComboVectorType:TGadget = CreateComboBox:TGadget(0,19,185,18,Group3:TGadget,Null)
+			GadgetList.AddLast( ComboVectorType:TGadget ) ; ComboVectorType.Context="ComboVectorType"
+			AddGadgetItem( ComboVectorType:TGadget,"xmlrpc_vector_none",GADGETITEM_DEFAULT )
+			AddGadgetItem( ComboVectorType:TGadget,"xmlrpc_vector_array",GADGETITEM_NORMAL )
+			AddGadgetItem( ComboVectorType:TGadget,"xmlrpc_vector_mixed",GADGETITEM_DEFAULT )
+			AddGadgetItem( ComboVectorType:TGadget,"xmlrpc_vector_struct",GADGETITEM_NORMAL )
 	Local Tabber1:TGadget = CreateTabber:TGadget(4,175,435,321,Window1:TGadget,Null)
 		GadgetList.AddLast( Tabber1:TGadget ) ; Tabber1.Context="Tabber1"
 		AddGadgetItem( Tabber1:TGadget,"XML",GADGETITEM_DEFAULT )
@@ -120,6 +126,7 @@ Repeat
 				Case TxtParameters	TxtParameters_GA( TxtParameters:TGadget , GadgetList:TList )
 				Case Tabber1	Tabber1_GA( Tabber1:TGadget , EventData() , GadgetList:TList )
 				Case TextAreaBlitzMax	TextAreaBlitzMax_GA( TextAreaBlitzMax:TGadget , GadgetList:TList )
+				Case ComboVectorType	ComboVectorType_GA( ComboVectorType:TGadget , EventData() , GadgetList:TList )
 				Case TextAreaResponse	TextAreaResponse_GA( TextAreaResponse:TGadget , GadgetList:TList )
 				Case TextAreaRequest	TextAreaRequest_GA( TextAreaRequest:TGadget , GadgetList:TList )
 			End Select
@@ -184,7 +191,23 @@ Function Button1_GA( Button:TGadget , GadgetList:TList=Null )
 		Local Gadget9:TGadget, GadgetArray9$[] =["TxtParameters"] 
 		If GadgetList Gadget9:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray9,GadgetList:TList)
 
-		Local parameters:TXMLRPC_Call_Parameters =TXMLRPC_Call_Parameters.Create(xmlrpc_vector_mixed)
+		Local Gadget10:TGadget, GadgetArray10$[] = ["ComboVectorType"]
+		If GadgetList Gadget10:TGadget =GadgetCommander(GetGadgetHandle, GadgetArray10$, GadgetList:TList)
+
+
+		Local vectorTypeInt:Int = xmlrpc_vector_none
+		Select GadgetItemText(Gadget10, SelectedGadgetItem(Gadget10))
+			Case "xmlrpc_vector_none"
+				vectorTypeInt = xmlrpc_vector_none
+			Case "xmlrpc_vector_array"
+				vectorTypeInt = xmlrpc_vector_array
+			Case "xmlrpc_vector_mixed"
+				vectorTypeInt = xmlrpc_vector_mixed
+			Case "xmlrpc_vector_struct"
+				vectorTypeInt = xmlrpc_vector_struct
+		End Select
+		
+		Local parameters:TXMLRPC_Call_Parameters =TXMLRPC_Call_Parameters.Create(vectorTypeInt)
 		ParseParameters(GadgetText(Gadget9), parameters)
 
 
@@ -227,6 +250,12 @@ End Function
 
 Function TextAreaBlitzMax_GA( TextArea:TGadget , GadgetList:TList=Null )
 	DebugLog "TextArea TextAreaBlitzMax was modified"
+	
+End Function
+
+Function ComboVectorType_GA( Combo:TGadget , Number:Int , GadgetList:TList=Null )
+	DebugLog "ComboBox ComboVectorType selected Nr. " + Number
+	DebugLog "Selected Text = "+ GadgetItemText( Combo:TGadget , Number:Int )
 	
 End Function
 
