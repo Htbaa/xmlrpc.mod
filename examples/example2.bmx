@@ -14,5 +14,5 @@ Local issuerCountry:TXMLRPC_Value_String = TXMLRPC_Value_String(response.data.Va
 Local ean:TXMLRPC_Value_String = TXMLRPC_Value_String(response.data.ValueForKey("ean"))
 
 Print description.name + ": " + description.ToString()
-Print description.name + ": " + issuerCountry.ToString()
-Print description.name + ": " + ean.ToString()
+Print issuerCountry.name + ": " + issuerCountry.ToString()
+Print ean.name + ": " + ean.ToString()
