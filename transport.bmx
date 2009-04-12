@@ -12,13 +12,9 @@ Rem
 	bbdoc: A Dummy transport type. Do not use, deprecated
 End Rem
 Type TXMLRPC_Transport_Dummy Extends TXMLRPC_Transport_Interface
-	Rem
-		bbdoc:
-	End Rem
 	Method DoRequest:String(message:String)
 		Return message
 	End Method
-
 End Type
 
 Rem
@@ -29,14 +25,15 @@ End Type
 
 Rem
 	bbdoc: Simple HTTP transport
-	about: Needs HTTP error handling, as well as a time out
+	about: Needs HTTP error handling, as well as a set time out. Implementation is very simple at the moment. Only a simple HTTP request is possible. Authenticated pages or HTTPS isn't supported. For HTTPS, write your own.
 End Rem
 Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 	Field host:String
 	Field path:String
 	Field port:Int
 	Rem
-		bbdoc: Set useragent for HTTP request. Defaults to htbaa.mod/xmlrpc.mod
+		bbdoc: Set useragent for HTTP request.
+		about: This string will be used to identify the client with the XML-RPC server
 	End rem
 	Field userAgent:String = "htbaa.mod/xmlrpc.mod"
 	
@@ -54,7 +51,6 @@ Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 		bbdoc: Send request over HTTP
 	End Rem
 	Method DoRequest:String(message:String)
-'		Local xmlMessage:String = convertUTF8toISO8859(message)
 		Local socket:TSocket = CreateTCPSocket()
 
 		ConnectSocket(socket, HostIp(Self.host), Self.port)
@@ -82,8 +78,6 @@ Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 			Local line:String = ReadLine(stream)
 			buffer:+line + "~n"
 		Wend
-
-'		DebugLog buffer
 
 		CloseSocket(socket)
 		Return buffer

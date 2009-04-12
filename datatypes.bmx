@@ -9,6 +9,10 @@ Rem
 End Rem
 Type TXMLRPC_Value_Abstract Abstract
 	Field _type:Int
+
+	Rem
+		bbdoc: The name or id this value has been identified with in the response. read-only
+	End Rem
 	Field name:String
 	
 	Rem
@@ -60,14 +64,14 @@ Type TXMLRPC_Value_Abstract Abstract
 					Case xmlrpc_vector_struct
 						data = New TXMLRPC_Value_Struct
 					Case xmlrpc_vector_mixed
-						Throw New TXMLRPC_Value_Exception.Create("Not sure yet how to handle a xmlrpc_vector_mixed")
+						Throw New TXMLRPC_Value_Exception.Create("Not sure yet how to handle a xmlrpc_vector_mixed value")
 				End Select
 				
 				If TXMLRPC_Value_Collection(data)
 					TXMLRPC_Value_Collection(data).SetData(val)
 				End If
 			Default
-				Throw New TXMLRPC_Value_Exception.Create("I don't know a datatype with number " + dataType)
+				Throw New TXMLRPC_Value_Exception.Create("I don't know a XMLRPC_VALUE with number " + dataType)
 		End Select
 		
 		If data
@@ -84,6 +88,7 @@ Type TXMLRPC_Value_Abstract Abstract
 	
 	Rem
 		bbdoc: Convert data type to string
+		about: Uses reflection to see if a Field called value is available. If so, it tries to convert it to a string and returns it
 	End Rem
 	Method ToString:String()
 		Local r:TTypeId = TTypeId.ForObject(Self)

@@ -14,46 +14,7 @@ An XML-RPC module, using XMLRPC-EPI. Please check out the examples in the exampl
 Parameters to be passed to the XML-RPC server when using TXMLRPC_Client.Call()
 </td></tr>
 <tr><td class=docleft width=1%><a href=#TXMLRPC_Client>TXMLRPC_Client</a></td><td class=docright>
-XML-RPC Clien.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#TXMLRPC_Data_Type_Abstract>TXMLRPC_Data_Type_Abstract</a></td><td class=docright>
-Base type for all XML-RPC data types.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#TXMLRPC_Data_Type_Array>TXMLRPC_Data_Type_Array</a></td><td class=docright>
-Represents an array.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#TXMLRPC_Data_Type_Base64>TXMLRPC_Data_Type_Base64</a></td><td class=docright>
-Represents a Base64 encoded string.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#TXMLRPC_Data_Type_Boolean>TXMLRPC_Data_Type_Boolean</a></td><td class=docright>
-Represents a boolean value.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#TXMLRPC_Data_Type_Collection>TXMLRPC_Data_Type_Collection</a></td><td class=docright>
-Represents a collection. This is a base type.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#TXMLRPC_Data_Type_Datetime>TXMLRPC_Data_Type_Datetime</a></td><td class=docright>
-Represents a datetime string.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#TXMLRPC_Data_Type_Double>TXMLRPC_Data_Type_Double</a></td><td class=docright>
-Represents a double value.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#TXMLRPC_Data_Type_Empty>TXMLRPC_Data_Type_Empty</a></td><td class=docright>
-Represents an empty value.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#TXMLRPC_Data_Type_Exception>TXMLRPC_Data_Type_Exception</a></td><td class=docright>
-XML-RPC Data Type exception.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#TXMLRPC_Data_Type_Int>TXMLRPC_Data_Type_Int</a></td><td class=docright>
-Represents a integer value.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#TXMLRPC_Data_Type_None>TXMLRPC_Data_Type_None</a></td><td class=docright>
-Represents none value.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#TXMLRPC_Data_Type_String>TXMLRPC_Data_Type_String</a></td><td class=docright>
-Represents a string value.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#TXMLRPC_Data_Type_Struct>TXMLRPC_Data_Type_Struct</a></td><td class=docright>
-Represents an associative array.
+XML-RPC Client.
 </td></tr>
 <tr><td class=docleft width=1%><a href=#TXMLRPC_Exception>TXMLRPC_Exception</a></td><td class=docright>
 General XML-RPC Exception.
@@ -78,6 +39,45 @@ Exception for TXMLRPC_Transport_Http.
 </td></tr>
 <tr><td class=docleft width=1%><a href=#TXMLRPC_Transport_Interface>TXMLRPC_Transport_Interface</a></td><td class=docright>
 Transport interface. Use this as a blueprint for any other transport layers.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Value_Abstract>TXMLRPC_Value_Abstract</a></td><td class=docright>
+Base type for all XML-RPC data types.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Value_Array>TXMLRPC_Value_Array</a></td><td class=docright>
+Represents an array.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Value_Base64>TXMLRPC_Value_Base64</a></td><td class=docright>
+Represents a Base64 encoded string.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Value_Boolean>TXMLRPC_Value_Boolean</a></td><td class=docright>
+Represents a boolean value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Value_Collection>TXMLRPC_Value_Collection</a></td><td class=docright>
+Represents a collection. This is a base type.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Value_Datetime>TXMLRPC_Value_Datetime</a></td><td class=docright>
+Represents a datetime string.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Value_Double>TXMLRPC_Value_Double</a></td><td class=docright>
+Represents a double value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Value_Empty>TXMLRPC_Value_Empty</a></td><td class=docright>
+Represents an empty value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Value_Exception>TXMLRPC_Value_Exception</a></td><td class=docright>
+XML-RPC Data Type exception.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Value_Int>TXMLRPC_Value_Int</a></td><td class=docright>
+Represents a integer value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Value_None>TXMLRPC_Value_None</a></td><td class=docright>
+Represents none value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Value_String>TXMLRPC_Value_String</a></td><td class=docright>
+Represents a string value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Value_Struct>TXMLRPC_Value_Struct</a></td><td class=docright>
+Represents an associative array.
 </td></tr>
 </table>
 <h2
@@ -112,7 +112,7 @@ Append string value.
 </table>
 <table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Call_Parameters_functions></a>Functions Summary</th></tr>
 <tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
-Create a TXMLRPC_Call_Parameters object. vectorType can be: xmlrpc_vector_none, xmlrpc_vector_array, xmlrpc_vector_mixed or xmlrpc_vector_struct.
+Create a TXMLRPC_Call_Parameters object.
 </td></tr>
 </table>
 <table class=doc width=100% cellspacing=3 id=AppendBase64>
@@ -145,12 +145,13 @@ Create a TXMLRPC_Call_Parameters object. vectorType can be: xmlrpc_vector_none, 
 </table>
 <table class=doc width=100% cellspacing=3 id=Create>
 <tr><td class=doctop colspan=2>Function Create:TXMLRPC_Call_Parameters(vectorType:Int = xmlrpc_vector_mixed)</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Create a TXMLRPC_Call_Parameters object. vectorType can be: xmlrpc_vector_none, xmlrpc_vector_array, xmlrpc_vector_mixed or xmlrpc_vector_struct.</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Create a TXMLRPC_Call_Parameters object.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>vectorType can be: xmlrpc_vector_none, xmlrpc_vector_array, xmlrpc_vector_mixed or xmlrpc_vector_struct.</td></tr>
 </table>
 <br>
 <table class=doc width=100% cellspacing=3 id=TXMLRPC_Client>
 <tr><td class=doctop colspan=2>Type TXMLRPC_Client</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>XML-RPC Clien.</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>XML-RPC Client.</td></tr>
 </table>
 <table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Client_fields></a>Fields Summary</th></tr><tr><td colspan=2>
 <a href=#outputVersion>outputVersion</a>
@@ -162,7 +163,7 @@ Create a TXMLRPC_Call_Parameters object. vectorType can be: xmlrpc_vector_none, 
 </table>
 <table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Client_methods></a>Methods Summary</th></tr>
 <tr><td class=docleft width=1%><a href=#Call>Call</a></td><td class=docright>
-Send a request to the XML-RPC. command will hold the function name you want to call. Additional parameters can be passed by passing an TXMLRPC_Call_Parameters object. This method will return a TXMLRPC_Response_Data object containing the returned values from the XML-RPC Server.
+Send a request to the XML-RPC server.
 </td></tr>
 <tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
 Create a TXMLRPC_Client object.
@@ -173,7 +174,8 @@ Set a transport interface.
 </table>
 <table class=doc width=100% cellspacing=3 id=outputVersion>
 <tr><td class=doctop colspan=2>Field outputVersion:Int = xmlrpc_version_1_0</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Change this to alter the output format. Accepted values are: xmlrpc_version_none, xmlrpc_version_1_0, xmlrpc_version_simple, xmlrpc_version_danda and xmlrpc_version_soap_1_1. Defaults to xmlrpc_version_1_0.</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Change this to alter the output format.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Accepted values are: xmlrpc_version_none, xmlrpc_version_1_0, xmlrpc_version_simple, xmlrpc_version_danda and xmlrpc_version_soap_1_1.</td></tr>
 </table>
 <table class=doc width=100% cellspacing=3 id=xmlRequest>
 <tr><td class=doctop colspan=2>Field xmlRequest:String</td></tr>
@@ -185,7 +187,8 @@ Set a transport interface.
 </table>
 <table class=doc width=100% cellspacing=3 id=Call>
 <tr><td class=doctop colspan=2>Method Call:TXMLRPC_Response_Data(command:String, data:TXMLRPC_Call_Parameters = Null)</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Send a request to the XML-RPC. command will hold the function name you want to call. Additional parameters can be passed by passing an TXMLRPC_Call_Parameters object. This method will return a TXMLRPC_Response_Data object containing the returned values from the XML-RPC Server.</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Send a request to the XML-RPC server.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>command will hold the function name you want to call. Additional parameters can be passed by passing an TXMLRPC_Call_Parameters object. This method will return a TXMLRPC_Response_Data object containing the returned values from the XML-RPC Server.</td></tr>
 </table>
 <table class=doc width=100% cellspacing=3 id=Create>
 <tr><td class=doctop colspan=2>Method Create:TXMLRPC_Client(outputVersion:Int = xmlrpc_version_1_0)</td></tr>
@@ -194,117 +197,6 @@ Set a transport interface.
 <table class=doc width=100% cellspacing=3 id=SetTransport>
 <tr><td class=doctop colspan=2>Method SetTransport(transport:TXMLRPC_Transport_Interface)</td></tr>
 <tr><td class=docleft width=1%>Description</td><td class=docright>Set a transport interface.</td></tr>
-</table>
-<br>
-<table class=doc width=100% cellspacing=3 id=TXMLRPC_Data_Type_Abstract>
-<tr><td class=doctop colspan=2>Type TXMLRPC_Data_Type_Abstract Abstract</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Base type for all XML-RPC data types.</td></tr>
-</table>
-<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Data_Type_Abstract_methods></a>Methods Summary</th></tr>
-<tr><td class=docleft width=1%><a href=#GetByte>GetByte</a></td><td class=docright>
-Return byte value.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#GetDouble>GetDouble</a></td><td class=docright>
-Return double value.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#GetInt>GetInt</a></td><td class=docright>
-Return integer value.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#GetString>GetString</a></td><td class=docright>
-Return string value.
-</td></tr>
-<tr><td class=docleft width=1%><a href=#ToString>ToString</a></td><td class=docright>
-Convert data type to string.
-</td></tr>
-</table>
-<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Data_Type_Abstract_functions></a>Functions Summary</th></tr>
-<tr><td class=docleft width=1%><a href=#XMLRPC_To_BlizMax>XMLRPC_To_BlizMax</a></td><td class=docright>
-Convert a XMLRPC_VALUE from XMLRPC-EPI to a BlitzMax type.
-</td></tr>
-</table>
-<table class=doc width=100% cellspacing=3 id=GetByte>
-<tr><td class=doctop colspan=2>Method GetByte:Byte()</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Return byte value.</td></tr>
-</table>
-<table class=doc width=100% cellspacing=3 id=GetDouble>
-<tr><td class=doctop colspan=2>Method GetDouble:Double()</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Return double value.</td></tr>
-</table>
-<table class=doc width=100% cellspacing=3 id=GetInt>
-<tr><td class=doctop colspan=2>Method GetInt:Int()</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Return integer value.</td></tr>
-</table>
-<table class=doc width=100% cellspacing=3 id=GetString>
-<tr><td class=doctop colspan=2>Method GetString:String()</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Return string value.</td></tr>
-</table>
-<table class=doc width=100% cellspacing=3 id=ToString>
-<tr><td class=doctop colspan=2>Method ToString:String()</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Convert data type to string.</td></tr>
-</table>
-<table class=doc width=100% cellspacing=3 id=XMLRPC_To_BlizMax>
-<tr><td class=doctop colspan=2>Function XMLRPC_To_BlizMax:TXMLRPC_Data_Type_Abstract(val:Byte Ptr) Final</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Convert a XMLRPC_VALUE from XMLRPC-EPI to a BlitzMax type.</td></tr>
-</table>
-<br>
-<table class=doc width=100% cellspacing=3 id=TXMLRPC_Data_Type_Array>
-<tr><td class=doctop colspan=2>Type TXMLRPC_Data_Type_Array Extends TXMLRPC_Data_Type_Collection</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Represents an array.</td></tr>
-</table>
-<br>
-<table class=doc width=100% cellspacing=3 id=TXMLRPC_Data_Type_Base64>
-<tr><td class=doctop colspan=2>Type TXMLRPC_Data_Type_Base64 Extends TXMLRPC_Data_Type_Abstract</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Represents a Base64 encoded string.</td></tr>
-</table>
-<br>
-<table class=doc width=100% cellspacing=3 id=TXMLRPC_Data_Type_Boolean>
-<tr><td class=doctop colspan=2>Type TXMLRPC_Data_Type_Boolean Extends TXMLRPC_Data_Type_Abstract</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Represents a boolean value.</td></tr>
-</table>
-<br>
-<table class=doc width=100% cellspacing=3 id=TXMLRPC_Data_Type_Collection>
-<tr><td class=doctop colspan=2>Type TXMLRPC_Data_Type_Collection Extends TXMLRPC_Data_Type_Abstract Abstract</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Represents a collection. This is a base type.</td></tr>
-</table>
-<br>
-<table class=doc width=100% cellspacing=3 id=TXMLRPC_Data_Type_Datetime>
-<tr><td class=doctop colspan=2>Type TXMLRPC_Data_Type_Datetime Extends TXMLRPC_Data_Type_Abstract</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Represents a datetime string.</td></tr>
-</table>
-<br>
-<table class=doc width=100% cellspacing=3 id=TXMLRPC_Data_Type_Double>
-<tr><td class=doctop colspan=2>Type TXMLRPC_Data_Type_Double Extends TXMLRPC_Data_Type_Abstract</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Represents a double value.</td></tr>
-</table>
-<br>
-<table class=doc width=100% cellspacing=3 id=TXMLRPC_Data_Type_Empty>
-<tr><td class=doctop colspan=2>Type TXMLRPC_Data_Type_Empty Extends TXMLRPC_Data_Type_Abstract</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Represents an empty value.</td></tr>
-</table>
-<br>
-<table class=doc width=100% cellspacing=3 id=TXMLRPC_Data_Type_Exception>
-<tr><td class=doctop colspan=2>Type TXMLRPC_Data_Type_Exception Extends TXMLRPC_Exception</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>XML-RPC Data Type exception.</td></tr>
-</table>
-<br>
-<table class=doc width=100% cellspacing=3 id=TXMLRPC_Data_Type_Int>
-<tr><td class=doctop colspan=2>Type TXMLRPC_Data_Type_Int Extends TXMLRPC_Data_Type_Abstract</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Represents a integer value.</td></tr>
-</table>
-<br>
-<table class=doc width=100% cellspacing=3 id=TXMLRPC_Data_Type_None>
-<tr><td class=doctop colspan=2>Type TXMLRPC_Data_Type_None Extends TXMLRPC_Data_Type_Abstract</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Represents none value.</td></tr>
-</table>
-<br>
-<table class=doc width=100% cellspacing=3 id=TXMLRPC_Data_Type_String>
-<tr><td class=doctop colspan=2>Type TXMLRPC_Data_Type_String Extends TXMLRPC_Data_Type_Abstract</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Represents a string value.</td></tr>
-</table>
-<br>
-<table class=doc width=100% cellspacing=3 id=TXMLRPC_Data_Type_Struct>
-<tr><td class=doctop colspan=2>Type TXMLRPC_Data_Type_Struct Extends TXMLRPC_Data_Type_Collection</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Represents an associative array.</td></tr>
 </table>
 <br>
 <table class=doc width=100% cellspacing=3 id=TXMLRPC_Exception>
@@ -374,25 +266,18 @@ Iterate over an XMLRPC vector and add it to a TMap. Private function.
 <table class=doc width=100% cellspacing=3 id=TXMLRPC_Server>
 <tr><td class=doctop colspan=2>Type TXMLRPC_Server</td></tr>
 <tr><td class=docleft width=1%>Description</td><td class=docright>XML-RPC Server.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>This type will allow you to create an XML-RPC server. Currently not yet implemented.</td></tr>
 </table>
 <br>
 <table class=doc width=100% cellspacing=3 id=TXMLRPC_Transport_Dummy>
 <tr><td class=doctop colspan=2>Type TXMLRPC_Transport_Dummy Extends TXMLRPC_Transport_Interface</td></tr>
 <tr><td class=docleft width=1%>Description</td><td class=docright>A Dummy transport type. Do not use, deprecated.</td></tr>
 </table>
-<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Transport_Dummy_methods></a>Methods Summary</th></tr>
-<tr><td class=docleft width=1%><a href=#DoRequest>DoRequest</a></td><td class=docright>
-&nbsp;
-</td></tr>
-</table>
-<table class=doc width=100% cellspacing=3 id=DoRequest>
-<tr><td class=doctop colspan=2>Method DoRequest:String(message:String)</td></tr>
-</table>
 <br>
 <table class=doc width=100% cellspacing=3 id=TXMLRPC_Transport_Http>
 <tr><td class=doctop colspan=2>Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface</td></tr>
 <tr><td class=docleft width=1%>Description</td><td class=docright>Simple HTTP transport.</td></tr>
-<tr><td class=docleft width=1%>Information</td><td class=docright>Needs HTTP error handling, as well as a time out.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Needs HTTP error handling, as well as a set time out. Implementation is very simple at the moment. Only a simple HTTP request is possible. Authenticated pages or HTTPS isn't supported. For HTTPS, write your own.</td></tr>
 </table>
 <table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Transport_Http_fields></a>Fields Summary</th></tr><tr><td colspan=2>
 <a href=#userAgent>userAgent</a>
@@ -408,7 +293,8 @@ Send request over HTTP.
 </table>
 <table class=doc width=100% cellspacing=3 id=userAgent>
 <tr><td class=doctop colspan=2>Field userAgent:String = "htbaa.mod/xmlrpc.mod"</td></tr>
-<tr><td class=docleft width=1%>Description</td><td class=docright>Set useragent for HTTP request. Defaults to htbaa.mod/xmlrpc.mod.</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Set useragent for HTTP request.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>This string will be used to identify the client with the XML-RPC server.</td></tr>
 </table>
 <table class=doc width=100% cellspacing=3 id=Create>
 <tr><td class=doctop colspan=2>Method Create:TXMLRPC_Transport_Http(host:String, path:String, port:Int = 80)</td></tr>
@@ -436,6 +322,126 @@ Send request to XML-RPC server.
 <table class=doc width=100% cellspacing=3 id=DoRequest>
 <tr><td class=doctop colspan=2>Method DoRequest:String(message:String) Abstract</td></tr>
 <tr><td class=docleft width=1%>Description</td><td class=docright>Send request to XML-RPC server.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Value_Abstract>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Value_Abstract Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Base type for all XML-RPC data types.</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Value_Abstract_fields></a>Fields Summary</th></tr><tr><td colspan=2>
+<a href=#name>name</a>
+</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Value_Abstract_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#GetByte>GetByte</a></td><td class=docright>
+Return byte value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#GetDouble>GetDouble</a></td><td class=docright>
+Return double value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#GetInt>GetInt</a></td><td class=docright>
+Return integer value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#GetString>GetString</a></td><td class=docright>
+Return string value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ToString>ToString</a></td><td class=docright>
+Convert data type to string.
+</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Value_Abstract_functions></a>Functions Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#XMLRPC_To_BlizMax>XMLRPC_To_BlizMax</a></td><td class=docright>
+Convert a XMLRPC_VALUE from XMLRPC-EPI to a BlitzMax type.
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=name>
+<tr><td class=doctop colspan=2>Field name:String</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>The name or id this value has been identified with in the response. read-only.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=GetByte>
+<tr><td class=doctop colspan=2>Method GetByte:Byte()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Return byte value.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=GetDouble>
+<tr><td class=doctop colspan=2>Method GetDouble:Double()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Return double value.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=GetInt>
+<tr><td class=doctop colspan=2>Method GetInt:Int()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Return integer value.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=GetString>
+<tr><td class=doctop colspan=2>Method GetString:String()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Return string value.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ToString>
+<tr><td class=doctop colspan=2>Method ToString:String()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Convert data type to string.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Uses reflection to see if a Field called value is available. If so, it tries to convert it to a string and returns it.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=XMLRPC_To_BlizMax>
+<tr><td class=doctop colspan=2>Function XMLRPC_To_BlizMax:TXMLRPC_Value_Abstract(val:Byte Ptr) Final</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Convert a XMLRPC_VALUE from XMLRPC-EPI to a BlitzMax type.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Value_Array>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Value_Array Extends TXMLRPC_Value_Collection</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Represents an array.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Value_Base64>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Value_Base64 Extends TXMLRPC_Value_Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Represents a Base64 encoded string.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Value_Boolean>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Value_Boolean Extends TXMLRPC_Value_Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Represents a boolean value.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Value_Collection>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Value_Collection Extends TXMLRPC_Value_Abstract Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Represents a collection. This is a base type.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Value_Datetime>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Value_Datetime Extends TXMLRPC_Value_Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Represents a datetime string.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Value_Double>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Value_Double Extends TXMLRPC_Value_Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Represents a double value.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Value_Empty>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Value_Empty Extends TXMLRPC_Value_Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Represents an empty value.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Value_Exception>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Value_Exception Extends TXMLRPC_Exception</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>XML-RPC Data Type exception.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Value_Int>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Value_Int Extends TXMLRPC_Value_Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Represents a integer value.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Value_None>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Value_None Extends TXMLRPC_Value_Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Represents none value.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Value_String>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Value_String Extends TXMLRPC_Value_Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Represents a string value.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Value_Struct>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Value_Struct Extends TXMLRPC_Value_Collection</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Represents an associative array.</td></tr>
 </table>
 <br>
 <h2 id=modinfo>Module Information</h2>

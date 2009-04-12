@@ -90,7 +90,8 @@ Type TXMLRPC_Call_Parameters
 	Field vector:Byte Ptr
 
 	Rem
-		bbdoc: Create a TXMLRPC_Call_Parameters object. vectorType can be: xmlrpc_vector_none, xmlrpc_vector_array, xmlrpc_vector_mixed or xmlrpc_vector_struct
+		bbdoc: Create a TXMLRPC_Call_Parameters object.
+		about: vectorType can be: xmlrpc_vector_none, xmlrpc_vector_array, xmlrpc_vector_mixed or xmlrpc_vector_struct
 	End Rem
 	Function Create:TXMLRPC_Call_Parameters(vectorType:Int = xmlrpc_vector_mixed)
 		Local parameters:TXMLRPC_Call_Parameters = New TXMLRPC_Call_Parameters

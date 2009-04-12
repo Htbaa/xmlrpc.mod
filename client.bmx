@@ -5,7 +5,8 @@ Type TXMLRPC_Client
 	Field transport:TXMLRPC_Transport_Interface
 
 	Rem
-		bbdoc: Change this to alter the output format. Accepted values are: xmlrpc_version_none, xmlrpc_version_1_0, xmlrpc_version_simple, xmlrpc_version_danda and xmlrpc_version_soap_1_1. Defaults to xmlrpc_version_1_0
+		bbdoc: Change this to alter the output format.
+		about: Accepted values are: xmlrpc_version_none, xmlrpc_version_1_0, xmlrpc_version_simple, xmlrpc_version_danda and xmlrpc_version_soap_1_1.
 	End Rem
 	Field outputVersion:Int = xmlrpc_version_1_0
 
@@ -35,7 +36,8 @@ Type TXMLRPC_Client
 	End Method
 
 	Rem
-		bbdoc: Send a request to the XML-RPC. command will hold the function name you want to call. Additional parameters can be passed by passing an TXMLRPC_Call_Parameters object. This method will return a TXMLRPC_Response_Data object containing the returned values from the XML-RPC Server
+		bbdoc: Send a request to the XML-RPC server
+		about: command will hold the function name you want to call. Additional parameters can be passed by passing an TXMLRPC_Call_Parameters object. This method will return a TXMLRPC_Response_Data object containing the returned values from the XML-RPC Server
 	End Rem
 	Method Call:TXMLRPC_Response_Data(command:String, data:TXMLRPC_Call_Parameters = Null)
 		If Not Self.transport
