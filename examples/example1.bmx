@@ -10,9 +10,8 @@ For Local a:Int = 0 To 10
 	XMLRPC_RequestSetMethodName(request, String("hello").ToCString())
 	XMLRPC_RequestSetRequestType(request, xmlrpc_request_call)
 	
-	'tell it to write out xml-rpc (default
-	Local output:Byte Ptr = XMLRPC_Create_STRUCT_XMLRPC_REQUEST_OUTPUT_OPTIONS(xmlrpc_version_1_0)
-	XMLRPC_RequestSetOutputOptions(request, output)
+	'tell it to write out xml-rpc
+	bmxXMLRPC_RequestSetOutputOptions(request, xmlrpc_version_1_0)
 	
 	'Create a parameter list vector
 	Local xParamList:Byte Ptr = XMLRPC_CreateVector(Null, xmlrpc_vector_array)
@@ -37,7 +36,6 @@ For Local a:Int = 0 To 10
 		DebugLog "error!"
 	End Try
 	
-	'DebugLog output
 	XMLRPC_RequestFree(request, 1)
 
 	GCResume()
