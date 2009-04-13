@@ -137,19 +137,17 @@ Extern "C"
 	Function XMLRPC_GetResponseFaultString:Byte Ptr(response:Byte Ptr)
 	Function XMLRPC_Free(mem:Byte Ptr)
 	Function XMLRPC_GetVersionString:Byte Ptr()
-Rem
-
-
-XMLRPC_VALUE XMLRPC_UtilityCreateFault(int fault_code, const char* fault_string);
-
-/* Get Values */
-#define XMLRPC_VectorGetStringWithID(vector, id) XMLRPC_GetValueString(XMLRPC_VectorGetValueWithID(vector, id))
-#define XMLRPC_VectorGetBase64WithID(vector, id) XMLRPC_GetValueBase64(XMLRPC_VectorGetValueWithID(vector, id))
-#define XMLRPC_VectorGetDateTimeWithID(vector, id) XMLRPC_GetValueDateTime(XMLRPC_VectorGetValueWithID(vector, id))
-#define XMLRPC_VectorGetDoubleWithID(vector, id) XMLRPC_GetValueDouble(XMLRPC_VectorGetValueWithID(vector, id))
-#define XMLRPC_VectorGetIntWithID(vector, id) XMLRPC_GetValueInt(XMLRPC_VectorGetValueWithID(vector, id))
-#define XMLRPC_VectorGetBooleanWithID(vector, id) XMLRPC_GetValueBoolean(XMLRPC_VectorGetValueWithID(vector, id))
-Endrem
+	Function XMLRPC_UtilityCreateFault:Byte Ptr(fault_code:Int, fault_string:Byte Ptr)
+	
+	Rem
+	/* Get Values */
+	#define XMLRPC_VectorGetStringWithID(vector, id) XMLRPC_GetValueString(XMLRPC_VectorGetValueWithID(vector, id))
+	#define XMLRPC_VectorGetBase64WithID(vector, id) XMLRPC_GetValueBase64(XMLRPC_VectorGetValueWithID(vector, id))
+	#define XMLRPC_VectorGetDateTimeWithID(vector, id) XMLRPC_GetValueDateTime(XMLRPC_VectorGetValueWithID(vector, id))
+	#define XMLRPC_VectorGetDoubleWithID(vector, id) XMLRPC_GetValueDouble(XMLRPC_VectorGetValueWithID(vector, id))
+	#define XMLRPC_VectorGetIntWithID(vector, id) XMLRPC_GetValueInt(XMLRPC_VectorGetValueWithID(vector, id))
+	#define XMLRPC_VectorGetBooleanWithID(vector, id) XMLRPC_GetValueBoolean(XMLRPC_VectorGetValueWithID(vector, id))
+	Endrem
 End Extern
 
 Function XMLRPC_VectorGetValueWithID:Byte Ptr(vector:Byte Ptr, id:String)
