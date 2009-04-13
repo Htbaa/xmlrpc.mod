@@ -102,6 +102,13 @@ Extern "C"
 	Function XMLRPC_CreateValueString:Byte Ptr(id:Byte Ptr, s:Byte Ptr, length:Int)
 	Function XMLRPC_CleanupValue(value:Byte Ptr)
 
+	Function XMLRPC_ServerCreate:Byte Ptr()
+	Function XMLRPC_GetGlobalServer:Byte Ptr()
+	Function XMLRPC_ServerDestroy(server:Byte Ptr)
+	Function XMLRPC_ServerRegisterMethod:Int(server:Byte Ptr, name:Byte Ptr, cb:Byte Ptr)
+	Function XMLRPC_ServerFindMethod:Byte Ptr(server:Byte Ptr, callName:Byte Ptr)
+	Function XMLRPC_ServerCallMethod:Byte Ptr(server:Byte Ptr, request:Byte Ptr, userData:Byte Ptr)
+
 '	According to the XMLRPC-EPI documentation these 2 are private and shouldn't be used
 '	Function XMLRPC_RequestSetError:Byte Ptr(request:Byte Ptr, error:Int)
 '	Function XMLRPC_RequestGetError:Byte Ptr(request:Byte Ptr)
