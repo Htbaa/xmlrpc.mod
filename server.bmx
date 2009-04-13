@@ -30,8 +30,8 @@ Type TXMLRPC_Server
 	End Method
 
 	Rem
-		bbdoc: Handles an incoming message
-		about: Will try to execute the method set in the methodName field, and returns a TXMLRPC_Response_Data object containing the returned values
+		bbdoc: Handles an request
+		about: Will process the xmlMessage and returns a TXMLRPC_Response_Data object containing the returned values by the callback function
 	End Rem
 	Method HandleInput:TXMLRPC_Response_Data(xmlMessage:String)
 		Local xmlRequest:Byte Ptr = xmlMessage.ToCString()
