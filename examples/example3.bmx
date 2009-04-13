@@ -23,9 +23,9 @@ Print GCMemAlloced()
 
 Function testXMLRPC()
 	Print "."
-'	Try
+	Try
 	Local client:TXMLRPC_Client = New TXMLRPC_Client.Create()
-	client.SetTransport(New TXMLRPC_Transport_Http.Create("php.htbaa.com", "/xmlrpc"))
+	client.SetTransport(New TXMLRPC_Transport_Http.Create("php.htbaa.com", "/xmlrpc", 80))
 '	client.SetTransport(New TXMLRPC_Transport_Http.Create("www.upcdatabase.com", "/rpc"))
 	
 	Local parameters:TXMLRPC_Call_Parameters = TXMLRPC_Call_Parameters.Create(xmlrpc_vector_mixed)
@@ -48,6 +48,9 @@ Function testXMLRPC()
 	
 '	Local pad:Int = 0
 '	Print TXMLRPC_Response_Data.DebugData(response.data, pad)
-'	Catch e:Object
-'	End Try
+	Catch e:TXMLRPC_Transport_Http_Exception
+		Print "TXMLRPC_Transport_Http_Exception: " + e.ToString()
+	Catch e:Object
+		Print e.ToString()
+	End Try
 End Function

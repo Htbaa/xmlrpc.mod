@@ -31,6 +31,7 @@ Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 	Field host:String
 	Field path:String
 	Field port:Int
+
 	Rem
 		bbdoc: Set useragent for HTTP request.
 		about: This string will be used to identify the client with the XML-RPC server
@@ -52,9 +53,8 @@ Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 	End Rem
 	Method DoRequest:String(message:String)
 		Local socket:TSocket = CreateTCPSocket()
-
-		ConnectSocket(socket, HostIp(Self.host), Self.port)
-		If Not SocketConnected(socket)
+		
+		If Not ConnectSocket(socket, HostIp(Self.host), Self.port)
 			Throw New TXMLRPC_Transport_Http_Exception.Create("Couldn't open socket to " + Self.host)
 		End If
 		
