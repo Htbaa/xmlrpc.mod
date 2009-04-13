@@ -14,7 +14,7 @@ Type TXMLRPC_Server
 
 	Rem
 		bbdoc: Creates a new XML-RPC server
-		about: After calling the constructor you might want to use RegisterMethod() to add methods to the server
+		about: After calling the constructor you might want to use RegisterMethod() to add methods to the server. Be sure to call Shutdown() when you're done.
 	End Rem
 	Method New()
 		Self.server = XMLRPC_ServerCreate()
