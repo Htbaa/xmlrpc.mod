@@ -6,14 +6,15 @@ End Type
 
 Rem
 	bbdoc: XML-RPC Server
-	about: This type will allow you to create an XML-RPC server. Currently not yet implemented.
+	about: This type will allow you to create an XML-RPC server.
 End Rem
 Type TXMLRPC_Server
 
 	Field server:Byte Ptr
 
 	Rem
-		bbdoc:
+		bbdoc: Creates a new XML-RPC server
+		about: After calling the constructor you might want to use RegisterMethod() to add methods to the server
 	End Rem
 	Method New()
 		Self.server = XMLRPC_ServerCreate()
@@ -28,31 +29,34 @@ Type TXMLRPC_Server
 		End If
 	End Method
 
-	
-	Method CallMethod()
-		Local xmlRequest:Byte Ptr = String("<?xml version=~q1.0~q?><methodCall><methodName>func2</methodName><params><int>200</int></params></methodCall>").ToCString()
+	Rem
+		bbdoc: Handles an incoming message
+		about: Will try to execute the method set in the methodName field, and returns a TXMLRPC_Response_Data object containing the returned values
+	End Rem
+	Method HandleInput:TXMLRPC_Response_Data(xmlMessage:String)
+		Local xmlRequest:Byte Ptr = xmlMessage.ToCString()
+		'Create XMLRPC_REQUEST object from given xmlMessage
 		Local request:Byte Ptr = XMLRPC_REQUEST_FromXML(xmlRequest, Null, Null)
 		MemFree(xmlRequest)
 		
-		Local test:Byte Ptr = XMLRPC_REQUEST_ToXML(request, Null)
-		DebugLog convertUTF8toISO8859(test)
-		XMLRPC_Free(test)
-		
+		'Create response
 		Local response:Byte Ptr = XMLRPC_RequestNew()
 		XMLRPC_RequestSetRequestType(response, xmlrpc_request_response)
-		
+		'Set response data by calling the callback function
 		XMLRPC_RequestSetData(response, XMLRPC_ServerCallMethod(Self.server, request, Null))
-		
+		'Copy output options from request
 		XMLRPC_RequestSetOutputOptions(response, XMLRPC_RequestGetOutputOptions(request))
 		
+		'Convert response to XML message
 		Local xmlResponse:Byte Ptr = XMLRPC_REQUEST_ToXML(response, Null)
-		
-		DebugLog convertUTF8toISO8859(xmlResponse)
+		'Create workable response data out of it
+		Local responseData:TXMLRPC_Response_Data = New TXMLRPC_Response_Data.Create(convertUTF8toISO8859(xmlResponse), XMLRPC_RequestGetOutputOptions(response))
 		XMLRPC_Free(xmlResponse)
-
 		
 		XMLRPC_RequestFree(request, 1)
 		XMLRPC_RequestFree(response, 1)
+		
+		Return responseData
 	End Method
 	
 	Rem
