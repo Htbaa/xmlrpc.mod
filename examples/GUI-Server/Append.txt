@@ -1,0 +1,12 @@
+'Start of external Append File
+'Your additional code should be here!
+
+Function WriteLog(message:String, GadgetList:TList = Null)
+	Local Gadget4:TGadget, GadgetArray4$[] = ["TextAreaLog"] 
+	If GadgetList Gadget4:TGadget = GadgetCommander(GetGadgetHandle,GadgetArray4,GadgetList:TList)
+	
+	SetGadgetText(Gadget4, CurrentDate() + " " + CurrentTime() + ": " + message + "~n" + GadgetText(Gadget4))
+
+End Function
+
+'End Of external Append File
