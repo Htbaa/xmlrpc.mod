@@ -58,10 +58,10 @@
         1
         <Timer1>
           <Name>IncomingConnections</Name>
-          <Hertz>1</Hertz>
+          <Hertz>10</Hertz>
           <Use_Timer>1</Use_Timer>
           <StructureOnly>0</StructureOnly>
-          <Event_TT_Text>&#9;If serverSocket&#10;&#9;&#9;Local socket:TSocket =SocketAccept(serverSocket, 0)&#10;&#9;&#9;If socket&#10;&#9;&#9;&#9;WriteLog(&quot;Client &quot; + DottedIP(SocketRemoteIP(socket)) + &quot; connected!&quot;, GadgetList)&#10;&#9;&#9;&#9;&apos;clientStream:TSocketStream =CreateSocketStream(socket)&#10;&#9;&#9;&#9;&#10;&#9;&#9;End If&#10;&#9;End If</Event_TT_Text>
+          <Event_TT_Text>&#9;HandleIncomingRequest(GadgetList)</Event_TT_Text>
           <VariableType>0</VariableType>
         </Timer1>
       </Timer>
@@ -260,7 +260,7 @@
     <EVENT_WINDOWSIZE>0</EVENT_WINDOWSIZE>
     <EVENT_WINDOWSIZE_TEXT/>
     <EVENT_WINDOWCLOSE>1</EVENT_WINDOWCLOSE>
-    <EVENT_WINDOWCLOSE_TEXT>&#9;If serverSocket&#10;&#9;&#9;CloseSocket(serverSocket)&#10;&#9;End If&#10;&#9;End</EVENT_WINDOWCLOSE_TEXT>
+    <EVENT_WINDOWCLOSE_TEXT>&#9;If serverSocket&#10;&#9;&#9;CloseSocket(serverSocket)&#10;&#9;End If&#10;&#9;If server&#10;&#9;&#9;&apos;We&apos;re done, shutdown server&#10;&#9;&#9;server.Shutdown()&#10;&#9;End If&#10;&#9;End</EVENT_WINDOWCLOSE_TEXT>
     <EVENT_WINDOWACTIVATE>0</EVENT_WINDOWACTIVATE>
     <EVENT_WINDOWACTIVATE_TEXT/>
     <EVENT_WINDOWACCEPT>0</EVENT_WINDOWACCEPT>
@@ -364,147 +364,6 @@
     <ToolbarItems/>
   </Item2>
   <Item3>
-    <Name>LabelPort</Name>
-    <X>187</X>
-    <Y>153</Y>
-    <width>41</width>
-    <height>14</height>
-    <Group>GroupServerSettings</Group>
-    <SubGroup>0</SubGroup>
-    <Group_x>173</Group_x>
-    <Group_y>115</Group_y>
-    <CreateCallBack/>
-    <Foreground Red="0" Green="0" Blue="0"/>
-    <Background Red="255" Green="255" Blue="255"/>
-    <Color_Changed>0</Color_Changed>
-    <BColor_Changed>0</BColor_Changed>
-    <Layout Left="0" Right="0" Top="0" Bottom="0"/>
-    <Comment/>
-    <is_disabled>0</is_disabled>
-    <is_hidden>0</is_hidden>
-    <Position_is_locked>0</Position_is_locked>
-    <Size_is_locked>0</Size_is_locked>
-    <Marked>0</Marked>
-    <Design_Range>5</Design_Range>
-    <Virtual_Group>0</Virtual_Group>
-    <Vx>0</Vx>
-    <Vy>0</Vy>
-    <Vw>0</Vw>
-    <Vh>0</Vh>
-    <TypToCreate>4</TypToCreate>
-    <StyleToCreate>0</StyleToCreate>
-    <Font_Name/>
-    <Font_Size>0</Font_Size>
-    <Font_Style>0</Font_Style>
-    <Use_Font>0</Use_Font>
-    <Modifier/>
-    <HotKey/>
-    <Layer>4389227</Layer>
-    <Lang_Text en="Port"/>
-    <VariableType>0</VariableType>
-    <Tooltip en="????"/>
-    <Use_Tooltip>0</Use_Tooltip>
-    <Alpha>0.000000000</Alpha>
-    <Use_Alpha>0</Use_Alpha>
-    <Sensitivity>0</Sensitivity>
-  </Item3>
-  <Item4>
-    <Name>LabelIpAddress</Name>
-    <X>187</X>
-    <Y>125</Y>
-    <width>59</width>
-    <height>14</height>
-    <Group>GroupServerSettings</Group>
-    <SubGroup>0</SubGroup>
-    <Group_x>173</Group_x>
-    <Group_y>115</Group_y>
-    <CreateCallBack/>
-    <Foreground Red="0" Green="0" Blue="0"/>
-    <Background Red="255" Green="255" Blue="255"/>
-    <Color_Changed>0</Color_Changed>
-    <BColor_Changed>0</BColor_Changed>
-    <Layout Left="0" Right="0" Top="0" Bottom="0"/>
-    <Comment/>
-    <is_disabled>0</is_disabled>
-    <is_hidden>0</is_hidden>
-    <Position_is_locked>0</Position_is_locked>
-    <Size_is_locked>0</Size_is_locked>
-    <Marked>0</Marked>
-    <Design_Range>5</Design_Range>
-    <Virtual_Group>0</Virtual_Group>
-    <Vx>0</Vx>
-    <Vy>0</Vy>
-    <Vw>0</Vw>
-    <Vh>0</Vh>
-    <TypToCreate>4</TypToCreate>
-    <StyleToCreate>0</StyleToCreate>
-    <Font_Name/>
-    <Font_Size>0</Font_Size>
-    <Font_Style>0</Font_Style>
-    <Use_Font>0</Use_Font>
-    <Modifier/>
-    <HotKey/>
-    <Layer>4389227</Layer>
-    <Lang_Text en="IP-Address"/>
-    <VariableType>0</VariableType>
-    <Tooltip en="????"/>
-    <Use_Tooltip>0</Use_Tooltip>
-    <Alpha>0.000000000</Alpha>
-    <Use_Alpha>0</Use_Alpha>
-    <Sensitivity>0</Sensitivity>
-  </Item4>
-  <Item5>
-    <Name>TextFieldIpAddress</Name>
-    <X>252</X>
-    <Y>122</Y>
-    <width>79</width>
-    <height>18</height>
-    <Group>GroupServerSettings</Group>
-    <SubGroup>0</SubGroup>
-    <Group_x>173</Group_x>
-    <Group_y>115</Group_y>
-    <CreateCallBack/>
-    <Foreground Red="0" Green="0" Blue="0"/>
-    <Background Red="255" Green="255" Blue="255"/>
-    <Color_Changed>0</Color_Changed>
-    <BColor_Changed>0</BColor_Changed>
-    <Layout Left="0" Right="0" Top="0" Bottom="0"/>
-    <Comment/>
-    <is_disabled>1</is_disabled>
-    <is_hidden>0</is_hidden>
-    <Position_is_locked>0</Position_is_locked>
-    <Size_is_locked>0</Size_is_locked>
-    <Marked>0</Marked>
-    <Design_Range>10</Design_Range>
-    <Virtual_Group>0</Virtual_Group>
-    <Vx>0</Vx>
-    <Vy>0</Vy>
-    <Vw>0</Vw>
-    <Vh>0</Vh>
-    <TypToCreate>2</TypToCreate>
-    <StyleToCreate>0</StyleToCreate>
-    <Font_Name>Arial</Font_Name>
-    <Font_Size>0</Font_Size>
-    <Font_Style>0</Font_Style>
-    <Use_Font>0</Use_Font>
-    <Modifier/>
-    <HotKey/>
-    <Layer>4389227</Layer>
-    <Lang_Text en="127.0.0.1"/>
-    <VariableType>0</VariableType>
-    <Tooltip en="????"/>
-    <Use_Tooltip>0</Use_Tooltip>
-    <Alpha>0.000000000</Alpha>
-    <Use_Alpha>0</Use_Alpha>
-    <Sensitivity>0</Sensitivity>
-    <Filter>32</Filter>
-    <FilterRange/>
-    <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
-    <EVENT_GADGETACTION_TEXT/>
-    <EVENT_GADGETLOSTFOCUS>0</EVENT_GADGETLOSTFOCUS>
-    <EVENT_GADGETLOSTFOCUS_TEXT/>
-  </Item5>
-  <Item6>
     <Name>ButtonStart</Name>
     <X>362</X>
     <Y>122</Y>
@@ -551,16 +410,16 @@
     <Checked>0</Checked>
     <NoText>0</NoText>
     <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
-    <EVENT_GADGETACTION_TEXT>&#9;Local Gadget3:TGadget, GadgetArray3$[] =[&quot;Window1&quot;] &#10;&#9;If GadgetList Gadget3:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray3,GadgetList:TList)&#10;&#10;&#10;&#9;Select GadgetText(Button)&#10;&#9;&#9;Case &quot;Start&quot;&#10;&#9;&#9;&#9;Local Gadget1:TGadget, GadgetArray1$[] =[&quot;TextFieldIpAddress&quot;] &#10;&#9;&#9;&#9;If GadgetList Gadget1:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray1,GadgetList:TList)&#10;&#9;&#9;&#9;Local Gadget2:TGadget, GadgetArray2$[] =[&quot;TextFieldPort&quot;] &#10;&#9;&#9;&#9;If GadgetList Gadget2:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray2,GadgetList:TList)&#10;&#10;&#9;&#9;&#9;Local ipAddress:String =GadgetText(Gadget1)&#10;&#9;&#9;&#9;Local port:String =GadgetText(Gadget2)&#10;&#10;&#9;&#9;&#9;serverSocket =CreateTCPSocket()&#10;&#9;&#9;&#9;If Not BindSocket(serverSocket, port.ToInt())&#10;&#9;&#9;&#9;&#9;Local errorMsg:String =&quot;Unable to bind socket to port &quot; + port&#10;&#9;&#9;&#9;&#9;Notify(errorMsg, True)&#10;&#9;&#9;&#9;&#9;SetStatusText(Gadget3, errorMsg)&#10;&#9;&#9;&#9;&#9;CloseSocket(serverSocket)&#10;&#9;&#9;&#9;&#9;Return&#10;&#9;&#9;&#9;End If&#10;&#10;&#9;&#9;&#9;SocketListen(serverSocket)&#10;&#10;&#9;&#9;&#9;Local str:String =&quot;Server now listening at port &quot; + port&#10;&#9;&#9;&#9;WriteLog(str, GadgetList)&#10;&#9;&#9;&#9;SetStatusText(Gadget3, str)&#10;&#10;&#9;&#9;&#9;SetGadgetText(Button, &quot;Stop&quot;)&#10;&#9;&#9;Case &quot;Stop&quot;&#10;&#9;&#9;&#9;If serverSocket&#10;&#9;&#9;&#9;&#9;CloseSocket(serverSocket)&#10;&#9;&#9;&#9;End If&#10;&#9;&#9;&#9;SetStatusText(Gadget3, &quot;Server stopped&quot;)&#10;&#9;&#9;&#9;SetGadgetText(Button, &quot;Start&quot;)&#10;&#9;End Select</EVENT_GADGETACTION_TEXT>
+    <EVENT_GADGETACTION_TEXT>&#9;Local Gadget3:TGadget, GadgetArray3$[] =[&quot;Window1&quot;] &#10;&#9;If GadgetList Gadget3:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray3,GadgetList:TList)&#10;&#10;&#10;&#9;Select GadgetText(Button)&#10;&#9;&#9;Case &quot;Start&quot;&#10;&#9;&#9;&#9;Local Gadget2:TGadget, GadgetArray2$[] =[&quot;TextFieldPort&quot;] &#10;&#9;&#9;&#9;If GadgetList Gadget2:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray2,GadgetList:TList)&#10;&#10;&#9;&#9;&#9;Local port:String =GadgetText(Gadget2)&#10;&#10;&#9;&#9;&#9;serverSocket =CreateTCPSocket()&#10;&#9;&#9;&#9;If Not BindSocket(serverSocket, port.ToInt())&#10;&#9;&#9;&#9;&#9;Local errorMsg:String =&quot;Unable to bind socket to port &quot; + port&#10;&#9;&#9;&#9;&#9;Notify(errorMsg, True)&#10;&#9;&#9;&#9;&#9;SetStatusText(Gadget3, errorMsg)&#10;&#9;&#9;&#9;&#9;CloseSocket(serverSocket)&#10;&#9;&#9;&#9;&#9;Return&#10;&#9;&#9;&#9;End If&#10;&#10;&#9;&#9;&#9;SocketListen(serverSocket)&#10;&#10;&#9;&#9;&#9;Local str:String =&quot;Server now listening at port &quot; + port&#10;&#9;&#9;&#9;WriteLog(str, GadgetList)&#10;&#9;&#9;&#9;SetStatusText(Gadget3, str)&#10;&#10;&#9;&#9;&#9;SetGadgetText(Button, &quot;Stop&quot;)&#10;&#9;&#9;Case &quot;Stop&quot;&#10;&#9;&#9;&#9;If serverSocket&#10;&#9;&#9;&#9;&#9;CloseSocket(serverSocket)&#10;&#9;&#9;&#9;End If&#10;&#9;&#9;&#9;SetStatusText(Gadget3, &quot;Server stopped&quot;)&#10;&#9;&#9;&#9;SetGadgetText(Button, &quot;Start&quot;)&#10;&#9;End Select</EVENT_GADGETACTION_TEXT>
     <Use_PixMap>0</Use_PixMap>
     <IncBin_Pixmap>0</IncBin_Pixmap>
     <PixMap_Path/>
     <PixMapProperties>0</PixMapProperties>
-  </Item6>
-  <Item7>
+  </Item3>
+  <Item4>
     <Name>TextFieldPort</Name>
     <X>252</X>
-    <Y>149</Y>
+    <Y>124</Y>
     <width>44</width>
     <height>18</height>
     <Group>GroupServerSettings</Group>
@@ -607,8 +466,53 @@
     <EVENT_GADGETACTION_TEXT/>
     <EVENT_GADGETLOSTFOCUS>0</EVENT_GADGETLOSTFOCUS>
     <EVENT_GADGETLOSTFOCUS_TEXT/>
-  </Item7>
-  <Item8>
+  </Item4>
+  <Item5>
+    <Name>LabelPort</Name>
+    <X>187</X>
+    <Y>128</Y>
+    <width>41</width>
+    <height>14</height>
+    <Group>GroupServerSettings</Group>
+    <SubGroup>0</SubGroup>
+    <Group_x>173</Group_x>
+    <Group_y>115</Group_y>
+    <CreateCallBack/>
+    <Foreground Red="0" Green="0" Blue="0"/>
+    <Background Red="255" Green="255" Blue="255"/>
+    <Color_Changed>0</Color_Changed>
+    <BColor_Changed>0</BColor_Changed>
+    <Layout Left="0" Right="0" Top="0" Bottom="0"/>
+    <Comment/>
+    <is_disabled>0</is_disabled>
+    <is_hidden>0</is_hidden>
+    <Position_is_locked>0</Position_is_locked>
+    <Size_is_locked>0</Size_is_locked>
+    <Marked>0</Marked>
+    <Design_Range>5</Design_Range>
+    <Virtual_Group>0</Virtual_Group>
+    <Vx>0</Vx>
+    <Vy>0</Vy>
+    <Vw>0</Vw>
+    <Vh>0</Vh>
+    <TypToCreate>4</TypToCreate>
+    <StyleToCreate>0</StyleToCreate>
+    <Font_Name/>
+    <Font_Size>0</Font_Size>
+    <Font_Style>0</Font_Style>
+    <Use_Font>0</Use_Font>
+    <Modifier/>
+    <HotKey/>
+    <Layer>4389227</Layer>
+    <Lang_Text en="Port"/>
+    <VariableType>0</VariableType>
+    <Tooltip en="????"/>
+    <Use_Tooltip>0</Use_Tooltip>
+    <Alpha>0.000000000</Alpha>
+    <Use_Alpha>0</Use_Alpha>
+    <Sensitivity>0</Sensitivity>
+  </Item5>
+  <Item6>
     <Name>Tabber1</Name>
     <X>169</X>
     <Y>187</Y>
@@ -802,8 +706,8 @@
         <MenuName/>
       </Item2>
     </TabberItems>
-  </Item8>
-  <Item9>
+  </Item6>
+  <Item7>
     <Name>TextAreaIncoming</Name>
     <X>171</X>
     <Y>207</Y>
@@ -864,6 +768,6 @@
     <FilePath/>
     <Use_Menu>0</Use_Menu>
     <MenuName/>
-  </Item9>
+  </Item7>
   <Menu IncBin_Media="0"/>
 </root>

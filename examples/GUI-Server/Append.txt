@@ -1,12 +1,115 @@
 'Start of external Append File
-'Your additional code should be here!
 
+Rem
+	bbdoc: Write a message to the log file
+End Rem
 Function WriteLog(message:String, GadgetList:TList = Null)
 	Local Gadget4:TGadget, GadgetArray4$[] = ["TextAreaLog"] 
 	If GadgetList Gadget4:TGadget = GadgetCommander(GetGadgetHandle,GadgetArray4,GadgetList:TList)
-	
 	SetGadgetText(Gadget4, CurrentDate() + " " + CurrentTime() + ": " + message + "~n" + GadgetText(Gadget4))
-
 End Function
+
+Rem
+	bbdoc: Handle incoming XML request and return an XML response
+End Rem
+Function HandleIncomingRequest(GadgetList:TList = Null)
+	If serverSocket
+		Local socket:TSocket = SocketAccept(serverSocket, 0)
+		If socket
+			Local clientIp:String = DottedIP(SocketRemoteIP(socket))
+			WriteLog("Client " + clientIp + " connected", GadgetList)
+			Local stream:TSocketStream = CreateSocketStream(socket)
+			
+			Local incoming:String
+
+			Repeat
+				Local line:String = ReadLine(stream)
+				incoming :+ line
+			Until SocketReadAvail(socket) = 0
+
+			Local startPos:Int = incoming.Find("<?xml")
+			'Extract XML message
+			incoming = incoming[startPos..]
+
+			Local Gadget1:TGadget, GadgetArray1$[] = ["TextAreaIncoming"] 
+			If GadgetList Gadget1:TGadget = GadgetCommander(SetText,GadgetArray1,GadgetList:TList, incoming )
+			
+			Local response:String = String(server.HandleInput(incoming))
+
+			Local Gadget2:TGadget, GadgetArray2$[] = ["TextAreaOutgoing"] 
+			If GadgetList Gadget2:TGadget = GadgetCommander(SetText,GadgetArray2,GadgetList:TList, response )
+			
+			WriteLine(stream, response)
+
+			FlushStream(stream)
+			CloseSocket(socket)
+
+			WriteLog("Client " + clientIp + " disconnected", GadgetList)
+		End If
+	End If
+End Function
+
+
+Rem
+	bbdoc: A function that returns a list of games
+End Rem
+Function GetGameList:String[] ()
+	Return["Game A", "Game B", "Game C", "Game D", "Game E", "Game F"]
+End Function
+
+Rem
+	bbdoc: A function that checks if name exists in the gamelist
+End Rem
+Function CheckGameExists:Byte(name:String)
+	For Local str:String = EachIn GetGameList()
+		If str = name
+			Return True
+		End If
+	Next
+	Return False
+End Function
+
+Rem
+	bbdoc: XML-RPC exposed function of GetGameList
+End Rem
+Function rpc_GetGameList:Byte Ptr(server:Byte Ptr, request:Byte Ptr, userData:Byte Ptr)
+	Local parameters:TXMLRPC_Call_Parameters = New TXMLRPC_Call_Parameters.Create(xmlrpc_vector_array)
+	 
+	For Local str:String = EachIn GetGameList()
+		parameters.AppendString(Null, str)
+	Next
+	Return parameters.vector
+End Function
+
+Rem
+	bbdoc: XML-RPC exposed function of CheckGameExists
+End Rem
+Function rpc_CheckGameExists:Byte Ptr(server:Byte Ptr, request:Byte Ptr, userData:Byte Ptr)
+	Local requestData:TXMLRPC_Response_Data = RequestToResponseData(request)
+	
+	Local gameName:String = TXMLRPC_Value_String(requestData.data.ValueForKey("0")).GetString()
+	If CheckGameExists(gameName)
+		Return XMLRPC_CreateValueBoolean(Null, True)
+	Else
+		Return XMLRPC_CreateValueBoolean(Null, False)
+	End If
+End Function
+
+
+Rem
+	bbdoc: Helper function to convert the request to a TXMLRPC_Response_Data object
+End Rem
+Function RequestToResponseData:TXMLRPC_Response_Data(request:Byte Ptr)
+	Local xmlMessage:Byte Ptr = XMLRPC_REQUEST_ToXML(request, Null)
+	Local output:Byte Ptr = XMLRPC_RequestGetOutputOptions(request)
+	
+	Local xml:String = convertUTF8toISO8859(xmlMessage)
+	Local responseData:TXMLRPC_Response_Data = New TXMLRPC_Response_Data.Create(xml, output)
+	
+	XMLRPC_Free(xmlMessage)
+
+	Return responseData
+End Function
+
 
 'End Of external Append File

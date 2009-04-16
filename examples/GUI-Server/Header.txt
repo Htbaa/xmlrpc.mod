@@ -10,5 +10,11 @@ Import htbaapub.xmlrpc
 
 
 Global serverSocket:TSocket
+'Create a new XML-RPC server
+Global server:TXMLRPC_Server = New TXMLRPC_Server
+'Register 2 functions
+server.RegisterMethod("GetGameList", rpc_GetGameList)
+server.RegisterMethod("CheckGameExists", rpc_CheckGameExists)
+
 
 'End Of external Header File
