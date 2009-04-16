@@ -1,10 +1,7 @@
 TODO list
 
 - Create helper function(s) to allow easy access for TXMLRPC_Response_Data data (get value by ID, nested stuff as well)
-- TXMLRPC_Server needs to be implemented
 - TXMLRPC_Transport_Http should be able to handle HTTP errors and time outs
 - Handle XML-RPC errors
-- Memory leak testing
 - Make sure character encoding is done right
-- Documentation!
 - A lot more!
