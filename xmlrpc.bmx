@@ -6,7 +6,7 @@ Rem
 EndRem
 Module htbaapub.xmlrpc
 ModuleInfo "Name: htbaapub.xmlrpc"
-ModuleInfo "Version: 0.5"
+ModuleInfo "Version: 1.0"
 ModuleInfo "Author: Christiaan Kras"
 ModuleInfo "Git repository: http://github.com/Htbaa/htbaapub.mod/"
 ModuleInfo "XMLRPC-EPI: http://xmlrpc-epi.sourceforge.net/"
