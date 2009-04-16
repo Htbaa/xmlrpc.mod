@@ -9,6 +9,8 @@ Rem
 	about: This type will allow you to create an XML-RPC server.
 End Rem
 Type TXMLRPC_Server
+	Const RETURN_STRING:Byte = 0
+	Const RETURN_RESPONSE_DATA:Byte = 1
 
 	Field server:Byte Ptr
 
@@ -31,9 +33,9 @@ Type TXMLRPC_Server
 
 	Rem
 		bbdoc: Handles an request
-		about: Will process the xmlMessage and returns a TXMLRPC_Response_Data object containing the returned values by the callback function
+		about: Will process the xmlMessage and returns an object that can be casted to a TXMLRPC_Response_Data object or to a String, which will be containing the returned values by the callback function
 	End Rem
-	Method HandleInput:TXMLRPC_Response_Data(xmlMessage:String)
+	Method HandleInput:Object(xmlMessage:String, returnType:Byte = TXMLRPC_Server.RETURN_STRING)
 		Local xmlRequest:Byte Ptr = xmlMessage.ToCString()
 		'Create XMLRPC_REQUEST object from given xmlMessage
 		Local request:Byte Ptr = XMLRPC_REQUEST_FromXML(xmlRequest, Null, Null)
@@ -49,8 +51,16 @@ Type TXMLRPC_Server
 		
 		'Convert response to XML message
 		Local xmlResponse:Byte Ptr = XMLRPC_REQUEST_ToXML(response, Null)
+		Local responseData:Object
 		'Create workable response data out of it
-		Local responseData:TXMLRPC_Response_Data = New TXMLRPC_Response_Data.Create(convertUTF8toISO8859(xmlResponse), XMLRPC_RequestGetOutputOptions(response))
+		Select returnType
+			Case TXMLRPC_Server.RETURN_STRING
+				responseData = convertUTF8toISO8859(xmlResponse)
+			Case TXMLRPC_Server.RETURN_RESPONSE_DATA
+				responseData = New TXMLRPC_Response_Data.Create(convertUTF8toISO8859(xmlResponse), XMLRPC_RequestGetOutputOptions(response))
+		End Select
+		
+		
 		XMLRPC_Free(xmlResponse)
 		
 		XMLRPC_RequestFree(request, 1)

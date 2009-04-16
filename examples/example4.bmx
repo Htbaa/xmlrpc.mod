@@ -8,20 +8,20 @@ server.RegisterMethod("GetGameList", rpc_GetGameList)
 server.RegisterMethod("CheckGameExists", rpc_CheckGameExists)
 
 'First lets get the game list
-Local responseData1:TXMLRPC_Response_Data = server.HandleInput("<?xml version=~q1.0~q?><methodCall><methodName>GetGameList</methodName><params/></methodCall>")
+Local responseData1:TXMLRPC_Response_Data = TXMLRPC_Response_Data(server.HandleInput("<?xml version=~q1.0~q?><methodCall><methodName>GetGameList</methodName><params/></methodCall>", TXMLRPC_Server.RETURN_RESPONSE_DATA))
 Local pad:Int = 0
 DebugLog "Output:~n~n" + TXMLRPC_Response_Data.DebugData(responseData1.data, pad)
 
 DebugLog "------------------------------------------~n~n"
 
 'Now lets see if the game "Game C" exists
-Local responseData2:TXMLRPC_Response_Data = server.HandleInput("<?xml version=~q1.0~q?><methodCall><methodName>CheckGameExists</methodName><params><string id=~qgameName~q>Game C</string></params></methodCall>")
+Local responseData2:TXMLRPC_Response_Data = TXMLRPC_Response_Data(server.HandleInput("<?xml version=~q1.0~q?><methodCall><methodName>CheckGameExists</methodName><params><string id=~qgameName~q>Game C</string></params></methodCall>", TXMLRPC_Server.RETURN_RESPONSE_DATA))
 DebugLog "Output:~n~n" + TXMLRPC_Response_Data.DebugData(responseData2.data, pad)
 
 DebugLog "------------------------------------------~n~n"
 
 'And lets see if the game "Game K" exists
-Local responseData3:TXMLRPC_Response_Data = server.HandleInput("<?xml version=~q1.0~q?><methodCall><methodName>CheckGameExists</methodName><params><string id=~qgameName~q>Game K</string></params></methodCall>")
+Local responseData3:TXMLRPC_Response_Data = TXMLRPC_Response_Data(server.HandleInput("<?xml version=~q1.0~q?><methodCall><methodName>CheckGameExists</methodName><params><string id=~qgameName~q>Game K</string></params></methodCall>", TXMLRPC_Server.RETURN_RESPONSE_DATA))
 DebugLog "Output:~n~n" + TXMLRPC_Response_Data.DebugData(responseData3.data, pad)
 
 'We're done, shutdown server
