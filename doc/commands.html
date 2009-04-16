@@ -28,6 +28,9 @@ Exception for TXMLRPC_Response_Data.
 <tr><td class=docleft width=1%><a href=#TXMLRPC_Server>TXMLRPC_Server</a></td><td class=docright>
 XML-RPC Server.
 </td></tr>
+<tr><td class=docleft width=1%><a href=#TXMLRPC_Server_Exception>TXMLRPC_Server_Exception</a></td><td class=docright>
+Exception for TXMLRPC_Server.
+</td></tr>
 <tr><td class=docleft width=1%><a href=#TXMLRPC_Transport_Dummy>TXMLRPC_Transport_Dummy</a></td><td class=docright>
 A Dummy transport type. Do not use, deprecated.
 </td></tr>
@@ -266,7 +269,45 @@ Iterate over an XMLRPC vector and add it to a TMap. Private function.
 <table class=doc width=100% cellspacing=3 id=TXMLRPC_Server>
 <tr><td class=doctop colspan=2>Type TXMLRPC_Server</td></tr>
 <tr><td class=docleft width=1%>Description</td><td class=docright>XML-RPC Server.</td></tr>
-<tr><td class=docleft width=1%>Information</td><td class=docright>This type will allow you to create an XML-RPC server. Currently not yet implemented.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>This type will allow you to create an XML-RPC server.</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TXMLRPC_Server_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#HandleInput>HandleInput</a></td><td class=docright>
+Handles an request.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#New>New</a></td><td class=docright>
+Creates a new XML-RPC server.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#RegisterMethod>RegisterMethod</a></td><td class=docright>
+Register a function to the XML-RPC server.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Shutdown>Shutdown</a></td><td class=docright>
+Call this method when your done with the server.
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=HandleInput>
+<tr><td class=doctop colspan=2>Method HandleInput:Object(xmlMessage:String, returnType:Byte = TXMLRPC_Server.RETURN_STRING)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Handles an request.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Will process the xmlMessage and returns an object that can be casted to a TXMLRPC_Response_Data object or to a String, which will be containing the returned values by the callback function.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=New>
+<tr><td class=doctop colspan=2>Method New()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Creates a new XML-RPC server.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>After calling the constructor you might want to use RegisterMethod() to add methods to the server. Be sure to call Shutdown() when you're done.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=RegisterMethod>
+<tr><td class=doctop colspan=2>Method RegisterMethod(functionName:String, callBack:Byte Ptr)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Register a function to the XML-RPC server.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>functionName will be the identifier. callBack is a pointer to a function.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Shutdown>
+<tr><td class=doctop colspan=2>Method Shutdown()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Call this method when your done with the server.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TXMLRPC_Server_Exception>
+<tr><td class=doctop colspan=2>Type TXMLRPC_Server_Exception Extends TXMLRPC_Exception</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Exception for TXMLRPC_Server.</td></tr>
 </table>
 <br>
 <table class=doc width=100% cellspacing=3 id=TXMLRPC_Transport_Dummy>
