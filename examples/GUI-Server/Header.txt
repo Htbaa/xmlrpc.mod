@@ -1,0 +1,20 @@
+'Start of external Header File
+SuperStrict
+
+Import MaxGui.Drivers			'Comment this line if you don't want to use the new MaxGuiEx
+'Import LogicZone.SmartButtons		'Uncomment this line when you want to use SmartButtons	
+'Import MaxGUI.ProxyGadgets 		'Uncomment when using a proxy gadget
+'GLShareContexts			'Uncomment when using multiple canvases and BMax 1.32b and up
+
+Import htbaapub.xmlrpc
+
+
+Global serverSocket:TSocket
+'Create a new XML-RPC server
+Global server:TXMLRPC_Server = New TXMLRPC_Server
+'Register 2 functions
+server.RegisterMethod("GetGameList", rpc_GetGameList)
+server.RegisterMethod("CheckGameExists", rpc_CheckGameExists)
+
+
+'End Of external Header File
