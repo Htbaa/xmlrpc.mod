@@ -116,8 +116,8 @@
   </Preferences>
   <MainWindow>
     <Name>Logic_Gui</Name>
-    <X>259</X>
-    <Y>41</Y>
+    <X>288</X>
+    <Y>17</Y>
     <width>794</width>
     <height>624</height>
     <Group>NULL</Group>
@@ -582,68 +582,6 @@
     <ActiveTab>1</ActiveTab>
     <TabberItems>
       <Item1>
-        <Name>TextAreaOutgoing</Name>
-        <X>171</X>
-        <Y>207</Y>
-        <width>288</width>
-        <height>180</height>
-        <Group>Tabber1_Tab2</Group>
-        <SubGroup>2</SubGroup>
-        <Group_x>171</Group_x>
-        <Group_y>207</Group_y>
-        <CreateCallBack/>
-        <Foreground Red="0" Green="0" Blue="0"/>
-        <Background Red="255" Green="255" Blue="255"/>
-        <Color_Changed>0</Color_Changed>
-        <BColor_Changed>0</BColor_Changed>
-        <Layout Left="1" Right="1" Top="1" Bottom="1"/>
-        <Comment/>
-        <is_disabled>0</is_disabled>
-        <is_hidden>0</is_hidden>
-        <Position_is_locked>0</Position_is_locked>
-        <Size_is_locked>0</Size_is_locked>
-        <Marked>1</Marked>
-        <Design_Range>10</Design_Range>
-        <Virtual_Group>0</Virtual_Group>
-        <Vx>0</Vx>
-        <Vy>0</Vy>
-        <Vw>0</Vw>
-        <Vh>0</Vh>
-        <TypToCreate>8</TypToCreate>
-        <StyleToCreate>2</StyleToCreate>
-        <Font_Name>Courier New</Font_Name>
-        <Font_Size>8</Font_Size>
-        <Font_Style>0</Font_Style>
-        <Use_Font>1</Use_Font>
-        <Modifier/>
-        <HotKey/>
-        <Layer>4940709</Layer>
-        <Lang_Text en=""/>
-        <VariableType>0</VariableType>
-        <Tooltip en="????"/>
-        <Use_Tooltip>0</Use_Tooltip>
-        <Alpha>0.000000000</Alpha>
-        <Use_Alpha>0</Use_Alpha>
-        <Sensitivity>0</Sensitivity>
-        <Load_File/>
-        <Filter>0</Filter>
-        <FilterRange/>
-        <TabSize>0</TabSize>
-        <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
-        <EVENT_GADGETACTION_TEXT/>
-        <EVENT_GADGETSELECT>0</EVENT_GADGETSELECT>
-        <EVENT_GADGETSELECT_TEXT/>
-        <EVENT_GADGETMENU>1</EVENT_GADGETMENU>
-        <EVENT_GADGETMENU_TEXT/>
-        <EVENT_GADGETLOSTFOCUS>0</EVENT_GADGETLOSTFOCUS>
-        <EVENT_GADGETLOSTFOCUS_TEXT/>
-        <Use_File>0</Use_File>
-        <IncBin_File>0</IncBin_File>
-        <FilePath/>
-        <Use_Menu>0</Use_Menu>
-        <MenuName/>
-      </Item1>
-      <Item2>
         <Name>TextAreaLog</Name>
         <X>171</X>
         <Y>207</Y>
@@ -704,6 +642,68 @@
         <FilePath/>
         <Use_Menu>0</Use_Menu>
         <MenuName/>
+      </Item1>
+      <Item2>
+        <Name>TextAreaOutgoing</Name>
+        <X>171</X>
+        <Y>207</Y>
+        <width>288</width>
+        <height>180</height>
+        <Group>Tabber1_Tab2</Group>
+        <SubGroup>2</SubGroup>
+        <Group_x>171</Group_x>
+        <Group_y>207</Group_y>
+        <CreateCallBack/>
+        <Foreground Red="0" Green="0" Blue="0"/>
+        <Background Red="255" Green="255" Blue="255"/>
+        <Color_Changed>0</Color_Changed>
+        <BColor_Changed>0</BColor_Changed>
+        <Layout Left="1" Right="1" Top="1" Bottom="1"/>
+        <Comment/>
+        <is_disabled>0</is_disabled>
+        <is_hidden>0</is_hidden>
+        <Position_is_locked>0</Position_is_locked>
+        <Size_is_locked>0</Size_is_locked>
+        <Marked>1</Marked>
+        <Design_Range>10</Design_Range>
+        <Virtual_Group>0</Virtual_Group>
+        <Vx>0</Vx>
+        <Vy>0</Vy>
+        <Vw>0</Vw>
+        <Vh>0</Vh>
+        <TypToCreate>8</TypToCreate>
+        <StyleToCreate>3</StyleToCreate>
+        <Font_Name>Courier New</Font_Name>
+        <Font_Size>8</Font_Size>
+        <Font_Style>0</Font_Style>
+        <Use_Font>1</Use_Font>
+        <Modifier/>
+        <HotKey/>
+        <Layer>4940709</Layer>
+        <Lang_Text en=""/>
+        <VariableType>0</VariableType>
+        <Tooltip en="????"/>
+        <Use_Tooltip>0</Use_Tooltip>
+        <Alpha>0.000000000</Alpha>
+        <Use_Alpha>0</Use_Alpha>
+        <Sensitivity>0</Sensitivity>
+        <Load_File/>
+        <Filter>0</Filter>
+        <FilterRange/>
+        <TabSize>0</TabSize>
+        <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
+        <EVENT_GADGETACTION_TEXT/>
+        <EVENT_GADGETSELECT>0</EVENT_GADGETSELECT>
+        <EVENT_GADGETSELECT_TEXT/>
+        <EVENT_GADGETMENU>1</EVENT_GADGETMENU>
+        <EVENT_GADGETMENU_TEXT/>
+        <EVENT_GADGETLOSTFOCUS>0</EVENT_GADGETLOSTFOCUS>
+        <EVENT_GADGETLOSTFOCUS_TEXT/>
+        <Use_File>0</Use_File>
+        <IncBin_File>0</IncBin_File>
+        <FilePath/>
+        <Use_Menu>0</Use_Menu>
+        <MenuName/>
       </Item2>
     </TabberItems>
   </Item6>
@@ -736,7 +736,7 @@
     <Vw>0</Vw>
     <Vh>0</Vh>
     <TypToCreate>8</TypToCreate>
-    <StyleToCreate>2</StyleToCreate>
+    <StyleToCreate>3</StyleToCreate>
     <Font_Name>Courier New</Font_Name>
     <Font_Size>8</Font_Size>
     <Font_Style>0</Font_Style>

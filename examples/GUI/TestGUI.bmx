@@ -1,4 +1,4 @@
-'Source Code created on 12 Apr 2009 20:12:28 with Logic Gui Version 4.2 Build 384
+'Source Code created on 18 Apr 2009 15:55:38 with Logic Gui Version 4.2 Build 384
 'Christiaan Kras
 'Start of external Header File
 SuperStrict
@@ -25,23 +25,11 @@ Const	Redraw:Int=10
 Const	RemoveFromList:Int=11
 Const	GetGadgetHandle:Int=12
 
-Local Window1:TGadget = CreateWindow:TGadget("XML-RPC GUI - ",412,59,448,499,Null,WINDOW_TITLEBAR|WINDOW_STATUS |WINDOW_CLIENTCOORDS )
+Local Window1:TGadget = CreateWindow:TGadget("XML-RPC GUI - ",420,67,448,499,Null,WINDOW_TITLEBAR|WINDOW_STATUS |WINDOW_CLIENTCOORDS )
 	GadgetList.AddLast( Window1:TGadget ) ; Window1.Context="Window1"
 	Local Group2:TGadget = CreatePanel:TGadget(4,7,237,160,Window1:TGadget,PANEL_GROUP|PANEL_ACTIVE,"XML-RPC Service")
 		GadgetList.AddLast( Group2:TGadget ) ; Group2.Context="Group2"
 		SetGadgetLayout( Group2:TGadget,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE )
-		Local TxtHost:TGadget = CreateTextField:TGadget(70,19,153,18,Group2:TGadget,Null)
-			SetGadgetText( TxtHost:TGadget,"php.htbaa.com")
-			GadgetList.AddLast( TxtHost:TGadget ) ; TxtHost.Context="TxtHost"
-			SetGadgetLayout( TxtHost:TGadget,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE )
-		Local TxtPath:TGadget = CreateTextField:TGadget(70,53,153,18,Group2:TGadget,Null)
-			SetGadgetText( TxtPath:TGadget,"/xmlrpc")
-			GadgetList.AddLast( TxtPath:TGadget ) ; TxtPath.Context="TxtPath"
-			SetGadgetLayout( TxtPath:TGadget,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE )
-		Local TxtFunction:TGadget = CreateTextField:TGadget(70,87,153,18,Group2:TGadget,Null)
-			SetGadgetText( TxtFunction:TGadget,"funcs.somefunc4")
-			GadgetList.AddLast( TxtFunction:TGadget ) ; TxtFunction.Context="TxtFunction"
-			SetGadgetLayout( TxtFunction:TGadget,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE )
 		Local Button1:TGadget = CreateButton:TGadget("Execute command",112,109,111,23,Group2:TGadget,BUTTON_PUSH)
 			GadgetList.AddLast( Button1:TGadget ) ; Button1.Context="Button1"
 		Local Label1_c2_c3:TGadget = CreateLabel:TGadget("Function",13,91,47,14,Group2:TGadget,Null)
@@ -53,6 +41,18 @@ Local Window1:TGadget = CreateWindow:TGadget("XML-RPC GUI - ",412,59,448,499,Nul
 		Local Label1:TGadget = CreateLabel:TGadget("Host",13,23,28,14,Group2:TGadget,Null)
 			GadgetList.AddLast( Label1:TGadget ) ; Label1.Context="Label1"
 			SetGadgetLayout( Label1:TGadget,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE )
+		Local TxtHost:TGadget = CreateTextField:TGadget(70,19,153,18,Group2:TGadget,Null)
+			SetGadgetText( TxtHost:TGadget,"localhost")
+			GadgetList.AddLast( TxtHost:TGadget ) ; TxtHost.Context="TxtHost"
+			SetGadgetLayout( TxtHost:TGadget,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE )
+		Local TxtPath:TGadget = CreateTextField:TGadget(70,53,153,18,Group2:TGadget,Null)
+			SetGadgetText( TxtPath:TGadget,"/")
+			GadgetList.AddLast( TxtPath:TGadget ) ; TxtPath.Context="TxtPath"
+			SetGadgetLayout( TxtPath:TGadget,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE )
+		Local TxtFunction:TGadget = CreateTextField:TGadget(70,87,153,18,Group2:TGadget,Null)
+			SetGadgetText( TxtFunction:TGadget,"CheckGameExists")
+			GadgetList.AddLast( TxtFunction:TGadget ) ; TxtFunction.Context="TxtFunction"
+			SetGadgetLayout( TxtFunction:TGadget,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE,EDGE_RELATIVE )
 	Local Group3:TGadget = CreatePanel:TGadget(246,7,193,161,Window1:TGadget,PANEL_GROUP,"Parameters")
 		GadgetList.AddLast( Group3:TGadget ) ; Group3.Context="Group3"
 		Local TxtParameters:TGadget = CreateTextArea:TGadget(0,46,185,94,Group3:TGadget,Null)
@@ -60,12 +60,12 @@ Local Window1:TGadget = CreateWindow:TGadget("XML-RPC GUI - ",412,59,448,499,Nul
 			SetGadgetLayout( TxtParameters:TGadget,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED )
 			Local Font_TxtParameters:TGuiFont = LoadGuiFont:TGuiFont( "Courier New" , 8 , False , False , False )
 			SetGadgetFont( TxtParameters:TGadget, Font_TxtParameters:TGuiFont )
-			SetTextAreaText( TxtParameters:TGadget , "int::10~nstring::some test String~ndouble::1.02~nbase64:myId:some test string..." )
+			SetTextAreaText( TxtParameters:TGadget , "string::Game C" )
 		Local ComboVectorType:TGadget = CreateComboBox:TGadget(0,19,185,18,Group3:TGadget,Null)
 			GadgetList.AddLast( ComboVectorType:TGadget ) ; ComboVectorType.Context="ComboVectorType"
 			AddGadgetItem( ComboVectorType:TGadget,"xmlrpc_vector_none",GADGETITEM_DEFAULT )
-			AddGadgetItem( ComboVectorType:TGadget,"xmlrpc_vector_array",GADGETITEM_NORMAL )
-			AddGadgetItem( ComboVectorType:TGadget,"xmlrpc_vector_mixed",GADGETITEM_DEFAULT )
+			AddGadgetItem( ComboVectorType:TGadget,"xmlrpc_vector_array",GADGETITEM_DEFAULT )
+			AddGadgetItem( ComboVectorType:TGadget,"xmlrpc_vector_mixed",GADGETITEM_NORMAL )
 			AddGadgetItem( ComboVectorType:TGadget,"xmlrpc_vector_struct",GADGETITEM_NORMAL )
 	Local Tabber1:TGadget = CreateTabber:TGadget(4,175,435,321,Window1:TGadget,Null)
 		GadgetList.AddLast( Tabber1:TGadget ) ; Tabber1.Context="Tabber1"
@@ -75,7 +75,7 @@ Local Window1:TGadget = CreateWindow:TGadget("XML-RPC GUI - ",412,59,448,499,Nul
 			SetGadgetLayout( Tabber1_Tab1,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED )
 			Local Group4:TGadget = CreatePanel:TGadget(5,3,419,146,Tabber1_Tab1:TGadget,PANEL_GROUP,"Request")
 				GadgetList.AddLast( Group4:TGadget ) ; Group4.Context="Group4"
-				Local TextAreaRequest:TGadget = CreateTextArea:TGadget(0,0,411,125,Group4:TGadget,TEXTAREA_READONLY)
+				Local TextAreaRequest:TGadget = CreateTextArea:TGadget(0,0,411,125,Group4:TGadget,TEXTAREA_WORDWRAP|TEXTAREA_READONLY)
 					GadgetList.AddLast( TextAreaRequest:TGadget ) ; TextAreaRequest.Context="TextAreaRequest"
 					SetGadgetLayout( TextAreaRequest:TGadget,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED )
 					Local Font_TextAreaRequest:TGuiFont = LoadGuiFont:TGuiFont( "Courier New" , 8 , False , False , False )
@@ -83,7 +83,7 @@ Local Window1:TGadget = CreateWindow:TGadget("XML-RPC GUI - ",412,59,448,499,Nul
 					SetTextAreaText( TextAreaRequest:TGadget , "" )
 			Local Group4_c5:TGadget = CreatePanel:TGadget(5,149,419,146,Tabber1_Tab1:TGadget,PANEL_GROUP,"Response")
 				GadgetList.AddLast( Group4_c5:TGadget ) ; Group4_c5.Context="Group4_c5"
-				Local TextAreaResponse:TGadget = CreateTextArea:TGadget(0,0,411,125,Group4_c5:TGadget,TEXTAREA_READONLY)
+				Local TextAreaResponse:TGadget = CreateTextArea:TGadget(0,0,411,125,Group4_c5:TGadget,TEXTAREA_WORDWRAP|TEXTAREA_READONLY)
 					GadgetList.AddLast( TextAreaResponse:TGadget ) ; TextAreaResponse.Context="TextAreaResponse"
 					SetGadgetLayout( TextAreaResponse:TGadget,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED )
 					Local Font_TextAreaResponse:TGuiFont = LoadGuiFont:TGuiFont( "Courier New" , 8 , False , False , False )
@@ -119,23 +119,24 @@ Repeat
 
 		Case EVENT_GADGETACTION
 			Select EventSource()
+				Case Button1	Button1_GA( Button1:TGadget , GadgetList:TList )
 				Case TxtHost	TxtHost_GA( TxtHost:TGadget , GadgetList:TList )
 				Case TxtPath	TxtPath_GA( TxtPath:TGadget , GadgetList:TList )
 				Case TxtFunction	TxtFunction_GA( TxtFunction:TGadget , GadgetList:TList )
-				Case Button1	Button1_GA( Button1:TGadget , GadgetList:TList )
 				Case TxtParameters	TxtParameters_GA( TxtParameters:TGadget , GadgetList:TList )
+				Case ComboVectorType	ComboVectorType_GA( ComboVectorType:TGadget , EventData() , GadgetList:TList )
 				Case Tabber1	Tabber1_GA( Tabber1:TGadget , EventData() , GadgetList:TList )
 				Case TextAreaBlitzMax	TextAreaBlitzMax_GA( TextAreaBlitzMax:TGadget , GadgetList:TList )
-				Case ComboVectorType	ComboVectorType_GA( ComboVectorType:TGadget , EventData() , GadgetList:TList )
-				Case TextAreaResponse	TextAreaResponse_GA( TextAreaResponse:TGadget , GadgetList:TList )
 				Case TextAreaRequest	TextAreaRequest_GA( TextAreaRequest:TGadget , GadgetList:TList )
+				Case TextAreaResponse	TextAreaResponse_GA( TextAreaResponse:TGadget , GadgetList:TList )
 			End Select
 
 		Case EVENT_GADGETMENU
 			Select EventSource()
+				Case TxtParameters	TxtParameters_GM( TxtParameters:TGadget , Window1:TGadget , GadgetList:TList )
 				Case TextAreaBlitzMax	TextAreaBlitzMax_GM( TextAreaBlitzMax:TGadget , Window1:TGadget , GadgetList:TList )
-				Case TextAreaResponse	TextAreaResponse_GM( TextAreaResponse:TGadget , Window1:TGadget , GadgetList:TList )
 				Case TextAreaRequest	TextAreaRequest_GM( TextAreaRequest:TGadget , Window1:TGadget , GadgetList:TList )
+				Case TextAreaResponse	TextAreaResponse_GM( TextAreaResponse:TGadget , Window1:TGadget , GadgetList:TList )
 			End Select
 
 		Case EVENT_MOUSEDOWN
@@ -151,24 +152,6 @@ Function Window1_WC( Window:TGadget , GadgetList:TList=Null )
 '	HideGadget( Window:TGadget )
 
 	END
-End Function
-
-Function TxtHost_GA( TextField:TGadget , GadgetList:TList=Null )
-	DebugLog "TextField TxtHost was modified"
-	DebugLog "Text = "+ TextFieldText$( TextField:TGadget )
-	
-End Function
-
-Function TxtPath_GA( TextField:TGadget , GadgetList:TList=Null )
-	DebugLog "TextField TxtPath was modified"
-	DebugLog "Text = "+ TextFieldText$( TextField:TGadget )
-	
-End Function
-
-Function TxtFunction_GA( TextField:TGadget , GadgetList:TList=Null )
-	DebugLog "TextField TxtFunction was modified"
-	DebugLog "Text = "+ TextFieldText$( TextField:TGadget )
-	
 End Function
 
 Function Button1_GA( Button:TGadget , GadgetList:TList=Null )
@@ -191,20 +174,20 @@ Function Button1_GA( Button:TGadget , GadgetList:TList=Null )
 		Local Gadget9:TGadget, GadgetArray9$[] =["TxtParameters"] 
 		If GadgetList Gadget9:TGadget =GadgetCommander(GetGadgetHandle,GadgetArray9,GadgetList:TList)
 
-		Local Gadget10:TGadget, GadgetArray10$[] = ["ComboVectorType"]
+		Local Gadget10:TGadget, GadgetArray10$[] =["ComboVectorType"]
 		If GadgetList Gadget10:TGadget =GadgetCommander(GetGadgetHandle, GadgetArray10$, GadgetList:TList)
 
 
-		Local vectorTypeInt:Int = xmlrpc_vector_none
+		Local vectorTypeInt:Int =xmlrpc_vector_none
 		Select GadgetItemText(Gadget10, SelectedGadgetItem(Gadget10))
 			Case "xmlrpc_vector_none"
-				vectorTypeInt = xmlrpc_vector_none
+				vectorTypeInt =xmlrpc_vector_none
 			Case "xmlrpc_vector_array"
-				vectorTypeInt = xmlrpc_vector_array
+				vectorTypeInt =xmlrpc_vector_array
 			Case "xmlrpc_vector_mixed"
-				vectorTypeInt = xmlrpc_vector_mixed
+				vectorTypeInt =xmlrpc_vector_mixed
 			Case "xmlrpc_vector_struct"
-				vectorTypeInt = xmlrpc_vector_struct
+				vectorTypeInt =xmlrpc_vector_struct
 		End Select
 		
 		Local parameters:TXMLRPC_Call_Parameters =TXMLRPC_Call_Parameters.Create(vectorTypeInt)
@@ -234,8 +217,32 @@ Function Button1_GA( Button:TGadget , GadgetList:TList=Null )
 	End Try
 End Function
 
+Function TxtHost_GA( TextField:TGadget , GadgetList:TList=Null )
+	DebugLog "TextField TxtHost was modified"
+	DebugLog "Text = "+ TextFieldText$( TextField:TGadget )
+	
+End Function
+
+Function TxtPath_GA( TextField:TGadget , GadgetList:TList=Null )
+	DebugLog "TextField TxtPath was modified"
+	DebugLog "Text = "+ TextFieldText$( TextField:TGadget )
+	
+End Function
+
+Function TxtFunction_GA( TextField:TGadget , GadgetList:TList=Null )
+	DebugLog "TextField TxtFunction was modified"
+	DebugLog "Text = "+ TextFieldText$( TextField:TGadget )
+	
+End Function
+
 Function TxtParameters_GA( TextArea:TGadget , GadgetList:TList=Null )
 	DebugLog "TextArea TxtParameters was modified"
+	
+End Function
+
+Function ComboVectorType_GA( Combo:TGadget , Number:Int , GadgetList:TList=Null )
+	DebugLog "ComboBox ComboVectorType selected Nr. " + Number
+	DebugLog "Selected Text = "+ GadgetItemText( Combo:TGadget , Number:Int )
 	
 End Function
 
@@ -253,9 +260,8 @@ Function TextAreaBlitzMax_GA( TextArea:TGadget , GadgetList:TList=Null )
 	
 End Function
 
-Function ComboVectorType_GA( Combo:TGadget , Number:Int , GadgetList:TList=Null )
-	DebugLog "ComboBox ComboVectorType selected Nr. " + Number
-	DebugLog "Selected Text = "+ GadgetItemText( Combo:TGadget , Number:Int )
+Function TextAreaRequest_GA( TextArea:TGadget , GadgetList:TList=Null )
+	DebugLog "TextArea TextAreaRequest was modified"
 	
 End Function
 
@@ -264,8 +270,8 @@ Function TextAreaResponse_GA( TextArea:TGadget , GadgetList:TList=Null )
 	
 End Function
 
-Function TextAreaRequest_GA( TextArea:TGadget , GadgetList:TList=Null )
-	DebugLog "TextArea TextAreaRequest was modified"
+Function TxtParameters_GM( TextArea:TGadget , Window:TGadget=Null , GadgetList:TList=Null )
+	DebugLog "TextArea TxtParameters was right clicked"
 	
 End Function
 
@@ -274,13 +280,13 @@ Function TextAreaBlitzMax_GM( TextArea:TGadget , Window:TGadget=Null , GadgetLis
 	
 End Function
 
-Function TextAreaResponse_GM( TextArea:TGadget , Window:TGadget=Null , GadgetList:TList=Null )
-	DebugLog "TextArea TextAreaResponse was right clicked"
+Function TextAreaRequest_GM( TextArea:TGadget , Window:TGadget=Null , GadgetList:TList=Null )
+	DebugLog "TextArea TextAreaRequest was right clicked"
 	
 End Function
 
-Function TextAreaRequest_GM( TextArea:TGadget , Window:TGadget=Null , GadgetList:TList=Null )
-	DebugLog "TextArea TextAreaRequest was right clicked"
+Function TextAreaResponse_GM( TextArea:TGadget , Window:TGadget=Null , GadgetList:TList=Null )
+	DebugLog "TextArea TextAreaResponse was right clicked"
 	
 End Function
 

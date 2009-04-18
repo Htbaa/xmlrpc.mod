@@ -116,11 +116,10 @@
     </Application>
   </Preferences>
   <MainWindow>
-    Maximized
     <Name>Logic_Gui</Name>
-    <X>-8</X>
-    <Y>-8</Y>
-    <width>1440</width>
+    <X>0</X>
+    <Y>0</Y>
+    <width>1264</width>
     <height>827</height>
     <Group>NULL</Group>
     <SubGroup>0</SubGroup>
@@ -447,159 +446,6 @@
     <ToolbarItems/>
   </Item3>
   <Item4>
-    <Name>TxtHost</Name>
-    <X>501</X>
-    <Y>108</Y>
-    <width>153</width>
-    <height>18</height>
-    <Group>Group2</Group>
-    <SubGroup>0</SubGroup>
-    <Group_x>431</Group_x>
-    <Group_y>89</Group_y>
-    <CreateCallBack/>
-    <Foreground Red="0" Green="0" Blue="0"/>
-    <Background Red="255" Green="255" Blue="255"/>
-    <Color_Changed>0</Color_Changed>
-    <BColor_Changed>0</BColor_Changed>
-    <Layout Left="2" Right="2" Top="2" Bottom="2"/>
-    <Comment/>
-    <is_disabled>0</is_disabled>
-    <is_hidden>0</is_hidden>
-    <Position_is_locked>0</Position_is_locked>
-    <Size_is_locked>0</Size_is_locked>
-    <Marked>0</Marked>
-    <Design_Range>10</Design_Range>
-    <Virtual_Group>0</Virtual_Group>
-    <Vx>0</Vx>
-    <Vy>0</Vy>
-    <Vw>0</Vw>
-    <Vh>0</Vh>
-    <TypToCreate>2</TypToCreate>
-    <StyleToCreate>0</StyleToCreate>
-    <Font_Name>Arial</Font_Name>
-    <Font_Size>0</Font_Size>
-    <Font_Style>0</Font_Style>
-    <Use_Font>0</Use_Font>
-    <Modifier/>
-    <HotKey/>
-    <Layer>0</Layer>
-    <Lang_Text en="php.htbaa.com"/>
-    <VariableType>0</VariableType>
-    <Tooltip en="????"/>
-    <Use_Tooltip>0</Use_Tooltip>
-    <Alpha>0.000000000</Alpha>
-    <Use_Alpha>0</Use_Alpha>
-    <Sensitivity>0</Sensitivity>
-    <Filter>0</Filter>
-    <FilterRange/>
-    <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
-    <EVENT_GADGETACTION_TEXT/>
-    <EVENT_GADGETLOSTFOCUS>0</EVENT_GADGETLOSTFOCUS>
-    <EVENT_GADGETLOSTFOCUS_TEXT/>
-  </Item4>
-  <Item5>
-    <Name>TxtPath</Name>
-    <X>501</X>
-    <Y>142</Y>
-    <width>153</width>
-    <height>18</height>
-    <Group>Group2</Group>
-    <SubGroup>0</SubGroup>
-    <Group_x>431</Group_x>
-    <Group_y>89</Group_y>
-    <CreateCallBack/>
-    <Foreground Red="0" Green="0" Blue="0"/>
-    <Background Red="255" Green="255" Blue="255"/>
-    <Color_Changed>0</Color_Changed>
-    <BColor_Changed>0</BColor_Changed>
-    <Layout Left="2" Right="2" Top="2" Bottom="2"/>
-    <Comment/>
-    <is_disabled>0</is_disabled>
-    <is_hidden>0</is_hidden>
-    <Position_is_locked>0</Position_is_locked>
-    <Size_is_locked>0</Size_is_locked>
-    <Marked>0</Marked>
-    <Design_Range>10</Design_Range>
-    <Virtual_Group>0</Virtual_Group>
-    <Vx>0</Vx>
-    <Vy>0</Vy>
-    <Vw>0</Vw>
-    <Vh>0</Vh>
-    <TypToCreate>2</TypToCreate>
-    <StyleToCreate>0</StyleToCreate>
-    <Font_Name/>
-    <Font_Size>0</Font_Size>
-    <Font_Style>0</Font_Style>
-    <Use_Font>0</Use_Font>
-    <Modifier/>
-    <HotKey/>
-    <Layer>0</Layer>
-    <Lang_Text en="/xmlrpc"/>
-    <VariableType>0</VariableType>
-    <Tooltip en="????"/>
-    <Use_Tooltip>0</Use_Tooltip>
-    <Alpha>0.000000000</Alpha>
-    <Use_Alpha>0</Use_Alpha>
-    <Sensitivity>0</Sensitivity>
-    <Filter>0</Filter>
-    <FilterRange/>
-    <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
-    <EVENT_GADGETACTION_TEXT/>
-    <EVENT_GADGETLOSTFOCUS>0</EVENT_GADGETLOSTFOCUS>
-    <EVENT_GADGETLOSTFOCUS_TEXT/>
-  </Item5>
-  <Item6>
-    <Name>TxtFunction</Name>
-    <X>501</X>
-    <Y>176</Y>
-    <width>153</width>
-    <height>18</height>
-    <Group>Group2</Group>
-    <SubGroup>0</SubGroup>
-    <Group_x>431</Group_x>
-    <Group_y>89</Group_y>
-    <CreateCallBack/>
-    <Foreground Red="0" Green="0" Blue="0"/>
-    <Background Red="255" Green="255" Blue="255"/>
-    <Color_Changed>0</Color_Changed>
-    <BColor_Changed>0</BColor_Changed>
-    <Layout Left="2" Right="2" Top="2" Bottom="2"/>
-    <Comment/>
-    <is_disabled>0</is_disabled>
-    <is_hidden>0</is_hidden>
-    <Position_is_locked>0</Position_is_locked>
-    <Size_is_locked>0</Size_is_locked>
-    <Marked>0</Marked>
-    <Design_Range>10</Design_Range>
-    <Virtual_Group>0</Virtual_Group>
-    <Vx>0</Vx>
-    <Vy>0</Vy>
-    <Vw>0</Vw>
-    <Vh>0</Vh>
-    <TypToCreate>2</TypToCreate>
-    <StyleToCreate>0</StyleToCreate>
-    <Font_Name/>
-    <Font_Size>0</Font_Size>
-    <Font_Style>0</Font_Style>
-    <Use_Font>0</Use_Font>
-    <Modifier/>
-    <HotKey/>
-    <Layer>0</Layer>
-    <Lang_Text en="funcs.somefunc4"/>
-    <VariableType>0</VariableType>
-    <Tooltip en="????"/>
-    <Use_Tooltip>0</Use_Tooltip>
-    <Alpha>0.000000000</Alpha>
-    <Use_Alpha>0</Use_Alpha>
-    <Sensitivity>0</Sensitivity>
-    <Filter>0</Filter>
-    <FilterRange/>
-    <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
-    <EVENT_GADGETACTION_TEXT/>
-    <EVENT_GADGETLOSTFOCUS>0</EVENT_GADGETLOSTFOCUS>
-    <EVENT_GADGETLOSTFOCUS_TEXT/>
-  </Item6>
-  <Item7>
     <Name>Button1</Name>
     <X>543</X>
     <Y>198</Y>
@@ -651,8 +497,8 @@
     <IncBin_Pixmap>0</IncBin_Pixmap>
     <PixMap_Path/>
     <PixMapProperties>0</PixMapProperties>
-  </Item7>
-  <Item8>
+  </Item4>
+  <Item5>
     <Name>Label1_c2_c3</Name>
     <X>444</X>
     <Y>180</Y>
@@ -696,8 +542,8 @@
     <Alpha>0.000000000</Alpha>
     <Use_Alpha>0</Use_Alpha>
     <Sensitivity>0</Sensitivity>
-  </Item8>
-  <Item9>
+  </Item5>
+  <Item6>
     <Name>Label1_c2</Name>
     <X>444</X>
     <Y>146</Y>
@@ -741,8 +587,8 @@
     <Alpha>0.000000000</Alpha>
     <Use_Alpha>0</Use_Alpha>
     <Sensitivity>0</Sensitivity>
-  </Item9>
-  <Item10>
+  </Item6>
+  <Item7>
     <Name>Label1</Name>
     <X>444</X>
     <Y>112</Y>
@@ -786,6 +632,159 @@
     <Alpha>0.000000000</Alpha>
     <Use_Alpha>0</Use_Alpha>
     <Sensitivity>0</Sensitivity>
+  </Item7>
+  <Item8>
+    <Name>TxtHost</Name>
+    <X>501</X>
+    <Y>108</Y>
+    <width>153</width>
+    <height>18</height>
+    <Group>Group2</Group>
+    <SubGroup>0</SubGroup>
+    <Group_x>431</Group_x>
+    <Group_y>89</Group_y>
+    <CreateCallBack/>
+    <Foreground Red="0" Green="0" Blue="0"/>
+    <Background Red="255" Green="255" Blue="255"/>
+    <Color_Changed>0</Color_Changed>
+    <BColor_Changed>0</BColor_Changed>
+    <Layout Left="2" Right="2" Top="2" Bottom="2"/>
+    <Comment/>
+    <is_disabled>0</is_disabled>
+    <is_hidden>0</is_hidden>
+    <Position_is_locked>0</Position_is_locked>
+    <Size_is_locked>0</Size_is_locked>
+    <Marked>0</Marked>
+    <Design_Range>10</Design_Range>
+    <Virtual_Group>0</Virtual_Group>
+    <Vx>0</Vx>
+    <Vy>0</Vy>
+    <Vw>0</Vw>
+    <Vh>0</Vh>
+    <TypToCreate>2</TypToCreate>
+    <StyleToCreate>0</StyleToCreate>
+    <Font_Name>Arial</Font_Name>
+    <Font_Size>0</Font_Size>
+    <Font_Style>0</Font_Style>
+    <Use_Font>0</Use_Font>
+    <Modifier/>
+    <HotKey/>
+    <Layer>0</Layer>
+    <Lang_Text en="localhost"/>
+    <VariableType>0</VariableType>
+    <Tooltip en="????"/>
+    <Use_Tooltip>0</Use_Tooltip>
+    <Alpha>0.000000000</Alpha>
+    <Use_Alpha>0</Use_Alpha>
+    <Sensitivity>0</Sensitivity>
+    <Filter>0</Filter>
+    <FilterRange/>
+    <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
+    <EVENT_GADGETACTION_TEXT/>
+    <EVENT_GADGETLOSTFOCUS>0</EVENT_GADGETLOSTFOCUS>
+    <EVENT_GADGETLOSTFOCUS_TEXT/>
+  </Item8>
+  <Item9>
+    <Name>TxtPath</Name>
+    <X>501</X>
+    <Y>142</Y>
+    <width>153</width>
+    <height>18</height>
+    <Group>Group2</Group>
+    <SubGroup>0</SubGroup>
+    <Group_x>431</Group_x>
+    <Group_y>89</Group_y>
+    <CreateCallBack/>
+    <Foreground Red="0" Green="0" Blue="0"/>
+    <Background Red="255" Green="255" Blue="255"/>
+    <Color_Changed>0</Color_Changed>
+    <BColor_Changed>0</BColor_Changed>
+    <Layout Left="2" Right="2" Top="2" Bottom="2"/>
+    <Comment/>
+    <is_disabled>0</is_disabled>
+    <is_hidden>0</is_hidden>
+    <Position_is_locked>0</Position_is_locked>
+    <Size_is_locked>0</Size_is_locked>
+    <Marked>0</Marked>
+    <Design_Range>10</Design_Range>
+    <Virtual_Group>0</Virtual_Group>
+    <Vx>0</Vx>
+    <Vy>0</Vy>
+    <Vw>0</Vw>
+    <Vh>0</Vh>
+    <TypToCreate>2</TypToCreate>
+    <StyleToCreate>0</StyleToCreate>
+    <Font_Name/>
+    <Font_Size>0</Font_Size>
+    <Font_Style>0</Font_Style>
+    <Use_Font>0</Use_Font>
+    <Modifier/>
+    <HotKey/>
+    <Layer>0</Layer>
+    <Lang_Text en="/"/>
+    <VariableType>0</VariableType>
+    <Tooltip en="????"/>
+    <Use_Tooltip>0</Use_Tooltip>
+    <Alpha>0.000000000</Alpha>
+    <Use_Alpha>0</Use_Alpha>
+    <Sensitivity>0</Sensitivity>
+    <Filter>0</Filter>
+    <FilterRange/>
+    <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
+    <EVENT_GADGETACTION_TEXT/>
+    <EVENT_GADGETLOSTFOCUS>0</EVENT_GADGETLOSTFOCUS>
+    <EVENT_GADGETLOSTFOCUS_TEXT/>
+  </Item9>
+  <Item10>
+    <Name>TxtFunction</Name>
+    <X>501</X>
+    <Y>176</Y>
+    <width>153</width>
+    <height>18</height>
+    <Group>Group2</Group>
+    <SubGroup>0</SubGroup>
+    <Group_x>431</Group_x>
+    <Group_y>89</Group_y>
+    <CreateCallBack/>
+    <Foreground Red="0" Green="0" Blue="0"/>
+    <Background Red="255" Green="255" Blue="255"/>
+    <Color_Changed>0</Color_Changed>
+    <BColor_Changed>0</BColor_Changed>
+    <Layout Left="2" Right="2" Top="2" Bottom="2"/>
+    <Comment/>
+    <is_disabled>0</is_disabled>
+    <is_hidden>0</is_hidden>
+    <Position_is_locked>0</Position_is_locked>
+    <Size_is_locked>0</Size_is_locked>
+    <Marked>0</Marked>
+    <Design_Range>10</Design_Range>
+    <Virtual_Group>0</Virtual_Group>
+    <Vx>0</Vx>
+    <Vy>0</Vy>
+    <Vw>0</Vw>
+    <Vh>0</Vh>
+    <TypToCreate>2</TypToCreate>
+    <StyleToCreate>0</StyleToCreate>
+    <Font_Name/>
+    <Font_Size>0</Font_Size>
+    <Font_Style>0</Font_Style>
+    <Use_Font>0</Use_Font>
+    <Modifier/>
+    <HotKey/>
+    <Layer>0</Layer>
+    <Lang_Text en="CheckGameExists"/>
+    <VariableType>0</VariableType>
+    <Tooltip en="????"/>
+    <Use_Tooltip>0</Use_Tooltip>
+    <Alpha>0.000000000</Alpha>
+    <Use_Alpha>0</Use_Alpha>
+    <Sensitivity>0</Sensitivity>
+    <Filter>0</Filter>
+    <FilterRange/>
+    <EVENT_GADGETACTION>1</EVENT_GADGETACTION>
+    <EVENT_GADGETACTION_TEXT/>
+    <EVENT_GADGETLOSTFOCUS>0</EVENT_GADGETLOSTFOCUS>
+    <EVENT_GADGETLOSTFOCUS_TEXT/>
   </Item10>
   <Item11>
     <Name>TxtParameters</Name>
@@ -824,7 +823,7 @@
     <Modifier/>
     <HotKey/>
     <Layer>0</Layer>
-    <Lang_Text en="int::10&#10;string::some test String&#10;double::1.02&#10;base64:myId:some test string..."/>
+    <Lang_Text en="string::Game C"/>
     <VariableType>0</VariableType>
     <Tooltip en="????"/>
     <Use_Tooltip>0</Use_Tooltip>
@@ -839,7 +838,7 @@
     <EVENT_GADGETACTION_TEXT/>
     <EVENT_GADGETSELECT>0</EVENT_GADGETSELECT>
     <EVENT_GADGETSELECT_TEXT/>
-    <EVENT_GADGETMENU>0</EVENT_GADGETMENU>
+    <EVENT_GADGETMENU>1</EVENT_GADGETMENU>
     <EVENT_GADGETMENU_TEXT/>
     <EVENT_GADGETLOSTFOCUS>0</EVENT_GADGETLOSTFOCUS>
     <EVENT_GADGETLOSTFOCUS_TEXT/>
@@ -906,11 +905,11 @@
         <Text en="xmlrpc_vector_none"/>
         <Tip en="????"/>
       </I1>
-      <I2 Icon="-1" Flags="0" Extra="">
+      <I2 Icon="-1" Flags="1" Extra="">
         <Text en="xmlrpc_vector_array"/>
         <Tip en="????"/>
       </I2>
-      <I3 Icon="-1" Flags="1" Extra="">
+      <I3 Icon="-1" Flags="0" Extra="">
         <Text en="xmlrpc_vector_mixed"/>
         <Tip en="????"/>
       </I3>
@@ -1000,14 +999,14 @@
     <TabberItems>
       <Item1>
         <Name>Group4</Name>
-        <X>101</X>
-        <Y>246</Y>
+        <X>434</X>
+        <Y>265</Y>
         <width>419</width>
         <height>146</height>
         <Group>Tabber1_Tab1</Group>
         <SubGroup>1</SubGroup>
-        <Group_x>96</Group_x>
-        <Group_y>243</Group_y>
+        <Group_x>429</Group_x>
+        <Group_y>262</Group_y>
         <CreateCallBack/>
         <Foreground Red="0" Green="0" Blue="0"/>
         <Background Red="255" Green="255" Blue="255"/>
@@ -1081,14 +1080,14 @@
       </Item1>
       <Item2>
         <Name>Group4_c5</Name>
-        <X>101</X>
-        <Y>392</Y>
+        <X>434</X>
+        <Y>411</Y>
         <width>419</width>
         <height>146</height>
         <Group>Tabber1_Tab1</Group>
         <SubGroup>1</SubGroup>
-        <Group_x>96</Group_x>
-        <Group_y>243</Group_y>
+        <Group_x>429</Group_x>
+        <Group_y>262</Group_y>
         <CreateCallBack/>
         <Foreground Red="0" Green="0" Blue="0"/>
         <Background Red="255" Green="255" Blue="255"/>
@@ -1161,15 +1160,15 @@
         <ToolbarItems/>
       </Item2>
       <Item3>
-        <Name>TextAreaResponse</Name>
-        <X>105</X>
-        <Y>407</Y>
+        <Name>TextAreaRequest</Name>
+        <X>438</X>
+        <Y>280</Y>
         <width>411</width>
         <height>125</height>
-        <Group>Group4_c5</Group>
+        <Group>Group4</Group>
         <SubGroup>1</SubGroup>
-        <Group_x>105</Group_x>
-        <Group_y>407</Group_y>
+        <Group_x>438</Group_x>
+        <Group_y>280</Group_y>
         <CreateCallBack/>
         <Foreground Red="0" Green="0" Blue="0"/>
         <Background Red="255" Green="255" Blue="255"/>
@@ -1189,7 +1188,7 @@
         <Vw>0</Vw>
         <Vh>0</Vh>
         <TypToCreate>8</TypToCreate>
-        <StyleToCreate>2</StyleToCreate>
+        <StyleToCreate>3</StyleToCreate>
         <Font_Name>Courier New</Font_Name>
         <Font_Size>8</Font_Size>
         <Font_Style>0</Font_Style>
@@ -1223,15 +1222,15 @@
         <MenuName/>
       </Item3>
       <Item4>
-        <Name>TextAreaRequest</Name>
-        <X>105</X>
-        <Y>261</Y>
+        <Name>TextAreaResponse</Name>
+        <X>438</X>
+        <Y>426</Y>
         <width>411</width>
         <height>125</height>
-        <Group>Group4</Group>
+        <Group>Group4_c5</Group>
         <SubGroup>1</SubGroup>
-        <Group_x>105</Group_x>
-        <Group_y>261</Group_y>
+        <Group_x>438</Group_x>
+        <Group_y>426</Group_y>
         <CreateCallBack/>
         <Foreground Red="0" Green="0" Blue="0"/>
         <Background Red="255" Green="255" Blue="255"/>
@@ -1251,7 +1250,7 @@
         <Vw>0</Vw>
         <Vh>0</Vh>
         <TypToCreate>8</TypToCreate>
-        <StyleToCreate>2</StyleToCreate>
+        <StyleToCreate>3</StyleToCreate>
         <Font_Name>Courier New</Font_Name>
         <Font_Size>8</Font_Size>
         <Font_Style>0</Font_Style>

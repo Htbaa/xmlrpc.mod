@@ -1,4 +1,4 @@
-'Source Code created on 16 Apr 2009 20:38:58 with Logic Gui Version 4.2 Build 384
+'Source Code created on 18 Apr 2009 15:55:23 with Logic Gui Version 4.2 Build 384
 'Christiaan Kras
 'Start of external Header File
 SuperStrict
@@ -38,7 +38,7 @@ Const	GetGadgetHandle:Int=12
 
 Local IncomingConnections:TTimer = CreateTimer:TTimer( 10 )
 
-Local Window1:TGadget = CreateWindow:TGadget("XML-RPC Server",424,140,294,292,Null,WINDOW_TITLEBAR|WINDOW_STATUS |WINDOW_CLIENTCOORDS |WINDOW_CENTER)
+Local Window1:TGadget = CreateWindow:TGadget("XML-RPC Server",453,116,294,292,Null,WINDOW_TITLEBAR|WINDOW_STATUS |WINDOW_CLIENTCOORDS |WINDOW_CENTER)
 	GadgetList.AddLast( Window1:TGadget ) ; Window1.Context="Window1"
 	Local GroupServerSettings:TGadget = CreatePanel:TGadget(1,1,292,80,Window1:TGadget,PANEL_GROUP,"XML-RPC Server Settings")
 		GadgetList.AddLast( GroupServerSettings:TGadget ) ; GroupServerSettings.Context="GroupServerSettings"
@@ -57,7 +57,7 @@ Local Window1:TGadget = CreateWindow:TGadget("XML-RPC Server",424,140,294,292,Nu
 		Local Tabber1_Tab1:TGadget = CreatePanel( 0,0,ClientWidth(Tabber1:TGadget),ClientHeight(Tabber1:TGadget),Tabber1:TGadget )
 			Tabber1.items[0].extra = Tabber1_Tab1:TGadget
 			SetGadgetLayout( Tabber1_Tab1,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED )
-			Local TextAreaIncoming:TGadget = CreateTextArea:TGadget(0,0,288,180,Tabber1_Tab1:TGadget,TEXTAREA_READONLY)
+			Local TextAreaIncoming:TGadget = CreateTextArea:TGadget(0,0,288,180,Tabber1_Tab1:TGadget,TEXTAREA_WORDWRAP|TEXTAREA_READONLY)
 				GadgetList.AddLast( TextAreaIncoming:TGadget ) ; TextAreaIncoming.Context="TextAreaIncoming"
 				SetGadgetLayout( TextAreaIncoming:TGadget,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED )
 				Local Font_TextAreaIncoming:TGuiFont = LoadGuiFont:TGuiFont( "Courier New" , 8 , False , False , False )
@@ -67,7 +67,7 @@ Local Window1:TGadget = CreateWindow:TGadget("XML-RPC Server",424,140,294,292,Nu
 		Local Tabber1_Tab2:TGadget = CreatePanel( 0,0,ClientWidth(Tabber1:TGadget),ClientHeight(Tabber1:TGadget),Tabber1:TGadget )
 			Tabber1.items[1].extra = Tabber1_Tab2:TGadget
 			SetGadgetLayout( Tabber1_Tab2,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED )
-			Local TextAreaOutgoing:TGadget = CreateTextArea:TGadget(0,0,288,180,Tabber1_Tab2:TGadget,TEXTAREA_READONLY)
+			Local TextAreaOutgoing:TGadget = CreateTextArea:TGadget(0,0,288,180,Tabber1_Tab2:TGadget,TEXTAREA_WORDWRAP|TEXTAREA_READONLY)
 				GadgetList.AddLast( TextAreaOutgoing:TGadget ) ; TextAreaOutgoing.Context="TextAreaOutgoing"
 				SetGadgetLayout( TextAreaOutgoing:TGadget,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED,EDGE_ALIGNED )
 				Local Font_TextAreaOutgoing:TGuiFont = LoadGuiFont:TGuiFont( "Courier New" , 8 , False , False , False )
@@ -105,8 +105,8 @@ Repeat
 				Case TextFieldPort	TextFieldPort_GA( TextFieldPort:TGadget , GadgetList:TList )
 				Case Tabber1	Tabber1_GA( Tabber1:TGadget , EventData() , GadgetList:TList )
 				Case TextAreaIncoming	TextAreaIncoming_GA( TextAreaIncoming:TGadget , GadgetList:TList )
-				Case TextAreaOutgoing	TextAreaOutgoing_GA( TextAreaOutgoing:TGadget , GadgetList:TList )
 				Case TextAreaLog	TextAreaLog_GA( TextAreaLog:TGadget , GadgetList:TList )
+				Case TextAreaOutgoing	TextAreaOutgoing_GA( TextAreaOutgoing:TGadget , GadgetList:TList )
 			End Select
 
 		Case EVENT_GADGETMENU
@@ -200,13 +200,13 @@ Function TextAreaIncoming_GA( TextArea:TGadget , GadgetList:TList=Null )
 	
 End Function
 
-Function TextAreaOutgoing_GA( TextArea:TGadget , GadgetList:TList=Null )
-	DebugLog "TextArea TextAreaOutgoing was modified"
+Function TextAreaLog_GA( TextArea:TGadget , GadgetList:TList=Null )
+	DebugLog "TextArea TextAreaLog was modified"
 	
 End Function
 
-Function TextAreaLog_GA( TextArea:TGadget , GadgetList:TList=Null )
-	DebugLog "TextArea TextAreaLog was modified"
+Function TextAreaOutgoing_GA( TextArea:TGadget , GadgetList:TList=Null )
+	DebugLog "TextArea TextAreaOutgoing was modified"
 	
 End Function
 
