@@ -25,7 +25,7 @@ End Type
 
 Rem
 	bbdoc: Simple HTTP transport
-	about: Needs HTTP error handling, as well as a set time out. Implementation is very simple at the moment. Only a simple HTTP request is possible. Authenticated pages or HTTPS isn't supported. For HTTPS, write your own.
+	about: Needs HTTP error handling. Implementation is very simple at the moment. Only a simple HTTP request is possible. Authenticated pages or HTTPS isn't supported. For HTTPS, write your own.
 End Rem
 Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 	Field host:String
@@ -36,7 +36,7 @@ Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 		bbdoc: Set useragent for HTTP request.
 		about: This string will be used to identify the client with the XML-RPC server
 	End rem
-	Field userAgent:String = "htbaa.mod/xmlrpc.mod"
+	Field userAgent:String = "htbaapub.mod/xmlrpc.mod"
 	
 	Rem
 		bbdoc: Create TXMLRPC_Transport_Http object
