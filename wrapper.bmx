@@ -109,10 +109,6 @@ Extern "C"
 	Function XMLRPC_ServerFindMethod:Byte Ptr(server:Byte Ptr, callName:Byte Ptr)
 	Function XMLRPC_ServerCallMethod:Byte Ptr(server:Byte Ptr, request:Byte Ptr, userData:Byte Ptr)
 
-'	According to the XMLRPC-EPI documentation these 2 are private and shouldn't be used
-'	Function XMLRPC_RequestSetError:Byte Ptr(request:Byte Ptr, error:Int)
-'	Function XMLRPC_RequestGetError:Byte Ptr(request:Byte Ptr)
-
 	Function XMLRPC_VectorGetValueWithID_Case:Byte Ptr(vector:Byte Ptr, id:Byte Ptr, id_case:Int)
 	
 	Function XMLRPC_GetValueType:Int(v:Byte Ptr)
@@ -235,37 +231,6 @@ Function XMLRPC_VectorAppendBoolean:Int(vector:Byte Ptr, id:String, i:Int)
 	MemFree(strId)
 	Return val
 End Function
-rem
-/****s* VALUE/XMLRPC_REQUEST_INPUT_OPTIONS
- * NAME
- *   XMLRPC_REQUEST_INPUT_OPTIONS
- * NOTES
- *   Defines options for reading in xml data
- * SEE ALSO
- *   XMLRPC_VERSION
- *   XML_ELEM_INPUT_OPTIONS
- *   XMLRPC_REQUEST_From_XML ()
- * SOURCE
- */
-typedef struct _xmlrpc_request_input_options {
-   STRUCT_XML_ELEM_INPUT_OPTIONS  xml_elem_opts;  /* xml_element specific output options */
-} STRUCT_XMLRPC_REQUEST_INPUT_OPTIONS, *XMLRPC_REQUEST_INPUT_OPTIONS;
-/******/
-
-/****s* VALUE/XMLRPC_ERROR
- * NAME
- *   XMLRPC_ERROR
- * NOTES
- *   For the reporting and handling of errors
- * SOURCE
- */
-typedef struct _xmlrpc_error {
-   XMLRPC_ERROR_CODE      code;
-   STRUCT_XML_ELEM_ERROR  xml_elem_error;  /* xml_element errors (parser errors) */
-} STRUCT_XMLRPC_ERROR, *XMLRPC_ERROR;
-/******/
-endrem
-
 
 Rem
 	String conversion stuff below. Shamelessly stolen from Brucey :-)
