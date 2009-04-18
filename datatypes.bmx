@@ -65,6 +65,10 @@ Type TXMLRPC_Value_Abstract Abstract
 						data = New TXMLRPC_Value_Struct
 					Case xmlrpc_vector_mixed
 						Throw New TXMLRPC_Value_Exception.Create("Not sure yet how to handle a xmlrpc_vector_mixed value")
+					Case xmlrpc_vector_none
+						Throw New TXMLRPC_Value_Exception.Create("Not sure yet how to handle a xmlrpc_vector_none value")
+					Default
+						Throw New TXMLRPC_Value_Exception.Create("Unknown vector type: " + vectorType)
 				End Select
 				
 				If TXMLRPC_Value_Collection(data)
