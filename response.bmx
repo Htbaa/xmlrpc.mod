@@ -24,8 +24,9 @@ Type TXMLRPC_Response_Data
 
 		Self.data = TXMLRPC_Response_Data.IterateVector(el)
 
-		XMLRPC_RequestFree(request, 1)
 		MemFree(message)
+		XMLRPC_RequestFree(request, 1)
+		
 		Return Self
 	End Method
 
@@ -39,7 +40,14 @@ Type TXMLRPC_Response_Data
 			'Rewind vector
 			Local itr:Byte Ptr = XMLRPC_VectorRewind(el)
 			If Not itr
-				data.Insert("0", TXMLRPC_Value_Abstract.XMLRPC_To_BlizMax(el))
+				Local cStr:Byte Ptr = XMLRPC_GetValueID(itr)
+				Local id:String = "0"
+				If cStr
+					id = String.FromCString(cStr)
+					XMLRPC_Free(cstr)
+				End If
+
+				data.Insert(id, TXMLRPC_Value_Abstract.XMLRPC_To_BlizMax(el))
 			Else
 				Local dataCounter:Int = 0
 				While itr
@@ -53,7 +61,7 @@ Type TXMLRPC_Response_Data
 
 					data.Insert(id, TXMLRPC_Value_Abstract.XMLRPC_To_BlizMax(itr))
 					XMLRPC_Free(cStr)
-	
+
 					'Next element
 					itr = XMLRPC_VectorNext(el)
 				Wend
