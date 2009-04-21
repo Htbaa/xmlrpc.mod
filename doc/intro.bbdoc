@@ -1,0 +1,26 @@
+<h1>XML-RPC Module</h1>
+<p>An <a href="http://www.xmlrpc.com">XML-RPC</a> module, using <a href="http://xmlrpc-epi.sourceforge.net/">XMLRPC-EPI</a>. Please check out the examples in the example directory to find out how to use this module. The project is open source and can be found at Github (see bottom of page for link). <a href="http://www.xmlrpc.com">XML-RPC</a> is a remote procedure call protocol which uses XML to encode its calls and HTTP as a transport mechanism.</p>
+
+<h2>What use is XML-RPC for me?</h2>
+<p>Considering BlitzMaxs' main focus is on games it could be used to implement a online highscore (leaderboards) and game statistics system. Like most modern games with online support you could use XML-RPC to keep track of player scores and the like. It's very easy to create an XML-RPC webservice with the modern scripting languages (<a href="http://search.cpan.org/~daan/XML-RPC-0.9/lib/XML/RPC.pm">Perl</a>, <a href="http://framework.zend.com/manual/en/zend.xmlrpc.html">PHP</a>) and now with xmlrpc.mod it'll be very easy to interact with your webservice.</p>
+<p>You could also use it to write a server and client application to exchange data. Since XML-RPC allows easy interaction with any program it doesn't matter in what language the program you're talking to has been programmed.</p>
+
+<h2>Client &amp; Server</h2>
+<p>xmlrpc.mod offers both client and server support. Meaning you can write your own <a href="../examples/GUI-Server/TestGUI.bmx">XML-RPC Server</a> to which other programs can make requests to. And of course it's possible to interact with other XML-RPC servers. All methods will throw an exception derived from TXMLRPC_Exception when an error occurs. XML-RPC data types are represented by a TXMLRPC_Value_Abstract derived type.</p>
+
+<h3>XML-RPC Client</h3>
+<p>TXMLRPC_Client makes it possible to call a function from an XML-RPC server. Before you invoke Call() be sure to setup a transport layer, derived from TXMLRPC_Transport_Interface. There's a simple HTTP Transport layer available under TXMLRPC_Transport_HTTP. Once set you can invoke Call(). Optionally you can pass a TXMLRPC_Call_Parameters object which contains the parameters you want to pass to the XML-RPC function you're calling. A TXMLRPC_Response_Data object will be returned which contains a TMap with all the returned values.</p>
+
+<h3>XML-RPC Server</h3>
+<p>TXMLRPCServer makes it possible to create an XML-RPC server. XMLRPC-EPI also supports introspection and at a quick glance it works fine, but hasn't been tested extensively.</p>
+
+<h2>Examples</h2>
+<p>Please take a look at one of the examples below. For the examples to run iconv.dll needs to be in the same directory as the executable.</p>
+<ul>
+	<li><a href="../examples/example1.bmx">example1.bmx</a> (uses direct XMLRPC-EPI API calls, don't use unless you really need to)</li>
+	<li><a href="../examples/example2.bmx">example2.bmx</a></li>
+	<li><a href="../examples/example3.bmx">example3.bmx</a></li>
+	<li><a href="../examples/example4.bmx">example4.bmx</a></li>
+	<li><a href="../examples/GUI/TestGUI.bmx">GUI</a> requires MaxGUI (LogicGUI project file included)</li>
+	<li><a href="../examples/GUI-Server/TestGUI.bmx">GUI-Server</a> requires MaxGUI (LogicGUI project file included)</li>
+</ul>

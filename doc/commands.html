@@ -8,7 +8,32 @@
 <td class=small width=1%><a href='../../../../mod/htbaapub.mod/xmlrpc.mod/xmlrpc.bmx' class=small>Source</a></td>
 <td class=small>&nbsp;</td></tr></table>
 <h1>htbaapub.xmlrpc</h1>
-An XML-RPC module, using XMLRPC-EPI. Please check out the examples in the example directory to find out how to use this module. The project is open source and can be found at Github (see bottom of page for link).
+<h1>XML-RPC Module</h1>
+<p>An <a href="http://www.xmlrpc.com">XML-RPC</a> module, using <a href="http://xmlrpc-epi.sourceforge.net/">XMLRPC-EPI</a>. Please check out the examples in the example directory to find out how to use this module. The project is open source and can be found at Github (see bottom of page for link). <a href="http://www.xmlrpc.com">XML-RPC</a> is a remote procedure call protocol which uses XML to encode its calls and HTTP as a transport mechanism.</p>
+<p>
+<h2>What use is XML-RPC for me?</h2>
+<p>Considering BlitzMaxs' main focus is on games it could be used to implement a online highscore (leaderboards) and game statistics system. Like most modern games with online support you could use XML-RPC to keep track of player scores and the like. It's very easy to create an XML-RPC webservice with the modern scripting languages (<a href="http://search.cpan.org/~daan/XML-RPC-0.9/lib/XML/RPC.pm">Perl</a>, <a href="http://framework.zend.com/manual/en/zend.xmlrpc.html">PHP</a>) and now with xmlrpc.mod it'll be very easy to interact with your webservice.</p>
+<p>You could also use it to write a server and client application to exchange data. Since XML-RPC allows easy interaction with any program it doesn't matter in what language the program you're talking to has been programmed.</p>
+<p>
+<h2>Client &amp; Server</h2>
+<p>xmlrpc.mod offers both client and server support. Meaning you can write your own <a href="../examples/GUI-Server/TestGUI.bmx">XML-RPC Server</a> to which other programs can make requests to. And of course it's possible to interact with other XML-RPC servers. All methods will throw an exception derived from TXMLRPC_Exception when an error occurs. XML-RPC data types are represented by a TXMLRPC_Value_Abstract derived type.</p>
+<p>
+<h3>XML-RPC Client</h3>
+<p>TXMLRPC_Client makes it possible to call a function from an XML-RPC server. Before you invoke Call() be sure to setup a transport layer, derived from TXMLRPC_Transport_Interface. There's a simple HTTP Transport layer available under TXMLRPC_Transport_HTTP. Once set you can invoke Call(). Optionally you can pass a TXMLRPC_Call_Parameters object which contains the parameters you want to pass to the XML-RPC function you're calling. A TXMLRPC_Response_Data object will be returned which contains a TMap with all the returned values.</p>
+<p>
+<h3>XML-RPC Server</h3>
+<p>TXMLRPCServer makes it possible to create an XML-RPC server. XMLRPC-EPI also supports introspection and at a quick glance it works fine, but hasn't been tested extensively.</p>
+<p>
+<h2>Examples</h2>
+<p>Please take a look at one of the examples below. For the examples to run iconv.dll needs to be in the same directory as the executable.</p>
+<ul>
+	<li><a href="../examples/example1.bmx">example1.bmx</a> (uses direct XMLRPC-EPI API calls, don't use unless you really need to)</li>
+	<li><a href="../examples/example2.bmx">example2.bmx</a></li>
+	<li><a href="../examples/example3.bmx">example3.bmx</a></li>
+	<li><a href="../examples/example4.bmx">example4.bmx</a></li>
+	<li><a href="../examples/GUI/TestGUI.bmx">GUI</a> requires MaxGUI (LogicGUI project file included)</li>
+	<li><a href="../examples/GUI-Server/TestGUI.bmx">GUI-Server</a> requires MaxGUI (LogicGUI project file included)</li>
+</ul>
 <h2><a name=types></a>Types Summary</h2><table class=doc width=100%>
 <tr><td class=docleft width=1%><a href=#TXMLRPC_Call_Parameters>TXMLRPC_Call_Parameters</a></td><td class=docright>
 Parameters to be passed to the XML-RPC server when using TXMLRPC_Client.Call()
@@ -490,11 +515,11 @@ Convert a XMLRPC_VALUE from XMLRPC-EPI to a BlitzMax type.
 <tr><th width=1%>Name</th><td>htbaapub.xmlrpc</td></tr>
 <tr><th width=1%>Version</th><td>1.0</td></tr>
 <tr><th width=1%>Author</th><td>Christiaan Kras</td></tr>
-<tr><th width=1%>Git repository</th><td>http://github.com/Htbaa/htbaapub.mod/</td></tr>
-<tr><th width=1%>XMLRPC-EPI</th><td>http://xmlrpc-epi.sourceforge.net/</td></tr>
-<tr><th width=1%>Expat</th><td>http://expat.sourceforge.net/</td></tr>
-<tr><th width=1%>iconv</th><td>http://gnuwin32.sourceforge.net/packages/libiconv.htm</td></tr>
-<tr><th width=1%>iconv-win32</th><td>http://www.zlatkovic.com/pub/libxml</td></tr>
+<tr><th width=1%>Git repository</th><td><a href='http://github.com/Htbaa/htbaapub.mod/'>http://github.com/Htbaa/htbaapub.mod/</a></td></tr>
+<tr><th width=1%>XMLRPC-EPI</th><td><a href='http://xmlrpc-epi.sourceforge.net/'>http://xmlrpc-epi.sourceforge.net/</a></td></tr>
+<tr><th width=1%>Expat</th><td><a href='http://expat.sourceforge.net/'>http://expat.sourceforge.net/</a></td></tr>
+<tr><th width=1%>iconv</th><td><a href='http://gnuwin32.sourceforge.net/packages/libiconv.htm'>http://gnuwin32.sourceforge.net/packages/libiconv.htm</a></td></tr>
+<tr><th width=1%>iconv-win32</th><td><a href='http://www.zlatkovic.com/pub/libxml'>http://www.zlatkovic.com/pub/libxml</a></td></tr>
 <tr><th width=1%>CC_OPTS</th><td>-DHAVE_EXPAT_CONFIG_H</td></tr>
 <tr><th width=1%>CC_OPTS</th><td>-DWORDS_BIGENDIAN</td></tr>
 <tr><th width=1%>LD_OPTS</th><td>-L%PWD%/src/iconv-1.9.2.win32/lib</td></tr>

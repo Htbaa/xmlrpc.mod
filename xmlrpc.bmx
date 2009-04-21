@@ -2,17 +2,16 @@ SuperStrict
 
 Rem
 	bbdoc: htbaapub.xmlrpc
-	about: An XML-RPC module, using XMLRPC-EPI. Please check out the examples in the example directory to find out how to use this module. The project is open source and can be found at Github (see bottom of page for link).
 EndRem
 Module htbaapub.xmlrpc
 ModuleInfo "Name: htbaapub.xmlrpc"
 ModuleInfo "Version: 1.0"
 ModuleInfo "Author: Christiaan Kras"
-ModuleInfo "Git repository: http://github.com/Htbaa/htbaapub.mod/"
-ModuleInfo "XMLRPC-EPI: http://xmlrpc-epi.sourceforge.net/"
-ModuleInfo "Expat: http://expat.sourceforge.net/"
-ModuleInfo "iconv: http://gnuwin32.sourceforge.net/packages/libiconv.htm"
-ModuleInfo "iconv-win32: http://www.zlatkovic.com/pub/libxml"
+ModuleInfo "Git repository: <a href='http://github.com/Htbaa/htbaapub.mod/'>http://github.com/Htbaa/htbaapub.mod/</a>"
+ModuleInfo "XMLRPC-EPI: <a href='http://xmlrpc-epi.sourceforge.net/'>http://xmlrpc-epi.sourceforge.net/</a>"
+ModuleInfo "Expat: <a href='http://expat.sourceforge.net/'>http://expat.sourceforge.net/</a>"
+ModuleInfo "iconv: <a href='http://gnuwin32.sourceforge.net/packages/libiconv.htm'>http://gnuwin32.sourceforge.net/packages/libiconv.htm</a>"
+ModuleInfo "iconv-win32: <a href='http://www.zlatkovic.com/pub/libxml'>http://www.zlatkovic.com/pub/libxml</a>"
 
 Import brl.blitz
 Import brl.basic
