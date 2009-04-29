@@ -13,6 +13,8 @@ Function testXMLRPC()
 		Local client:TXMLRPC_Client = New TXMLRPC_Client.Create()
 		client.SetTransport(New TXMLRPC_Transport_Http.Create("www.upcdatabase.com", "/rpc"))
 		Local response:TXMLRPC_Response_Data = client.Call("help", Null)
+		'Local pad:Int = 0
+		'Notify TXMLRPC_Response_Data.DebugData(response.data, pad)
 	Catch e:TXMLRPC_Transport_Http_Exception
 		Print "TXMLRPC_Transport_Http_Exception: " + e.ToString()
 	Catch e:Object

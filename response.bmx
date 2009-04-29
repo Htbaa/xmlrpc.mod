@@ -25,7 +25,14 @@ Type TXMLRPC_Response_Data
 		Self.data = TXMLRPC_Response_Data.IterateVector(el)
 
 		MemFree(message)
-		XMLRPC_RequestFree(request, 1)
+		
+		Local freeIo:Int = 1
+		'Apparently a unhandled memory exception error gets thrown when
+		'xmlMessage only contained 1 value and XMLRPC_RequestFree also
+		'frees the response data.
+		If Not XMLRPC_VectorRewind(el) Then freeIo = 0
+		
+		XMLRPC_RequestFree(request, freeIo)
 		
 		Return Self
 	End Method
@@ -40,7 +47,7 @@ Type TXMLRPC_Response_Data
 			'Rewind vector
 			Local itr:Byte Ptr = XMLRPC_VectorRewind(el)
 			If Not itr
-				Local cStr:Byte Ptr = XMLRPC_GetValueID(itr)
+				Local cStr:Byte Ptr = XMLRPC_GetValueID(el)
 				Local id:String = "0"
 				If cStr
 					id = String.FromCString(cStr)
