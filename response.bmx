@@ -88,14 +88,16 @@ Type TXMLRPC_Response_Data
 			prefix:+"-"
 		Next
 		
-		For Local val:TXMLRPC_Value_Abstract = EachIn map.Values()
-			str:+prefix + " " + TTypeId.ForObject(val).Name() + " (" + val.name + ") = " + val.ToString() + "~n"
-			If TXMLRPC_Value_Collection(val)
-				pad:+1
-				str:+TXMLRPC_Response_Data.DebugData(TXMLRPC_Value_Collection(val).data, pad) + "~n"
-				pad:-1
-			End If
-		Next
+		If map	
+			For Local val:TXMLRPC_Value_Abstract = EachIn map.Values()
+				str:+prefix + " " + TTypeId.ForObject(val).Name() + " (" + val.name + ") = " + val.ToString() + "~n"
+				If TXMLRPC_Value_Collection(val)
+					pad:+1
+					str:+TXMLRPC_Response_Data.DebugData(TXMLRPC_Value_Collection(val).data, pad) + "~n"
+					pad:-1
+				End If
+			Next
+		End If
 		Return str
 	End Function
 End Type
