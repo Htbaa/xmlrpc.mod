@@ -21,19 +21,14 @@ Type TXMLRPC_Response_Data
 		Local request:Byte Ptr = XMLRPC_REQUEST_FromXML(message, 0, options)
 
 		Local el:Byte Ptr = XMLRPC_RequestGetData(request)
-
+		
 		Self.data = TXMLRPC_Response_Data.IterateVector(el)
-
+		
 		MemFree(message)
-		
-		Local freeIo:Int = 1
-		'Apparently a unhandled memory exception error gets thrown when
-		'xmlMessage only contained 1 value and XMLRPC_RequestFree also
-		'frees the response data.
-		If Not XMLRPC_VectorRewind(el) Then freeIo = 0
-		
-		XMLRPC_RequestFree(request, freeIo)
-		
+
+		XMLRPC_RequestFree(request, 0)
+		XMLRPC_Free(el)
+				
 		Return Self
 	End Method
 
@@ -44,9 +39,7 @@ Type TXMLRPC_Response_Data
 		Local data:TMap = New TMap
 
 		If el
-			'Rewind vector
-			Local itr:Byte Ptr = XMLRPC_VectorRewind(el)
-			If Not itr
+			If XMLRPC_VectorSize(el) = 0
 				Local cStr:Byte Ptr = XMLRPC_GetValueID(el)
 				Local id:String = "0"
 				If cStr
@@ -56,22 +49,26 @@ Type TXMLRPC_Response_Data
 
 				data.Insert(id, TXMLRPC_Value_Abstract.XMLRPC_To_BlizMax(el))
 			Else
-				Local dataCounter:Int = 0
-				While itr
-					Local cStr:Byte Ptr = XMLRPC_GetValueID(itr)
-					Local id:String = String.FromCString(cStr)
-					
-					If id.Length = 0
-						id = String.FromInt(dataCounter)
-						dataCounter:+1
-					End If
-
-					data.Insert(id, TXMLRPC_Value_Abstract.XMLRPC_To_BlizMax(itr))
-					XMLRPC_Free(cStr)
-
-					'Next element
-					itr = XMLRPC_VectorNext(el)
-				Wend
+				'Rewind vector
+				Local itr:Byte Ptr = XMLRPC_VectorRewind(el)
+				If itr
+					Local dataCounter:Int = 0
+					While itr
+						Local cStr:Byte Ptr = XMLRPC_GetValueID(itr)
+						Local id:String = String.FromCString(cStr)
+						
+						If id.Length = 0
+							id = String.FromInt(dataCounter)
+							dataCounter:+1
+						End If
+	
+						data.Insert(id, TXMLRPC_Value_Abstract.XMLRPC_To_BlizMax(itr))
+						XMLRPC_Free(cStr)
+	
+						'Next element
+						itr = XMLRPC_VectorNext(el)
+					Wend
+				End If
 			End If
 		End If
 		
