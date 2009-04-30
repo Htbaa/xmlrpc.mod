@@ -235,12 +235,15 @@ End Rem
 Type TXMLRPC_Value_Array Extends TXMLRPC_Value_Collection
 	Method SetData(el:Byte Ptr)
 		Self.data = New TMap
-		Local map:TMap = TXMLRPC_Response_Data.IterateVector(el)
-		Local counter:Int = 0
-		For Local val:TXMLRPC_Value_Abstract = EachIn map.Values()
-			Self.data.Insert(String.FromInt(counter), val)
-			counter:+1
-		Next
+
+		If XMLRPC_VectorSize(el) > 0
+			Local map:TMap = TXMLRPC_Response_Data.IterateVector(el)
+			Local counter:Int = 0
+			For Local val:TXMLRPC_Value_Abstract = EachIn map.Values()
+				Self.data.Insert(String.FromInt(counter), val)
+				counter:+1
+			Next
+		End If
 	End Method
 End Type
 
