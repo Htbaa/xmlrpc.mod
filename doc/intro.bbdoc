@@ -12,7 +12,7 @@
 <p>TXMLRPC_Client makes it possible to call a function from an XML-RPC server. Before you invoke Call() be sure to setup a transport layer, derived from TXMLRPC_Transport_Interface. There's a simple HTTP Transport layer available under TXMLRPC_Transport_HTTP. Once set you can invoke Call(). Optionally you can pass a TXMLRPC_Call_Parameters object which contains the parameters you want to pass to the XML-RPC function you're calling. A TXMLRPC_Response_Data object will be returned which contains a TMap with all the returned values.</p>
 
 <h3>XML-RPC Server</h3>
-<p>TXMLRPCServer makes it possible to create an XML-RPC server. XMLRPC-EPI also supports introspection and at a quick glance it works fine, but hasn't been tested extensively.</p>
+<p>TXMLRPCServer makes it possible to create an XML-RPC server. XMLRPC-EPI also supports introspection.</p>
 
 <h2>Examples</h2>
 <p>Please take a look at one of the examples below. For the examples to run iconv.dll needs to be in the same directory as the executable.</p>
