@@ -40,8 +40,6 @@ Import "glue.c"
 	Import "src/iconv-1.9.2.win32/include/*.h"
 ?
 
-Import "-liconv"
-
 Import "src/xmlrpc-epi-0.54/src/xmlrpc.c"
 Import "src/xmlrpc-epi-0.54/src/base64.c"
 Import "src/xmlrpc-epi-0.54/src/encodings.c"
