@@ -36,7 +36,8 @@ Import "glue.c"
 
 ?Win32
 	Import "win32.cpp"
-	ModuleInfo "LD_OPTS: -L%PWD%/src/iconv-1.9.2.win32/lib"
+	Import "src/iconv-1.9.2.win32/lib/iconv.lib"
+	Import "src/iconv-1.9.2.win32/lib/iconv_a.lib"
 	Import "src/iconv-1.9.2.win32/include/*.h"
 ?
 
