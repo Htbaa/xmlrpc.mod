@@ -59,17 +59,17 @@ Type TXMLRPC_Transport_Http Extends TXMLRPC_Transport_Interface
 		End If
 		
 		Local stream:TSocketStream = CreateSocketStream(socket)
-
+		
 		WriteLine(stream, "POST " + Self.path + " HTTP/1.0")
 		WriteLine(stream, "Accept: */*")
 		WriteLine(stream, "Host: " + Self.host)
-		WriteLine(stream, "Content-type: application/x-www-form-urlencoded")
+		WriteLine(stream, "Content-type: application/octet-stream")
 		WriteLine(stream, "User-agent: " + Self.userAgent)
 		WriteLine(stream, "Pragma: no-cache")
+		WriteLine(stream, "Content-length: " + message.Length)
 		WriteLine(stream, "Connection: keep-alive")
-		WriteLine(stream, "Content-length: " + message.Length + "~n")
-
-		WriteLine(stream, message + "~n~n")
+		WriteLine(stream, "")
+		WriteLine(stream, message)
 
 		FlushStream(stream)
 
