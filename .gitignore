@@ -1,0 +1,9 @@
+*.o
+*.i
+*.s
+*.a
+*.exe
+*.bmx.bak
+examples/*.dll
+examples/GUI/*.dll
+examples/GUI-Server/*.dll
