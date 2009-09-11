@@ -5,9 +5,9 @@ Rem
 EndRem
 Module htbaapub.xmlrpc
 ModuleInfo "Name: htbaapub.xmlrpc"
-ModuleInfo "Version: 1.0"
+ModuleInfo "Version: 1.00"
 ModuleInfo "Author: Christiaan Kras"
-ModuleInfo "Git repository: <a href='http://github.com/Htbaa/htbaapub.mod/'>http://github.com/Htbaa/htbaapub.mod/</a>"
+ModuleInfo "Git repository: <a href='http://github.com/Htbaa/xmlrpc.mod/'>http://github.com/Htbaa/xmlrpc.mod/</a>"
 ModuleInfo "XMLRPC-EPI: <a href='http://xmlrpc-epi.sourceforge.net/'>http://xmlrpc-epi.sourceforge.net/</a>"
 ModuleInfo "Expat: <a href='http://expat.sourceforge.net/'>http://expat.sourceforge.net/</a>"
 ModuleInfo "iconv: <a href='http://gnuwin32.sourceforge.net/packages/libiconv.htm'>http://gnuwin32.sourceforge.net/packages/libiconv.htm</a>"
